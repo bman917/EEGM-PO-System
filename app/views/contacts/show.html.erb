@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @contact.notes %>
+</p>
+
+<p>
+  <strong>Contact Details:</strong>
+  <ul>
+  <% @contact.phones.each do | phone | %>
+  	<li>
+  	  <%=phone.phone_type%>
+  	  <%=phone.number%>
+  	</li>
+  <% end %>
+	</ul>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

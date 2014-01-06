@@ -1,0 +1,33 @@
+<h1>Listing supplier_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Supplier</th>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Note</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supplier_items.each do |supplier_item| %>
+      <tr>
+        <td><%= supplier_item.supplier %></td>
+        <td><%= supplier_item.item %></td>
+        <td><%= supplier_item.price %></td>
+        <td><%= supplier_item.note %></td>
+        <td><%= link_to 'Show', supplier_item %></td>
+        <td><%= link_to 'Edit', edit_supplier_item_path(supplier_item) %></td>
+        <td><%= link_to 'Destroy', supplier_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supplier item', new_supplier_item_path %>

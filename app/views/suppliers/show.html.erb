@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @supplier.name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @supplier.notes %>
+</p>
+
+<p>
+  <strong>Contact Details:</strong>
+  <ul>
+  <% @supplier.phones.each do | phone | %>
+  	<li>
+  	  <%=phone.phone_type%>
+  	  <%=phone.number%>
+  	</li>
+  <% end %>
+	</ul>
+</p>
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Back', suppliers_path %>

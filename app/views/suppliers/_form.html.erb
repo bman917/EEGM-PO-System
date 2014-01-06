@@ -1,0 +1,42 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+  $('form').on('click', '.remove_fields', removePhone);
+  $('form').on('click', '.add_fields', addPhone);
+  init();
+});
+<% end %>
+
+
+<%= form_for(@supplier) do |f| %>
+  <% if @supplier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
+
+      <ul>
+      <% @supplier.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+
+  <label>Contact Details: </label>
+  <%= f.fields_for :phones do |builder| %>
+    <%= render 'phones/phone_fields', f: builder%>
+  <% end %>
+  <%= link_to_add_phone_fields "Add Phone", f, :phones %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

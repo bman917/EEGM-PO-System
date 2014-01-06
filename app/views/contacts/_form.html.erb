@@ -1,0 +1,55 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+
+  $('#add_phone').on("click", addPhone);
+
+  $('form').on('click', '.remove_fields', removePhone);
+  $('form').on('click', '.add_fields', addPhone);
+
+  init();
+
+});
+<% end %>
+
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+
+  <!--div class="field">
+    <div class="phones">
+      <div class="phone_entry">
+        <%= label_tag :phone, "Phone 1" %><br>
+        <%= text_field_tag :phone, "", name: "phone_list[1]" %><br>
+      </div>
+    </div>
+  <%= label_tag(:add_phone, "Add Phone", id: "add_phone")%>
+  </div-->
+  <label>Contact Details: </label>
+  <%= f.fields_for :phones do |builder| %>
+    <%= render 'phones/phone_fields', f: builder%>
+  <% end %>
+  <%= link_to_add_phone_fields "Add Phone", f, :phones %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

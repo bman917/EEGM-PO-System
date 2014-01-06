@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: One
+  notes: MyText
+
+two:
+  name: Two
+  notes: MyText
+
+greko:
+  name: Greko
+  notes: MyText
+
+mrc:
+  name: "Marikina Rubber Corp"
+  notes: MyText
