@@ -3,5 +3,9 @@ class Supplier < ActiveRecord::Base
   accepts_nested_attributes_for :phones, allow_destroy: true  
   has_many :supplier_items
   has_many :items, through: :supplier_items
+
+  def to_s
+  	name
+  end
   
 end

@@ -1,0 +1,49 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    setup();
+});
+
+
+<% end %>
+
+<%= form_for(@purchase_order) do |f| %>
+  <% if @purchase_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_order.errors.count, "error") %> prohibited this purchase_order from being saved:</h2>
+
+      <ul>
+      <% @purchase_order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :supplier_name %><br>
+    <%= f.text_field :supplier_name, data: {autocomplete_source: supplier_names_path} %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <p>
+  <label>Contact Persions: </label>
+  <%= f.fields_for :purchase_order_contacts do |builder| %>
+    <%= render 'purchase_order_contact_fields', f: builder%>
+  <% end %>
+  <br>
+  <%= link_to_add_fields "Add Contact Person", f, :purchase_order_contacts %>  
+<p>
+  <label>Contact Details: </label>
+  <%= f.fields_for :phones do |builder| %>
+    <%= render 'phones/phone_fields', f: builder%>
+  <% end %>
+  <br>
+  <%= link_to_add_fields "Add Phone", f, :phones %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

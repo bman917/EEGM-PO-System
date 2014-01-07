@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supplier_id: 
+  notes: MyText
+
+two:
+  supplier_id: 
+  notes: MyText

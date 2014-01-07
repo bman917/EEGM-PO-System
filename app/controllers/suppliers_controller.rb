@@ -1,6 +1,12 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
+
+  def names
+    @suppliers = Supplier.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @suppliers.map(&:name)
+  end
+
   # GET /suppliers
   # GET /suppliers.json
   def index

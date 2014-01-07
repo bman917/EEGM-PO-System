@@ -34,7 +34,7 @@ $(document).ready(function(){
   <%= f.fields_for :phones do |builder| %>
     <%= render 'phones/phone_fields', f: builder%>
   <% end %>
-  <%= link_to_add_phone_fields "Add Phone", f, :phones %>
+  <%= link_to_add_fields "Add Phone", f, :phones %>
   
   <div class="actions">
     <%= f.submit %>
