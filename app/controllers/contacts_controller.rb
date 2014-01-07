@@ -1,6 +1,11 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
+  def names
+    @contacts = Contact.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @contacts.map(&:name)
+  end
+
   # GET /contacts
   # GET /contacts.json
   def index

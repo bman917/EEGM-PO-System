@@ -16,6 +16,7 @@ class PurchaseOrdersController < ApplicationController
   def new
     @purchase_order = PurchaseOrder.new
     @purchase_order.purchase_order_contacts.build
+    @purchase_order.phones.build
   end
 
   # GET /purchase_orders/1/edit
@@ -70,6 +71,10 @@ class PurchaseOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:supplier_id, :notes, :supplier_name, phones_attributes: [:id, :number, :_destroy], purchase_order_contacts_attributes: [:id, :name, :_destroy])
+      params.require(:purchase_order).permit(:po_date, :supplier_id, :notes, :supplier_name, 
+        phones_attributes: [:id, :number, :_destroy], 
+        purchase_order_contacts_attributes: [:id, :name, :_destroy],
+        purchase_items_attributes: 
+          [:id, :item_name, :price, :quantity, :total, :note, :_destroy])
     end
 end

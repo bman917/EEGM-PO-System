@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function addField() {
+   time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    event.preventDefault();
+}
+
+function removeField(event) {
+	$(this).prev('input[type=hidden]').val('1');
+	$(this).closest('fieldset').hide();
+	event.preventDefault();
+}

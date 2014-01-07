@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Order Date:</strong>
+  <%= @purchase_order.po_date.to_formatted_s(:long) %>
+</p>
+
+<p>
   <strong>Supplier:</strong>
   <%= @purchase_order.supplier %>
 </p>
@@ -31,6 +36,17 @@
   	</li>
   <% end %>
 	</ul>
+</p>
+
+<p>
+  <strong>Items:</strong>
+  <ul>
+  <% @purchase_order.purchase_items.each do | purchase_item | %>
+    <li>
+      <%=purchase_item%>
+    </li>
+  <% end %>
+  </ul>
 </p>
 
 

@@ -1,6 +1,6 @@
 <fieldset>
 	<%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "contact_persons" ,data: {autocomplete_source: contact_names_path} %>
     <%= f.hidden_field :_destroy %>
     <%= link_to "remove", '#', class: "remove_fields" %>
 </fieldset>

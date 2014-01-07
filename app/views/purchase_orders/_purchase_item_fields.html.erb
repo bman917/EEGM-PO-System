@@ -1,0 +1,24 @@
+<fieldset>
+	<div class="field">
+	<%= f.label :item_name %><br>
+    <%= f.text_field :item_name%>
+	</div>
+	<div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price%>
+	</div>
+	<div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, min: 1%>
+	</div>
+	<div class="field">
+    <%= f.label :total %>
+    <%= f.text_field :total%>
+	</div>
+	<div class="field">
+    <%= f.label :note %>
+    <%= f.text_area :note%>
+	</div>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>

@@ -5,9 +5,23 @@ function setup() {
     minLength: 2
   });
 
+  addAutoCompleteToContactPersons();
+
   $('#purchase_order_supplier_name').focus();
 
-  $('form').on('click', '.remove_fields', removePhone);
-  $('form').on('click', '.add_fields', addPhone);
-	
+  $('form').on('click', '.remove_fields', removeField);
+  $('form').on('click', '.add_fields', addField);
+  $('form').on('click', '.add_fields', addAutoCompleteToContactPersons);
+  $('form').on('click', '.add_fields', focusOnLastContactPersons);
+}
+
+function addAutoCompleteToContactPersons() {
+	$('input.contact_persons').autocomplete({
+    	source: $('input.contact_persons').data('autocomplete-source'),
+    	minLength: 2
+  	});
+}
+
+function focusOnLastContactPersons() {
+	$('input.contact_persons:last').focus();
 }

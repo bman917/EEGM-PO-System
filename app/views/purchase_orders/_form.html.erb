@@ -21,6 +21,10 @@ $(document).ready(function(){
   <% end %>
 
   <div class="field">
+    <%= f.label :po_date, "Order Date"%></br>
+    <%= f.date_select :po_date %>
+  </div>
+  <div class="field">
     <%= f.label :supplier_name %><br>
     <%= f.text_field :supplier_name, data: {autocomplete_source: supplier_names_path} %>
   </div>
@@ -29,7 +33,7 @@ $(document).ready(function(){
     <%= f.text_area :notes %>
   </div>
   <p>
-  <label>Contact Persions: </label>
+  <label>Contact Persons: </label>
   <%= f.fields_for :purchase_order_contacts do |builder| %>
     <%= render 'purchase_order_contact_fields', f: builder%>
   <% end %>
@@ -42,6 +46,15 @@ $(document).ready(function(){
   <% end %>
   <br>
   <%= link_to_add_fields "Add Phone", f, :phones %>
+
+
+   <div id="items_section">
+      <h1>Items</h1>
+      <%= f.fields_for :purchase_items do |builder| %>
+        <%= render 'purchase_item_fields', f: builder%>
+      <% end %>
+      <%= link_to_add_fields "Add Item", f, :purchase_items %>
+   </div>
   
   <div class="actions">
     <%= f.submit %>

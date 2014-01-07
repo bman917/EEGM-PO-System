@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107095317) do
+ActiveRecord::Schema.define(version: 20140107145137) do
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 20140107095317) do
     t.datetime "updated_at"
   end
 
+  create_table "purchase_items", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "purchase_order_id"
+    t.float    "price"
+    t.integer  "quantity"
+    t.float    "total"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id"
+  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id"
+
   create_table "purchase_order_contacts", force: true do |t|
     t.integer  "purchase_order_id"
     t.string   "name"
@@ -48,6 +62,8 @@ ActiveRecord::Schema.define(version: 20140107095317) do
   create_table "purchase_orders", force: true do |t|
     t.integer  "supplier_id"
     t.text     "notes"
+    t.date     "po_date"
+    t.float    "grand_total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
