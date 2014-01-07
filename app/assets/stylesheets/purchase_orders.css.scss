@@ -1,3 +1,70 @@
 // Place all the styles related to the PurchaseOrders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.new_purchase_order {
+	width: 550px;
+}
+div.top_section {
+	
+	border-bottom: 1px dashed;
+	margin-bottom: .5em;
+	padding-bottom: .5em;
+
+
+}
+div.notes {
+	display: inline;
+	.collapse {
+		display: none;
+	}
+}
+
+#purchase_order_notes {
+	display: none;
+}
+
+div.section {
+	border: 1px solid;
+	
+	margin-top: 1em;
+	padding: 1em;
+	width: 18em;
+
+	h1 {
+		font-size: 1.1em;
+	}
+
+	fieldset {
+		border: 0px;
+		padding: 0em;
+		margin: 0em;
+	}
+}
+
+div.contact_person_section {
+	margin-top: 1.75em;
+}
+
+div.contact_details_section {
+
+	float:right;
+}
+div.middle_section {
+	
+	clear: both;
+}
+
+.add_fields {
+	margin-top: 1em;
+	display: block;
+}
+
+div.bottom_section {
+	width: 500px;
+	float: left;
+}
+
+div.items_section {
+	width: 500px;
+}

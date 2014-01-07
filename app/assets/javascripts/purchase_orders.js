@@ -13,6 +13,9 @@ function setup() {
   $('form').on('click', '.add_fields', addField);
   $('form').on('click', '.add_fields', addAutoCompleteToContactPersons);
   $('form').on('click', '.add_fields', focusOnLastContactPersons);
+  $('form').on('click', '#notes_title', toggleNotes);
+
+
 }
 
 function addAutoCompleteToContactPersons() {
@@ -24,4 +27,10 @@ function addAutoCompleteToContactPersons() {
 
 function focusOnLastContactPersons() {
 	$('input.contact_persons:last').focus();
+}
+
+function toggleNotes() {
+  $('#purchase_order_notes').toggle(200);
+  $('div.notes .expand').toggle(200);
+  $('div.notes .collapse').toggle(200);
 }
