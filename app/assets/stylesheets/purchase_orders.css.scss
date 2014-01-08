@@ -5,16 +5,14 @@
 form.new_purchase_order {
 	width: 550px;
 }
-div.top_section {
-	
-	border-bottom: 1px dashed;
-	margin-bottom: .5em;
-	padding-bottom: .5em;
 
-
+.order_date {
+	float: right;
 }
+
 div.notes {
-	display: inline;
+	margin-top: 1em;
+	
 	.collapse {
 		display: none;
 	}
@@ -25,14 +23,15 @@ div.notes {
 }
 
 div.section {
-	border: 1px solid;
-	
-	margin-top: 1em;
-	padding: 1em;
-	width: 18em;
+	margin-top: 0em;
+	padding-top: 1em;
+	width: 15em;
+	min-height: 7em;
 
 	h1 {
 		font-size: 1.1em;
+		font-weight: normal;
+		display: inline;
 	}
 
 	fieldset {
@@ -43,21 +42,23 @@ div.section {
 }
 
 div.contact_person_section {
-	margin-top: 1.75em;
+	
 }
 
 div.contact_details_section {
-
+	
 	float:right;
 }
 div.middle_section {
 	
-	clear: both;
+	
 }
 
 .add_fields {
-	margin-top: 1em;
-	display: block;
+	margin-top: .5em;
+	margin-left: .5em;
+	
+
 }
 
 div.bottom_section {
@@ -66,5 +67,14 @@ div.bottom_section {
 }
 
 div.items_section {
-	width: 500px;
+	border-top: 2px solid;
+	width: 550px;
+}
+
+div.actions {
+	margin-top: 1em;
+}
+
+.add_fields {
+	display: inline;
 }

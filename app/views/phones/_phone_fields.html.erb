@@ -1,5 +1,5 @@
-<fieldset>
+<fieldset class="dynamic_fields">
 	<%= f.text_field :number %>
     <%= f.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "remove_fields" %>
+    <%= render "common/remove_link"%>
 </fieldset>

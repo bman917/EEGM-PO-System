@@ -21,28 +21,24 @@ $(document).ready(function(){
   <% end %>
 
 <div class="top_section">
-  <div class="field">
+  <div class="order_date">
     <%= f.label :po_date, "Order Date"%></br>
     <%= f.date_select :po_date %>
   </div>
-  <div class="notes">
-    <div id="notes_title">
-    <%= f.label :notes %>
-    <span class="expand">[+]</span>
-    <span class="collapse">[ - ]</span>
-    </div>
-    <%= f.text_area :notes %>
-  </div>
-</div>
-<div class="middle_section">
 
-  <div class="field">
-    <%= f.label :supplier_name %><br>
+  <div>
+    <%= f.label "Order To:" %><br>
     <%= f.text_field :supplier_name, data: {autocomplete_source: supplier_names_path} %>
   </div>
 
+
+</div>
+<div class="middle_section">
+
+
   <div class="section contact_details_section">
     <h1>Contact Numbers: </h1>
+    
     <%= f.fields_for :phones do |builder| %>
       <%= render 'phones/phone_fields', f: builder%>
     <% end %>
@@ -53,10 +49,11 @@ $(document).ready(function(){
   <div class="section contact_person_section">
 
     <h1>Contact Persons: </h1>
+    
     <%= f.fields_for :purchase_order_contacts do |builder| %>
       <%= render 'purchase_order_contact_fields', f: builder%>
     <% end %>
-    <%= link_to_add_fields "Add", f, :purchase_order_contacts %>  
+    <%= link_to_add_fields "Add", f, :purchase_order_contacts %>
   </div>
 
 </div>
@@ -69,8 +66,17 @@ $(document).ready(function(){
       <%= link_to_add_fields "Add Item", f, :purchase_items %>
  </div>
   
+<div class="notes">
+    <div id="notes_title">
+    <%= f.label :notes %>
+    <span class="expand">[+]</span>
+    <span class="collapse">[ - ]</span>
+    </div>
+    <%= f.text_area :notes %>
+</div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save"%>
   </div>
 </div>
 <% end %>
