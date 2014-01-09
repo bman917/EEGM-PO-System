@@ -76,6 +76,6 @@ class PurchaseOrdersController < ApplicationController
         phones_attributes: [:id, :number, :_destroy], 
         purchase_order_contacts_attributes: [:id, :name, :_destroy],
         purchase_items_attributes: 
-          [:id, :item_name, :price, :quantity, :total, :note, :_destroy])
+          [:id, :item_name, :price, :quantity, :unit, :total, :note, :_destroy])
     end
 end

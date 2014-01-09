@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107145137) do
+ActiveRecord::Schema.define(version: 20140109161518) do
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140107145137) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "unit"
   end
 
   add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id"

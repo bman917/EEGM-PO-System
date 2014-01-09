@@ -20,6 +20,8 @@ function setup() {
   $('.items_section').on('click', '.remove_fields', removeItem);
   $('.items_section').on('click', '.add_fields', addItem);
 
+  getAllItemPriceInput().on('focusout', setTotal );
+  getAllItemQuantityInput().on('focusout', setTotal);
 
 }
 
@@ -54,6 +56,7 @@ function addItem() {
     $('#items_input_table').append($(this).data('fields').replace(regexp, time));
     addAutoCompleteToItem();
     $('.item_name input[type=text]').focus();
+    getAllItemPriceInput().on('focusout', setTotal );
     event.preventDefault();
 }
 
@@ -61,4 +64,30 @@ function removeItem(event) {
   $(this).prev('input[type=hidden]').val('1');
   $(this).closest('tr').hide();
   event.preventDefault();
+}
+
+function setTotal() {
+  idstr = $(this).attr('id');
+  var id = parseInt(idstr.match(/\d+/),10)
+
+  price = getItemData(id, "price");
+  qty   = getItemData(id, "quantity");
+  total = parseFloat(qty * price).toFixed(2);
+  setItemData(id, "total", total);
+}
+
+function getItemData(id, attribute_name) {
+  return $("#purchase_order_purchase_items_attributes_" + id + "_" + attribute_name).val();
+}
+
+function setItemData(id, attribute_name, val) {
+  return $("#purchase_order_purchase_items_attributes_" + id + "_" + attribute_name).val(val);
+}
+
+function getAllItemPriceInput() {
+  return $('.item_price_column input')
+}
+
+function getAllItemQuantityInput() {
+  return $('.item_quantity_column input');
 }

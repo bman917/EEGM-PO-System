@@ -1,8 +1,9 @@
 <h1>Purchase Orders</h1>
 
-<table>
+<table id="po_table">
   <thead>
     <tr>
+      <th>Order Date</th>
       <th>Supplier</th>
       <th>Notes</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
+        <td><%= purchase_order.po_date %></td>
         <td><%= purchase_order.supplier %></td>
         <td><%= purchase_order.notes %></td>
         <td><%= link_to 'Show', purchase_order %></td>
