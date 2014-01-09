@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form.new_purchase_order {
+form.new_purchase_order, form.edit_purchase_order {
 	width: 550px;
 }
 
@@ -54,27 +54,77 @@ div.middle_section {
 	
 }
 
-.add_fields {
-	margin-top: .5em;
-	margin-left: .5em;
-	
+.add_fields, .remove_fields {
 
 }
 
+.add_fields {
+	margin-top: .5em;
+	margin-left: .5em;
+	padding: .35em;
+	padding-left: .75em;
+	padding-right: .75em;
+	background-color: green;
+	width: 20em;
+	font-size: .7em;
+	color: white;
+	border-radius: .5em;
+
+
+}
+
+.remove_fields {
+	color: 	#FF5C33;
+	font-weight: bolder;
+	display: inline;
+	text-decoration: none;
+}
+
 div.bottom_section {
+	margin-top: .5em;
 	width: 500px;
 	float: left;
 }
 
 div.items_section {
-	border-top: 2px solid;
-	width: 550px;
+
+	h1 {
+		font-size: 1.25em;
+	}
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	width: 700px;
+	padding-bottom: .5em;
 }
 
 div.actions {
 	margin-top: 1em;
 }
 
-.add_fields {
-	display: inline;
+.small_number {
+	input {
+		width: 5em;
+	}
 }
+
+.med_number input {
+	width: 7em;
+}
+
+
+table#items_input_table {
+
+	margin: 0;
+	padding: 0;
+	border: 1px solid;
+	margin-bottom: .5em;
+
+	th {
+		font-weight: bold;
+		text-align: left;
+		padding-left: .25em;
+	}
+
+	
+}
+

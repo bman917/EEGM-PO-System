@@ -17,6 +17,7 @@ class PurchaseOrdersController < ApplicationController
     @purchase_order = PurchaseOrder.new
     @purchase_order.purchase_order_contacts.build
     @purchase_order.phones.build
+    @purchase_order.purchase_items.build
   end
 
   # GET /purchase_orders/1/edit

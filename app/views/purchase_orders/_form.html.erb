@@ -58,12 +58,26 @@ $(document).ready(function(){
 
 </div>
 <div class="bottom_section">
- <div class="section items_section">
+ <div class="items_section">
       <h1>Items</h1>
-      <%= f.fields_for :purchase_items do |builder| %>
-        <%= render 'purchase_item_fields', f: builder%>
-      <% end %>
-      <%= link_to_add_fields "Add Item", f, :purchase_items %>
+
+      <table id="items_input_table">
+      <tr>
+        <th>Name</th>
+        <th><%= f.label :quantity%></th>
+        <th></th>
+        <th><%= f.label :price %></th>
+        <th><%= f.label :total %></th>
+        <th><%= f.label :note %></th>
+        <th></th>
+      </tr>
+
+        <%= f.fields_for :purchase_items do |builder| %>
+          <%= render 'purchase_item_fields', f: builder%>
+        <% end %>
+      </table>
+       <%= link_to_add_fields "Add Item", f, :purchase_items %>
+      
  </div>
   
 <div class="notes">

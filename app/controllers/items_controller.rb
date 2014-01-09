@@ -7,6 +7,11 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def names
+    @items = Item.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @items.map(&:name)
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show

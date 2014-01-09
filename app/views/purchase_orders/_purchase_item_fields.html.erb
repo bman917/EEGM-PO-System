@@ -1,24 +1,17 @@
-<fieldset>
-	<div class="field">
-	<%= f.label :item_name %><br>
-    <%= f.text_field :item_name%>
-	</div>
-	<div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price%>
-	</div>
-	<div class="field">
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity, min: 1%>
-	</div>
-	<div class="field">
-    <%= f.label :total %>
-    <%= f.text_field :total%>
-	</div>
-	<div class="field">
-    <%= f.label :note %>
-    <%= f.text_area :note%>
-	</div>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "remove_fields" %>
-</fieldset>
+
+
+		<tr>
+			<td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
+			<td class="small_number"><%= f.number_field :quantity, min: 1%></td>
+			<td></td>
+			<td class="med_number"><%= f.text_field :price%></td>
+			<td class="med_number"><%= f.text_field :total%></td>
+			<td><%= f.text_field :note%></td>
+			<td>    <%= f.hidden_field :_destroy %>
+    				<%= render "common/remove_link"%>
+			</td>
+		</tr>
+
+	
+
+
