@@ -2,17 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#po_table {
-	th {
-		font-weight: bold;
-	}
-	tr, td {
-		padding: .75em;
-	}
-}
+
 
 form.new_purchase_order, form.edit_purchase_order {
-	width: 550px;
+	width: 700px;
 }
 
 .order_date {
@@ -51,7 +44,7 @@ div.section {
 }
 
 div.contact_person_section {
-	
+	width: 30em;
 }
 
 div.contact_details_section {
@@ -100,8 +93,7 @@ div.items_section {
 	h1 {
 		font-size: 1.25em;
 	}
-	border-top: 1px solid;
-	border-bottom: 1px solid;
+
 	width: 700px;
 	padding-bottom: .5em;
 }
@@ -121,19 +113,74 @@ div.actions {
 }
 
 
-table#items_input_table {
-
-	margin: 0;
-	padding: 0;
-	border: 1px solid;
-	margin-bottom: .5em;
-
-	th {
-		font-weight: bold;
-		text-align: left;
-		padding-left: .25em;
-	}
-
+.header {
+	margin-top: 1em;
 	
+	margin-left: -1em;
+	height: 9em;
+	border-bottom: 2px solid black;
+}
+.logo {
+	height: 7em;
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
+.float_right {
+	width: 20em;
+	margin-right: 1em;
+	float: right;
+text-align: right;
+	span {
+		display: block;	
+	}
+}
+
+.highlight {
+	color: blue;
+
+
+}
+
+.small {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.emphasize {
+	text-decoration: underline;
+}
+
+
+.purcahse_order_show {
+	width: 700px;
+}
+
+.sub_section {
+	padding-bottom: 1em;
+}
+
+.contact_details {
+	margin-left: 1em;
+	width: 30em;
+
+}
+
+.contact_persons {
+	width: 20em;
+}
+
+.contact_numbers {
+	width: 10em;
+}
+
+
+
+.padd_bottom {
+	padding-bottom: 1em;
+}
+
+
+li {
+	list-style-type: square;
+}

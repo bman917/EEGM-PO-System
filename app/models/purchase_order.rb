@@ -32,4 +32,15 @@ class PurchaseOrder < ActiveRecord::Base
     end
   end
 
+  def items_description
+
+    desc = ""
+
+    purchase_items.each do | item |
+      desc += item.to_s + ", "
+    end
+
+    desc
+  end
+
 end

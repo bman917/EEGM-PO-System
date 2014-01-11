@@ -14,6 +14,7 @@ EEGM::Application.routes.draw do
   get 'supplier/names', to: 'suppliers#names'
   get 'contact/names', to: 'contacts#names'
   get 'item/names', to: 'items#names'
+  get 'phone/numbers', to: 'phones#numbers'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

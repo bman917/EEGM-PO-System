@@ -23,12 +23,12 @@ $(document).ready(function(){
 <div class="top_section">
   <div class="order_date">
     <%= f.label :po_date, "Order Date"%></br>
-    <%= f.date_select :po_date %>
+    <%= f.date_select :po_date, {}, tabindex: -1 %>
   </div>
 
   <div>
     <%= f.label "Order To:" %><br>
-    <%= f.text_field :supplier_name, data: {autocomplete_source: supplier_names_path} %>
+    <%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
   </div>
 
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
     <span class="expand">[+]</span>
     <span class="collapse">[ - ]</span>
     </div>
-    <%= f.text_area :notes %>
+    <%= f.text_area :notes, tabindex: -1 %>
 </div>
 
   <div class="actions">

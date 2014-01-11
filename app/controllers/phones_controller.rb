@@ -7,6 +7,11 @@ class PhonesController < ApplicationController
     @phones = Phone.all
   end
 
+ def numbers
+    @phones = Phone.order(:number).where("number like ?", "%#{params[:term]}%").group(:number)
+    render json: @phones.map(&:number)
+  end
+
   # GET /phones/1
   # GET /phones/1.json
   def show

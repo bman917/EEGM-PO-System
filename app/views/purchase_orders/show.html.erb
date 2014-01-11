@@ -1,54 +1,101 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order Date:</strong>
-  <%= @purchase_order.po_date.to_formatted_s(:long) %>
-</p>
+<div class="purcahse_order_show">
 
-<p>
-  <strong>Supplier:</strong>
-  <%= @purchase_order.supplier %>
-</p>
+<div class="header">
 
-<p>
-  <strong>Notes:</strong>
-  <%= @purchase_order.notes %>
-</p>
+  <%=image_tag "EEGM.png", class: "logo"%> 
+  <%=image_tag "ESS.png", class: "logo"%> 
 
-<p>
+    <div class="float_right">
+    #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
+    <span class="highlight">ENGSHOESUPPLY@GMAIL.COM</span>
+    <span class="highlight">WWW.ENGSHOESUPPLY.COM</span>
+    <span class="phone">Tel: 6453017</span>
+    <span class="phone">Fax: 6452210</span>
+    </div>
+</div>
+
+<div class="sub_section">
+  <div class="float_right">
+    <%= @purchase_order.po_date.to_formatted_s(:long) %>
+  </div>
+  <div>Purchase Order: E.Estanislao General Merchandize</div>
+</div>
+
+<div class="sub_section">
+
+  <div class="float_right">
+    <h2 class="small"> Purchase Order </h2>
+    #<%= sprintf '%07d', @purchase_order.id %>
+  </div>
+
+  <div>
+    <strong>Order To:</strong>
+    <h2 class="small emphasize"><%= @purchase_order.supplier %></h2>
+  </div>
+</div>
+
+<div class="contact_details">
+   <div class="float_right padd_bottom contact_numbers">
+    <strong>Contact Numbers</strong>
+    <% @purchase_order.phones.each do | phone | %>
+      <li><%=phone.number%></li>
+    <% end %>
+  </div>
+
+  <div class="contact_persons">
   <strong>Contact Persons:</strong>
-  <ul>
-  <% @purchase_order.purchase_order_contacts.each do | contact | %>
-    <li>
-      <%=contact.name%>
-    </li>
-  <% end %>
-  </ul>
-</p>
+    <% @purchase_order.purchase_order_contacts.each do | contact | %>
+      <li>
+        <%=contact.name%>
+      </li>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Contact Details:</strong>
-  <ul>
-  <% @purchase_order.phones.each do | phone | %>
-  	<li>
-  	  <%=phone.phone_type%>
-  	  <%=phone.number%>
-  	</li>
-  <% end %>
-	</ul>
-</p>
+</div>
 
-<p>
-  <strong>Items:</strong>
-  <ul>
+<div class="items_section">
+      <table id="purchase_item_table">
+      <tr>
+        <th>Product Code</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Notes</th>
+
+      </tr>
+
   <% @purchase_order.purchase_items.each do | purchase_item | %>
-    <li>
-      <%=purchase_item%>
-    </li>
+      <tr>
+        <td class="item_name"><%=purchase_item.item.name%></td>
+        <td class="item_quantity_column"><%=purchase_item.quantity%></td>
+        <td><%=purchase_item.unit%></td>
+        <td><%=purchase_item.price%></td>
+        <td><%=purchase_item.total%></td>
+        <td class="notes_column"><%=purchase_item.note%></td>
+      </tr>
   <% end %>
-  </ul>
-</p>
+  
+</table>
+</div>
+
+<% unless @purchase_order.notes.empty? %>
+<div class="section">
+  <p>
+    <strong>Notes:</strong>
+    <%= @purchase_order.notes %>
+  </p>
+</div>
+<% end %>
 
 
-<%= link_to 'Edit', edit_purchase_order_path(@purchase_order) %> |
-<%= link_to 'Back', purchase_orders_path %>
+
+<div class="no-print actions">
+<%= link_to 'Edit', edit_purchase_order_path(@purchase_order)%> |
+<%= link_to 'Back', purchase_orders_path%>
+</div>
+
+</div>

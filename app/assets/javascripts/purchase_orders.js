@@ -11,6 +11,9 @@ function setup() {
   addAutoCompleteToContactPersons();
   $('.contact_person_section').on('click', '.add_fields', addAutoCompleteToContactPersons);
 
+  addAutoCompleteToContactNumbers();
+  $('.contact_details_section').on('click', '.add_fields', addAutoCompleteToContactNumbers);
+
   $('#purchase_order_supplier_name').focus();
 
   $('.middle_section').on('click', '.remove_fields', removeField);
@@ -24,6 +27,14 @@ function setup() {
   getAllItemQuantityInput().on('focusout', setTotal);
 
 }
+
+function addAutoCompleteToContactNumbers() {
+  $('input.contact_numbers').autocomplete({
+      source: $('input.contact_numbers').data('autocomplete-source'),
+      minLength: 2
+    });
+}
+
 
 function addAutoCompleteToContactPersons() {
 	$('input.contact_persons').autocomplete({

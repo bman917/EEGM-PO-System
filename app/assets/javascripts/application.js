@@ -21,6 +21,8 @@ function addField() {
     regexp = new RegExp($(this).data('id'), 'g');
     $(this).before($(this).data('fields').replace(regexp, time));
     $(this).prev().children('input[type=text]').focus();
+    addAutoCompleteToContactPersons();
+    addAutoCompleteToContactNumbers();
     event.preventDefault();
 }
 

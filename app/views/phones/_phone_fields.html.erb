@@ -1,5 +1,5 @@
 <fieldset class="dynamic_fields">
-	<%= f.text_field :number %>
+	<%= f.text_field :number, tabindex: 3, class: "contact_numbers", data: {autocomplete_source: phone_numbers_path} %>
     <%= f.hidden_field :_destroy %>
     <%= render "common/remove_link"%>
 </fieldset>
