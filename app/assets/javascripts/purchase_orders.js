@@ -26,6 +26,29 @@ function setup() {
   getAllItemPriceInput().on('focusout', setTotal );
   getAllItemQuantityInput().on('focusout', setTotal);
 
+  $(document).keyup(keyListeners);
+
+}
+
+function keyListeners() {
+  var n = 78;
+  var p = 80;
+  var i = 73
+  //alert(event.keyCode);
+
+  if (event.altKey) {
+    if (event.keyCode == p) {
+        $('#add_purchase_order_contacts').click();
+    }
+    else if (event.keyCode == n) {
+        $('#add_phones').click();
+    }
+    else if (event.keyCode == i) {
+        $('#add_purchase_items').click();
+    }
+
+  }
+
 }
 
 function addAutoCompleteToContactNumbers() {

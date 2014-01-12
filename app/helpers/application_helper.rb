@@ -7,6 +7,6 @@ module ApplicationHelper
       partial = 'phones/' + partial if(association == :phones)
       render(partial, f: builder)
     end
-    link_to(name, '#', class: "add_fields", tabindex: -1, data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, '#', id: "add_#{association}", class: "add_fields", tabindex: -1, data: {id: id, fields: fields.gsub("\n", "")})
   end
 end

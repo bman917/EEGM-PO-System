@@ -86,6 +86,7 @@ div.bottom_section {
 	margin-top: .5em;
 	width: 500px;
 	float: left;
+	clear: both;
 }
 
 div.items_section {
@@ -96,6 +97,7 @@ div.items_section {
 
 	width: 700px;
 	padding-bottom: .5em;
+	
 }
 
 div.actions {
@@ -143,7 +145,7 @@ text-align: right;
 }
 
 .small {
-	font-size: 1em;
+	font-size: .75em;
 	font-weight: normal;
 }
 
@@ -175,12 +177,20 @@ text-align: right;
 }
 
 
-
 .padd_bottom {
 	padding-bottom: 1em;
 }
 
-
 li {
 	list-style-type: square;
 }
+
+.boxed_section, .small{
+	border: 1px dotted black;
+	border-radius: 1em;
+	padding: 1em;
+	clear: both;
+	max-width: 20em;
+}
+
+
