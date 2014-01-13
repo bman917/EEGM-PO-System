@@ -44,10 +44,13 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development do
-  gem 'better_errors'
-  gem 'meta_request'
-  gem 'binding_of_caller'
+gem 'better_errors'
+gem 'meta_request'
+gem 'binding_of_caller'
+
+group :produciton do
+	gem 'mysql2'
 end
 
 gem 'jquery-ui-rails'
+gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
