@@ -148,9 +148,14 @@ div.actions {
 	float: right;
 }
 
+.small, .smaller {
+	font-weight: normal;
+}
 .small {
 	font-size: .75em;
-	font-weight: normal;
+}
+.smaller {
+	font-size: .7em;
 }
 
 .emphasize {
@@ -194,7 +199,7 @@ li {
 	border-radius: 1em;
 	padding: 1em;
 	clear: both;
-	max-width: 20em;
+	max-width: 25em;
 }
 
 
