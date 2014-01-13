@@ -7,9 +7,9 @@ function setup() {
 
   addAutoCompleteToItem();
 
-
   addAutoCompleteToContactPersons();
-  $('.contact_person_section').on('click', '.add_fields', addAutoCompleteToContactPersons);
+  $('.contact_person_section .add_fields').on('click', addAutoCompleteToContactPersons);
+
 
   addAutoCompleteToContactNumbers();
   $('.contact_details_section').on('click', '.add_fields', addAutoCompleteToContactNumbers);
@@ -18,6 +18,8 @@ function setup() {
 
   $('.middle_section').on('click', '.remove_fields', removeField);
   $('.middle_section').on('click', '.add_fields', addField);
+
+
   $('form').on('click', '#notes_title', toggleNotes);
 
   $('.items_section').on('click', '.remove_fields', removeItem);
@@ -26,6 +28,7 @@ function setup() {
   getAllItemPriceInput().on('focusout', setTotal );
   getAllItemQuantityInput().on('focusout', setTotal);
 
+  $(document).off('keyup'); // This prevents multiple bindings on keyup
   $(document).keyup(keyListeners);
 
 }
