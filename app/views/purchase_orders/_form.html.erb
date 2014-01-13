@@ -77,8 +77,14 @@ $(document).ready(function(){
         <% end %>
       </table>
        <%= link_to_add_fields "Add Item", f, :purchase_items %>
+
+ 
+  <h2 class="grand_total">Grand Total: <%=f.text_field :grand_total_formatted%></h2>
+ 
       
  </div>
+
+
   
 <div class="notes">
     <div id="notes_title">

@@ -36,7 +36,7 @@ function keyListeners() {
   var i = 73
   //alert(event.keyCode);
 
-  if (event.altKey) {
+  if (event.altKey && event.ctrlKey) {
     if (event.keyCode == p) {
         $('#add_purchase_order_contacts').click();
     }
@@ -108,6 +108,15 @@ function setTotal() {
   qty   = getItemData(id, "quantity");
   total = parseFloat(qty * price).toFixed(2);
   setItemData(id, "total", total);
+
+  grand_total = 0;
+  $('.total_field').each(function() {
+      grand_total += Number($(this).val());
+  });
+
+  $('#purchase_order_grand_total_formatted').val(grand_total);
+  $('#purchase_order_grand_total_formatted').number(true, 2);
+
 }
 
 function getItemData(id, attribute_name) {

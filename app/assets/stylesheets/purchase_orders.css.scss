@@ -84,7 +84,6 @@ div.middle_section {
 
 div.bottom_section {
 	margin-top: .5em;
-	width: 500px;
 	float: left;
 	clear: both;
 }
@@ -95,7 +94,7 @@ div.items_section {
 		font-size: 1.25em;
 	}
 
-	width: 700px;
+	
 	padding-bottom: .5em;
 	
 }
@@ -132,7 +131,7 @@ div.actions {
 	width: 20em;
 	margin-right: 1em;
 	float: right;
-text-align: right;
+	text-align: right;
 	span {
 		display: block;	
 	}
@@ -142,6 +141,11 @@ text-align: right;
 	color: blue;
 
 
+}
+
+.grand_total {
+	margin-top: 1em;
+	float: right;
 }
 
 .small {

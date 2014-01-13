@@ -4,8 +4,8 @@
 			<td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
 			<td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
 			<td class="med_number"><%= f.text_field :unit%></td>
-			<td class="item_price_column" class="med_number"><%= f.text_field :price%></td>
-			<td class="med_number"><%= f.text_field :total%></td>
+			<td class="item_price_column med_number"><%= f.text_field :price%></td>
+			<td class="med_number"><%= f.text_field :total, class: "total_field"%></td>
 			<td><%= f.text_field :note%></td>
 			<td>    <%= f.hidden_field :_destroy %>
     				<%= render "common/remove_link"%>
