@@ -5,6 +5,7 @@
     <tr>
       <th class="small_column">Order Date</th>
       <th>Supplier</th>
+      <th>Total</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -17,7 +18,9 @@
       <tr>
         <td><%= purchase_order.po_date %></td>
         <td><%= purchase_order.supplier %></td>
+        <td class="small_column"><%= purchase_order.grand_total_formatted %></td>
         <td class="description_column"><%= truncate purchase_order.items_description, length: 70 %></td>
+        
         <td class="smaller_column"><%= link_to 'Show', purchase_order %></td>
         <td class="smaller_column"><%= link_to 'Edit', edit_purchase_order_path(purchase_order) %></td>
         <td class="smaller_column"><%= link_to 'Delete', purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
