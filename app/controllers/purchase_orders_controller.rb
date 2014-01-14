@@ -10,6 +10,8 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders/1
   # GET /purchase_orders/1.json
   def show
+    @item_delivery = ItemDelivery.new
+    @item_delivery.purchase_order = @purchase_order
   end
 
   # GET /purchase_orders/new

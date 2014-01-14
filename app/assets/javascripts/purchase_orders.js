@@ -70,7 +70,7 @@ function addAutoCompleteToContactPersons() {
 }
 
 function addAutoCompleteToItem() {
-    $('.item_name input[type=text]:last').autocomplete({
+    $('.item_name input[type=text]:last, #item_delivery_item_name').autocomplete({
     source: $('.item_name input[type=text]').data('autocomplete-source'),
     minLength: 2
   });

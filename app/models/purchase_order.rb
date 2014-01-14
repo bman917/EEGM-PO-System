@@ -5,6 +5,7 @@ class PurchaseOrder < ActiveRecord::Base
   has_many :phones, as: :contact_detail
   has_many :purchase_order_contacts
   has_many :purchase_items
+  has_many :item_deliveries
   has_many :items, through: :purchase_items
 
   accepts_nested_attributes_for :phones, allow_destroy: true

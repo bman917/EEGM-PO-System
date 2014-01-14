@@ -1,0 +1,35 @@
+<%= form_for(@item_delivery) do |f| %>
+  <% if @item_delivery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_delivery.errors.count, "error") %> prohibited this item_delivery from being saved:</h2>
+
+      <ul>
+      <% @item_delivery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><%= f.label :item_name %></td>
+    <td><%= f.label :quantity %></td>
+    <td><%= f.label :unit %></td>
+    <td><%= f.label :date_recieved %></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
+    <td><%= f.number_field :quantity %></td>
+    <td><%= f.text_field :unit %></td>
+    <td><%= f.datetime_select :date_recieved %></td>
+    <td></td>
+  </tr>
+</table>
+<%= f.hidden_field :purchase_order_id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

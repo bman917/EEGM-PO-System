@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  purchase_order_id: 
+  quantity: 1
+  unit: MyString
+  date_recieved: 2014-01-15 00:26:27
+
+two:
+  item_id: 
+  purchase_order_id: 
+  quantity: 1
+  unit: MyString
+  date_recieved: 2014-01-15 00:26:27

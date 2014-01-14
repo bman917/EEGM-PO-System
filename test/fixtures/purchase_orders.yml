@@ -3,7 +3,9 @@
 one:
   supplier_id: 
   notes: MyText
+  po_date: 2014-01-01
 
 two:
   supplier_id: 
   notes: MyText
+  po_date: 2014-01-01

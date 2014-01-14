@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @item_delivery.item %>
+</p>
+
+<p>
+  <strong>Purchase order:</strong>
+  <%= @item_delivery.purchase_order %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item_delivery.quantity %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @item_delivery.unit %>
+</p>
+
+<p>
+  <strong>Date recieved:</strong>
+  <%= @item_delivery.date_recieved %>
+</p>
+
+<%= link_to 'Edit', edit_item_delivery_path(@item_delivery) %> |
+<%= link_to 'Back', item_deliveries_path %>

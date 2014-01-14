@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109161518) do
+ActiveRecord::Schema.define(version: 20140114162627) do
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 20140109161518) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "item_deliveries", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "purchase_order_id"
+    t.integer  "quantity"
+    t.string   "unit"
+    t.datetime "date_recieved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_deliveries", ["item_id"], name: "index_item_deliveries_on_item_id"
+  add_index "item_deliveries", ["purchase_order_id"], name: "index_item_deliveries_on_purchase_order_id"
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -48,8 +61,8 @@ ActiveRecord::Schema.define(version: 20140109161518) do
     t.string   "unit"
   end
 
-  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id", using: :btree
-  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id", using: :btree
+  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id"
+  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id"
 
   create_table "purchase_order_contacts", force: true do |t|
     t.integer  "purchase_order_id"
@@ -58,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140109161518) do
     t.datetime "updated_at"
   end
 
-  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id", using: :btree
+  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id"
 
   create_table "purchase_orders", force: true do |t|
     t.integer  "supplier_id"
@@ -69,7 +82,7 @@ ActiveRecord::Schema.define(version: 20140109161518) do
     t.datetime "updated_at"
   end
 
-  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id", using: :btree
+  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
 
   create_table "supplier_items", force: true do |t|
     t.integer  "supplier_id"
@@ -80,8 +93,8 @@ ActiveRecord::Schema.define(version: 20140109161518) do
     t.datetime "updated_at"
   end
 
-  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id", using: :btree
-  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id", using: :btree
+  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id"
+  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id"
 
   create_table "suppliers", force: true do |t|
     t.string   "name"

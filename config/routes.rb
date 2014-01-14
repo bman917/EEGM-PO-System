@@ -1,4 +1,6 @@
 EEGM::Application.routes.draw do
+  resources :item_deliveries
+
   resources :purchase_orders
 
   resources :supplier_items

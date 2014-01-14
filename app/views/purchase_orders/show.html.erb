@@ -1,3 +1,18 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+
+
+   $('#item_delivery_item_name').autocomplete({
+    source: $('#item_delivery_item_name').data('autocomplete-source'),
+    minLength: 2
+  });
+
+  
+});
+
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="purcahse_order_show">
@@ -94,9 +109,53 @@
 
 
 
+
+
+    <div class="no-print">
+        <h1>Deliveries</h1>
+
+          <%= form_for(@item_delivery) do |f| %>
+
+
+                <table id="purchase_item_table">
+                <tr>
+                  <th class="item_name">Product Code</th>
+                  <th class="item_quantity_column">Quantity</th>
+                  <th>Unit</th>
+                  <th>Date Recieved</th>
+                  <th></th>
+                </tr>
+
+                <% @purchase_order.item_deliveries.each do | item_delivery | %>
+                    <tr>
+                      <td class="item_name"><%=item_delivery.item_name%></td>
+                      <td class="item_quantity_column"><%=number_with_delimiter item_delivery.quantity%></td>
+                      <td><%=item_delivery.unit%></td>
+                      <td><%=item_delivery.date_recieved%></td>
+                      <td><%= link_to 'Delete', item_delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+
+                  <tr>
+                    <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
+                    <td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
+                    <td class="med_number"><%= f.text_field :unit%></td>
+                    <td><%= f.datetime_select :date_recieved %></td>
+                    <td><%= f.submit "Add" %></td>
+                  </tr>
+              </table>
+
+              <%= f.hidden_field :purchase_order_id %>
+          
+          <% end %>
+      
+    </div>
+
     <div class="no-print actions">
     <%= link_to 'Edit', edit_purchase_order_path(@purchase_order)%> |
     <%= link_to 'Back', purchase_orders_path%>
     </div>
 
 </div>
+
+
