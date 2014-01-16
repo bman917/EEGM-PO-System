@@ -15,6 +15,8 @@ class PurchaseOrder < ActiveRecord::Base
   after_save :copy_phone unless :phones.empty?
   after_save :copy_contact unless :purchase_order_contacts.empty?
 
+  validates :supplier, presence: true
+
   def grand_total_formatted
     number_with_delimiter number_with_precision(self.grand_total, precision: 2)
   end
@@ -48,7 +50,7 @@ class PurchaseOrder < ActiveRecord::Base
     desc = ""
 
     purchase_items.each do | item |
-      desc += item.to_s + ", "
+      desc += item.to_s + ", " if item
     end
 
     desc

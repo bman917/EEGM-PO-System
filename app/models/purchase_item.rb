@@ -2,6 +2,8 @@ class PurchaseItem < ActiveRecord::Base
   belongs_to :item
   belongs_to :purchase_order
 
+   validates :item, presence: true
+
   def to_s
   	"#{item.name} - #{price}Php x #{quantity} #{note}" if item
   end
