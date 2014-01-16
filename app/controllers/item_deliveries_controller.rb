@@ -30,6 +30,7 @@ class ItemDeliveriesController < ApplicationController
       if @item_delivery.save
         format.html { redirect_to @item_delivery.purchase_order, notice: 'Item delivery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @item_delivery }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @item_delivery.errors, status: :unprocessable_entity }
@@ -55,10 +56,12 @@ class ItemDeliveriesController < ApplicationController
   # DELETE /item_deliveries/1.json
   def destroy
     po = @item_delivery.purchase_order
+    @item_delivery_id = @item_delivery.id
     @item_delivery.destroy
     respond_to do |format|
       format.html { redirect_to purchase_order_path(po) }
       format.json { head :no_content }
+      format.js
     end
   end
 

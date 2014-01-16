@@ -8,6 +8,13 @@ $(document).ready(function(){
     minLength: 2
   });
 
+   $('#item_delivery_date_recieved').datepicker();
+   $('#item_delivery_date_recieved').datepicker("option", "dateFormat", "yy-mm-dd");
+   $('#item_delivery_item_name').focus();
+   initItemDeliveryDate();
+
+   $('#new_item_delivery').on('submit', addingNewItemDelivery);
+   addDeletingListener();
   
 });
 
@@ -33,7 +40,7 @@ $(document).ready(function(){
 
   <div class="sub_section">
     <div class="float_right">
-      <%= @purchase_order.po_date.to_formatted_s(:long) %>
+      <%= @purchase_order.po_date %>
     </div>
     <div>Purchase Order: E.Estanislao General Merchandize</div>
   </div>
@@ -114,7 +121,7 @@ $(document).ready(function(){
     <div class="no-print">
         <h1>Deliveries</h1>
 
-          <%= form_for(@item_delivery) do |f| %>
+          <%= form_for(@item_delivery, remote: true) do |f| %>
 
 
                 <table id="purchase_item_table">
@@ -126,23 +133,19 @@ $(document).ready(function(){
                   <th></th>
                 </tr>
 
+                <tr id="new_item_delivery_row">
+                  <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
+                  <td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
+                  <td class="med_number"><%= f.text_field :unit%></td>
+                  <td><%= f.text_field :date_recieved %></td>
+                  <td><%= f.submit "Add", id: 'item_delivery_submit' %></td>
+                </tr>
+
                 <% @purchase_order.item_deliveries.each do | item_delivery | %>
-                    <tr>
-                      <td class="item_name"><%=item_delivery.item_name%></td>
-                      <td class="item_quantity_column"><%=number_with_delimiter item_delivery.quantity%></td>
-                      <td><%=item_delivery.unit%></td>
-                      <td><%=item_delivery.date_recieved%></td>
-                      <td><%= link_to 'Delete', item_delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
+                      <%= render item_delivery %>
                 <% end %>
 
-                  <tr>
-                    <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
-                    <td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
-                    <td class="med_number"><%= f.text_field :unit%></td>
-                    <td><%= f.datetime_select :date_recieved %></td>
-                    <td><%= f.submit "Add" %></td>
-                  </tr>
+
               </table>
 
               <%= f.hidden_field :purchase_order_id %>

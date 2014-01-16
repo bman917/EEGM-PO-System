@@ -1,0 +1,9 @@
+$('#error_explanation').remove();
+$('#notice').empty().append("<%= flash[:create_notice] %>");
+$(':text').val("");
+$('#item_delivery_item_name').val("").focus();
+$('#item_delivery_quantity').val("");
+initItemDeliveryDate();
+$('#new_item_delivery_row').after("<%= j render @item_delivery%>");
+$('.adding_item_delivery:first').remove();
+addDeletingListener();

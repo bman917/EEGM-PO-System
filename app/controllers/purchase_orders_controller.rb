@@ -12,6 +12,7 @@ class PurchaseOrdersController < ApplicationController
   def show
     @item_delivery = ItemDelivery.new
     @item_delivery.purchase_order = @purchase_order
+    @item_delivery.date_recieved = Date.today
   end
 
   # GET /purchase_orders/new
