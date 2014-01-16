@@ -3,7 +3,7 @@ class PurchaseItem < ActiveRecord::Base
   belongs_to :purchase_order
 
   def to_s
-  	"#{item.name} - #{price}Php x #{quantity} #{note}"
+  	"#{item.name} - #{price}Php x #{quantity} #{note}" if item
   end
 
   def item_name
