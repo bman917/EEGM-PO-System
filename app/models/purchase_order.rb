@@ -2,10 +2,10 @@ include ActionView::Helpers::NumberHelper
 
 class PurchaseOrder < ActiveRecord::Base
   belongs_to :supplier
-  has_many :phones, as: :contact_detail
-  has_many :purchase_order_contacts
-  has_many :purchase_items
-  has_many :item_deliveries
+  has_many :phones, as: :contact_detail, :dependent => :delete_all
+  has_many :purchase_order_contacts, :dependent => :delete_all
+  has_many :purchase_items, :dependent => :delete_all
+  has_many :item_deliveries, :dependent => :delete_all
   has_many :items, through: :purchase_items
 
   accepts_nested_attributes_for :phones, allow_destroy: true
