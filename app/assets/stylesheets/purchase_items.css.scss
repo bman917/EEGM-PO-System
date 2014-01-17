@@ -1,3 +1,32 @@
-// Place all the styles related to the PurchaseItems controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#purchase_item_table{
+	width: 100%;
+	tr td {
+		padding: .25em;
+		border: 1px solid black;
+	}
+
+	td.grand_total {
+	margin-left: 400px;
+	text-align: right;
+	border: 0;
+	}
+}
+
+.item_name_column {
+	width: 30%;
+}
+
+.item_quantity_column {
+	width: 7em;
+}
+
+.notes_column {
+	width: 7em;
+}
+
+
+#purchase_item_table tr#show_new_purchase_item_link_row td{
+	border-bottom: 0px;
+	border-left: 0;
+	border-right: 0;
+}

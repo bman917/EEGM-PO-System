@@ -34,13 +34,13 @@ $(document).ready(function(){
   <div class="sub_section">
 
     <div class="float_right">
-      <h2 class="small"> Purchase Order </h2>
-      #<%= sprintf '%07d', @purchase_order.id %>
+      <strong> Purchase Order </strong>
+      <h2 class="emphasize med_text">#<%= sprintf '%07d', @purchase_order.id %></h2>
     </div>
 
     <div>
       <strong>Order To:</strong>
-      <h2 class="small emphasize"><%= @purchase_order.supplier %></h2>
+      <h2 class="emphasize med_text"><%= @purchase_order.supplier %></h2>
     </div>
   </div>
 
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
     <%=render 'purchase_item_section'%>
 
-    <% unless   @purchase_order.notes && @purchase_order.notes.empty? %>
+    <% if  @purchase_order.notes != nil%>
       <div class="section">
         <p>
           <strong>Notes:</strong>
@@ -57,7 +57,9 @@ $(document).ready(function(){
       </div>
       <% end %>
 
+
   <div class="no-print">
+    <hr/>
     <%= link_to 'Deliveries', '', id: "add_delivery_link" %>
     <div class="deliveries_section">
        <%= render 'deliveries_form' %>

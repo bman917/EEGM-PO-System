@@ -7,7 +7,6 @@ function init_purchase_order_show_contact_details_section() {
 
 	$('#contact_detail_section_add_phone_link,  #hide_new_purchase_order_number_link').on('click',
 		toggle_new_purchase_order_phone_form);
-	
 }
 
 function toggle_new_purchase_order_phone_form() {

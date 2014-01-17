@@ -56,10 +56,6 @@ div.middle_section {
 	
 }
 
-.add_fields, .remove_fields {
-
-}
-
 .add_fields {
 	margin-top: .5em;
 	margin-left: .5em;
@@ -71,6 +67,10 @@ div.middle_section {
 	font-size: .7em;
 	color: white;
 	border-radius: .5em;
+
+	a:visited {
+		color: white;
+	}
 
 
 }
@@ -143,24 +143,9 @@ div.actions {
 
 }
 
-.grand_total {
-	margin-top: 1em;
-	float: right;
-}
 
-.small, .smaller {
-	font-weight: normal;
-}
-.small {
-	font-size: .75em;
-}
-.smaller {
-	font-size: .7em;
-}
 
-.emphasize {
-	text-decoration: underline;
-}
+
 
 
 .purcahse_order_show {
@@ -173,27 +158,11 @@ div.actions {
 	padding-bottom: 1em;
 }
 
-.contact_details {
-	margin-left: 1em;
-	width: 30em;
-}
-
-.contact_persons {
-	width: 20em;
-}
-
-.contact_numbers {
-	width: 10em;
-}
-
-
 .padd_bottom {
 	padding-bottom: 1em;
 }
 
-li {
-	list-style-type: square;
-}
+
 
 .boxed_section {
 	border: 1px dotted black;

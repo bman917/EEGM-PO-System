@@ -18,7 +18,7 @@
       <div class="no-print">
         <tr id="show_new_purchase_item_link_row">
           <td colspan="7">
-            <%=link_to 'Add', '', id: 'show_new_purchase_item_link'%>
+            <%=link_to 'Add', '', id: 'show_new_purchase_item_link', class: 'add_fields no-print'%>
           </td>
         </tr>
         <%= form_for(@new_purchase_item, remote: true) do |f| %>
@@ -42,7 +42,11 @@
 
         <% end %>
       </div>
+      <tr>
+        <td colspan="7" class="grand_total">
+              Grand Total: <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span>
+        </td>
+      </tr>
     </table>
-    <h2 class="grand_total">Grand Total: <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span></h2>
 
 </div>
