@@ -1,4 +1,4 @@
 <li id="purchase_order_contact_<%=purchase_order_contact.id%>">
 <%=purchase_order_contact.name%> 
-<%=link_to 'X', purchase_order_contact, remote: true, method: :delete, class: "remove_fields", data: {confirm: "Delete #{purchase_order_contact.name}?"} %>
+<%=link_to 'X', purchase_order_contact, remote: true, method: :delete, class: "remove_fields no-print", data: {confirm: "Delete #{purchase_order_contact.name}?"} %>
 </li>

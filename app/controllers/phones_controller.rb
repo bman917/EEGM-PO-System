@@ -35,9 +35,11 @@ class PhonesController < ApplicationController
       if @phone.save
         format.html { redirect_to @phone, notice: 'Phone was successfully created.' }
         format.json { render action: 'show', status: :created, location: @phone }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -63,6 +65,7 @@ class PhonesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to phones_url }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -74,6 +77,6 @@ class PhonesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_params
-      params.require(:phone).permit(:phone_type, :number)
+      params.require(:phone).permit(:phone_type, :number, :contact_detail_type, :contact_detail_id)
     end
 end

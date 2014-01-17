@@ -19,6 +19,7 @@ class PurchaseOrdersController < ApplicationController
     @item_delivery.date_recieved = Date.today
 
     @new_purchase_order_contact = PurchaseOrderContact.new(purchase_order: @purchase_order)
+    @new_phone = Phone.new(contact_detail_type: @purchase_order.class, contact_detail_id: @purchase_order.id)
 
 
   end

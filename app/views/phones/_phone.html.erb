@@ -1,0 +1,4 @@
+<li id="purchase_order_phone_<%=phone.id%>">
+<%=number_to_phone phone.number%>
+<%=link_to 'X', phone, remote: true, method: :delete, class: "remove_fields no-print", data: {confirm: "Delete #{phone.number}?"} %>
+</li>

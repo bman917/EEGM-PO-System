@@ -1,10 +1,25 @@
 <div class="contact_details">
-    <div class="float_right padd_bottom contact_numbers">
+    <div id="contact_numbers" class="float_right padd_bottom contact_numbers">
       <strong>Contact Numbers</strong>
-      <% @purchase_order.phones.each do | phone | %>
-        <li><%=number_to_phone phone.number%></li>
-      <% end %>
+      <ul>
+        <% @purchase_order.phones.each do | phone | %>
+          <%= render phone %>
+        <% end %>
+      </ul>
+      <div class="no-print">
+        <%=link_to 'Add', '', id: 'contact_detail_section_add_phone_link'%>
+        <%= form_for(@new_phone, remote: true) do |f| %>
+              <%= f.text_field :number, class: "contact_numbers" ,data: {autocomplete_source: phone_numbers_path} %>
+              <%= f.hidden_field :contact_detail_type%>
+              <%= f.hidden_field :contact_detail_id%>
+              <%= f.submit "Add", id: 'add_contact_number_submit' %>
+              <%= link_to 'Hide', '', id: "hide_new_purchase_order_number_link" %>
+        <% end %>
+      </div>
     </div>
+
+
+
 
       <div id="contact_persons" class="contact_persons">
       <strong>Contact Persons:</strong>
@@ -13,12 +28,14 @@
             <%= render purchase_order_contact %>
         <% end %>
       </ul>
-        <%=link_to 'Add', '', id: 'add_contact_person_link'%>
-        <%= form_for(@new_purchase_order_contact, remote: true) do |f| %>
-              <%= f.text_field :name, tabindex: 2, class: "contact_persons" ,data: {autocomplete_source: contact_names_path} %>
-              <%= f.hidden_field :purchase_order_id%>
-              <%= f.submit "Add", id: 'add_contact_person_submit' %>
-              <%= link_to 'Hide', '', id: "hide_new_purchase_order_contact_link" %>
-        <% end %>
+        <div class="no-print">
+          <%=link_to 'Add', '', id: 'add_contact_person_link'%>
+          <%= form_for(@new_purchase_order_contact, remote: true) do |f| %>
+                <%= f.text_field :name, class: "contact_persons" ,data: {autocomplete_source: contact_names_path} %>
+                <%= f.hidden_field :purchase_order_id%>
+                <%= f.submit "Add", id: 'add_contact_person_submit' %>
+                <%= link_to 'Hide', '', id: "hide_new_purchase_order_contact_link" %>
+          <% end %>
+        </div>
       </div>
 </div>
