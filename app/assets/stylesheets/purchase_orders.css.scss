@@ -164,6 +164,8 @@ div.actions {
 
 
 .purcahse_order_show {
+	
+	margin: 1.5em;
 	width: 700px;
 }
 
@@ -174,7 +176,6 @@ div.actions {
 .contact_details {
 	margin-left: 1em;
 	width: 30em;
-
 }
 
 .contact_persons {
@@ -212,4 +213,6 @@ li {
 
 }
 
-
+.deliveries_section {
+	display: none;
+}

@@ -1,3 +1,15 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+
+   $('#purchase_order_supplier_name').autocomplete({
+    source: $('#purchase_order_supplier_name').data('autocomplete-source'),
+    minLength: 2
+  });
+
+});
+<% end %>
+
 <h1>Purchase Orders</h1>
 
 <table id="po_table">
@@ -31,4 +43,25 @@
 
 <br>
 
-<%= link_to 'New Purchase order', new_purchase_order_path %>
+<%= form_for(@new_purchase_order) do |f| %>
+
+  <% if @new_purchase_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_purchase_order.errors.count, "error") %> prohibited this Purchase Order from being saved:</h2>
+
+      <ul>
+      <% @new_purchase_order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h2>New Purchase Order</h2>
+  <div>
+    <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
+    <%= f.label "Date: "%><%= f.hidden_field :po_date, tabindex: 2%>
+    <%= f.submit "Save"%>
+  </div>
+
+<% end %>

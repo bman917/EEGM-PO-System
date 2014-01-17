@@ -1,4 +1,9 @@
 EEGM::Application.routes.draw do
+  get "purchase_order_contacts/index"
+  get "purchase_order_contacts/new"
+  get "purchase_order_contacts/create"
+  get "purchase_order_contacts/destroy"
+  get "purchase_order_contacts/update"
   resources :item_deliveries
 
   resources :purchase_orders
@@ -12,6 +17,8 @@ EEGM::Application.routes.draw do
   resources :contacts
 
   resources :phones
+
+  resources :purchase_order_contacts
 
   get 'supplier/names', to: 'suppliers#names'
   get 'contact/names', to: 'contacts#names'

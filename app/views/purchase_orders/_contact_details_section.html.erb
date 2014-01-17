@@ -1,0 +1,24 @@
+<div class="contact_details">
+    <div class="float_right padd_bottom contact_numbers">
+      <strong>Contact Numbers</strong>
+      <% @purchase_order.phones.each do | phone | %>
+        <li><%=number_to_phone phone.number%></li>
+      <% end %>
+    </div>
+
+      <div id="contact_persons" class="contact_persons">
+      <strong>Contact Persons:</strong>
+      <ul>
+        <% @purchase_order.purchase_order_contacts.each do | purchase_order_contact | %>
+            <%= render purchase_order_contact %>
+        <% end %>
+      </ul>
+        <%=link_to 'Add', '', id: 'add_contact_person_link'%>
+        <%= form_for(@new_purchase_order_contact, remote: true) do |f| %>
+              <%= f.text_field :name, tabindex: 2, class: "contact_persons" ,data: {autocomplete_source: contact_names_path} %>
+              <%= f.hidden_field :purchase_order_id%>
+              <%= f.submit "Add", id: 'add_contact_person_submit' %>
+              <%= link_to 'Hide', '', id: "hide_new_purchase_order_contact_link" %>
+        <% end %>
+      </div>
+</div>

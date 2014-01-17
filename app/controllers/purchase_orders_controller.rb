@@ -5,6 +5,10 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders.json
   def index
     @purchase_orders = PurchaseOrder.all
+
+    @new_purchase_order = PurchaseOrder.new
+    @new_purchase_order.po_date = Date.today
+
   end
 
   # GET /purchase_orders/1
@@ -13,6 +17,10 @@ class PurchaseOrdersController < ApplicationController
     @item_delivery = ItemDelivery.new
     @item_delivery.purchase_order = @purchase_order
     @item_delivery.date_recieved = Date.today
+
+    @new_purchase_order_contact = PurchaseOrderContact.new(purchase_order: @purchase_order)
+
+
   end
 
   # GET /purchase_orders/new

@@ -1,0 +1,4 @@
+$('#notice').empty().append("<%= flash[:create_notice] %>");
+$('#contact_persons ul').append("<%=j render @purchase_order_contact%>");
+$('#new_purchase_order_contact #purchase_order_contact_name').val('');
+$('#new_purchase_order_contact #purchase_order_contact_name').focus();

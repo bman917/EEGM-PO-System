@@ -1,21 +1,7 @@
 <%=javascript_tag do %>
 
 $(document).ready(function(){
-
-
-   $('#item_delivery_item_name').autocomplete({
-    source: $('#item_delivery_item_name').data('autocomplete-source'),
-    minLength: 2
-  });
-
-   $('#item_delivery_date_recieved').datepicker();
-   $('#item_delivery_date_recieved').datepicker("option", "dateFormat", "yy-mm-dd");
-   $('#item_delivery_item_name').focus();
-   initItemDeliveryDate();
-
-   $('#new_item_delivery').on('submit', addingNewItemDelivery);
-   addDeletingListener();
-  
+    purchaseOrderShowInit();
 });
 
 <% end %>
@@ -58,101 +44,28 @@ $(document).ready(function(){
     </div>
   </div>
 
-  <div class="contact_details">
-      <div class="float_right padd_bottom contact_numbers">
-        <strong>Contact Numbers</strong>
-        <% @purchase_order.phones.each do | phone | %>
-          <li><%=number_to_phone phone.number%></li>
-        <% end %>
+    <%=render 'contact_details_section'%>
+
+    <%=render 'purchase_item_section'%>
+
+    <% unless   @purchase_order.notes && @purchase_order.notes.empty? %>
+      <div class="section">
+        <p>
+          <strong>Notes:</strong>
+          <%= @purchase_order.notes %>
+        </p>
       </div>
+      <% end %>
 
-        <div class="contact_persons">
-        <strong>Contact Persons:</strong>
-          <% @purchase_order.purchase_order_contacts.each do | contact | %>
-            <li>
-              <%=contact.name%>
-            </li>
-          <% end %>
-        </div>
+  <div class="no-print">
+    <%= link_to 'Deliveries', '', id: "add_delivery_link" %>
+    <div class="deliveries_section">
+       <%= render 'deliveries_form' %>
+       <%= link_to 'Hide', '', id: "hide_delivery_section_link" %>
+    </div>
   </div>
 
-  <div class="items_section">
-        <table id="purchase_item_table">
-        <tr>
-          <th>Product Code</th>
-          <th>Quantity</th>
-          <th>Unit</th>
-          <th>Price</th>
-          <th>Total</th>
-          <th>Notes</th>
-
-        </tr>
-
-        <% @purchase_order.purchase_items.each do | purchase_item | %>
-            <tr>
-              <td class="item_name"><%=purchase_item.item.name%></td>
-              <td class="item_quantity_column"><%=number_with_delimiter purchase_item.quantity%></td>
-              <td><%=purchase_item.unit%></td>
-              <td><%=number_with_delimiter purchase_item.price%></td>
-              <td><%=number_with_delimiter purchase_item.total%></td>
-              <td class="notes_column"><%=purchase_item.note%></td>
-            </tr>
-        <% end %>
-        
-      </table>
-
-      <h2 class="grand_total">Grand Total: <%=number_with_delimiter @purchase_order.grand_total%></h2>
-
   </div>
-
-    <% unless @purchase_order.notes.empty? %>
-    <div class="section">
-      <p>
-        <strong>Notes:</strong>
-        <%= @purchase_order.notes %>
-      </p>
-    </div>
-    <% end %>
-
-
-
-
-
-    <div class="no-print">
-        <h1>Deliveries</h1>
-
-          <%= form_for(@item_delivery, remote: true) do |f| %>
-
-
-                <table id="purchase_item_table">
-                <tr>
-                  <th class="item_name">Product Code</th>
-                  <th class="item_quantity_column">Quantity</th>
-                  <th>Unit</th>
-                  <th>Date Recieved</th>
-                  <th></th>
-                </tr>
-
-                <tr id="new_item_delivery_row">
-                  <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
-                  <td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
-                  <td class="med_number"><%= f.text_field :unit%></td>
-                  <td><%= f.text_field :date_recieved %></td>
-                  <td><%= f.submit "Add", id: 'item_delivery_submit' %></td>
-                </tr>
-
-                <% @purchase_order.item_deliveries.each do | item_delivery | %>
-                      <%= render item_delivery %>
-                <% end %>
-
-
-              </table>
-
-              <%= f.hidden_field :purchase_order_id %>
-          
-          <% end %>
-      
-    </div>
 
     <div class="no-print actions">
     <%= link_to 'Edit', edit_purchase_order_path(@purchase_order)%> |

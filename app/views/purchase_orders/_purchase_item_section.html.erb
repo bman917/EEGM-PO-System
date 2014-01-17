@@ -1,0 +1,20 @@
+<div class="items_section">
+      <table id="purchase_item_table">
+      <tr>
+        <th>Product Code</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Notes</th>
+      </tr>
+
+      <% @purchase_order.purchase_items.each do | purchase_item | %>
+        <%=render purchase_item %>
+      <% end %>
+      
+    </table>
+
+    <h2 class="grand_total">Grand Total: <%=number_with_delimiter @purchase_order.grand_total%></h2>
+
+</div>
