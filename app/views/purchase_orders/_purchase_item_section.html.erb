@@ -7,14 +7,42 @@
         <th>Price</th>
         <th>Total</th>
         <th>Notes</th>
+        <th class="no-print"></th>
+
       </tr>
 
       <% @purchase_order.purchase_items.each do | purchase_item | %>
         <%=render purchase_item %>
       <% end %>
       
-    </table>
+      <div class="no-print">
+        <tr id="show_new_purchase_item_link_row">
+          <td colspan="7">
+            <%=link_to 'Add', '', id: 'show_new_purchase_item_link'%>
+          </td>
+        </tr>
+        <%= form_for(@new_purchase_item, remote: true) do |f| %>
 
-    <h2 class="grand_total">Grand Total: <%=number_with_delimiter @purchase_order.grand_total%></h2>
+            <tr id="new_purchase_item_row">
+              <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
+              <td class="item_quantity_column small_number"><%= f.number_field :quantity, min: 1%></td>
+              <td class="med_number"><%= f.text_field :unit%></td>
+              <td class="item_price_column med_number"><%= f.text_field :price%></td>
+              <td class="med_number"><%= f.text_field :total, class: "total_field"%></td>
+              <td>
+
+                <%= f.text_field :note%>
+                <%= f.hidden_field :purchase_order_id %>
+              </td>
+              <td>
+                <%= f.submit "Add", id: 'add_contact_number_submit' %>
+                <%= link_to 'Hide', '', id: "hide_new_purchase_item_link" %>
+              </td>
+            </tr>
+
+        <% end %>
+      </div>
+    </table>
+    <h2 class="grand_total">Grand Total: <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span></h2>
 
 </div>

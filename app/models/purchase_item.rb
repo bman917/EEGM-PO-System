@@ -4,6 +4,9 @@ class PurchaseItem < ActiveRecord::Base
 
    validates :item, presence: true
 
+   after_save :update_grand_total
+   after_destroy :update_grand_total
+
   def to_s
   	"#{item.name} - #{price}Php x #{quantity} #{note}" if item
   end
@@ -15,5 +18,11 @@ class PurchaseItem < ActiveRecord::Base
   def item_name=(name)
   	self.item = Item.find_or_create_by(name: name) if name.present?
   end
+
+  def update_grand_total
+    purchase_order.grand_total = purchase_order.purchase_items.sum(:total)
+    purchase_order.save
+  end
+
 
 end

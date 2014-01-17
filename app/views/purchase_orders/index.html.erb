@@ -60,8 +60,8 @@ $(document).ready(function(){
 <h2>New Purchase Order</h2>
   <div>
     <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
-    <%= f.label "Date: "%><%= f.hidden_field :po_date, tabindex: 2%>
-    <%= f.submit "Save"%>
+    <%= f.hidden_field :po_date, tabindex: 2%>
+    <%= f.submit "Create"%>
   </div>
 
 <% end %>

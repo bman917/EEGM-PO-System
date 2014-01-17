@@ -1,0 +1,6 @@
+$('#notice').empty().append("<%= flash[:create_notice] %>");
+$('#show_new_purchase_item_link_row').before("<%=j render @purchase_item%>");
+$('#purchase_item_item_name').val('');
+$('#purchase_item_item_name').focus();
+$('#grand_total').text('<%=@purchase_item.purchase_order.grand_total%>');
+$('#grand_total').number(true, 2);

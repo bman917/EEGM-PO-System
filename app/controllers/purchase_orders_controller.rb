@@ -21,6 +21,8 @@ class PurchaseOrdersController < ApplicationController
     @new_purchase_order_contact = PurchaseOrderContact.new(purchase_order: @purchase_order)
     @new_phone = Phone.new(contact_detail_type: @purchase_order.class, contact_detail_id: @purchase_order.id)
 
+    @new_purchase_item = PurchaseItem.new(purchase_order: @purchase_order)
+
 
   end
 

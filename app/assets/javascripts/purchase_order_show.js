@@ -16,8 +16,9 @@ function purchaseOrderShowInit() {
 	$('#add_delivery_link').on('click',toggleDeliverySection);
 	$('#hide_delivery_section_link').on('click', toggleDeliverySection);
 
-	//initializers for contact_details_section
+	
 	init_purchase_order_show_contact_details_section();
+	init_purchase_order_show_purchase_items_section();
 	
 }
 

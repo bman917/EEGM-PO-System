@@ -1,0 +1,5 @@
+$('#purchase_item_<%=@purchase_item.id%>').fadeOut('slow', function(){
+        $(this).remove();
+});	
+$('#grand_total').text('<%=@purchase_order.grand_total%>');
+$('#grand_total').number(true, 2);
