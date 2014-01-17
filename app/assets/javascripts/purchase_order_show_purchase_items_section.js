@@ -13,7 +13,7 @@ function init_purchase_order_show_purchase_items_section() {
 	//Listener for calculating total price
 	$('#purchase_item_quantity, #purchase_item_price').on('focusout', set_new_purchase_item_total);
 
-	$('form#new_purchase_item').on('submit', set_new_purchase_item_total);
+	
 }
 
 function toggle_new_purchase_item_row_form() {
