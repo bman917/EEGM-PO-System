@@ -16,7 +16,7 @@ table#items_input_table {
 
 
 #po_table {
-	margin-top: 1em;
+	margin: 1.5em;
 	width: 95%;
 	th, tr, td {
 		padding: .25em;
@@ -34,4 +34,5 @@ table#items_input_table {
 }
 .description_column {
 	font-size: .75em;
+	text-align: left;
 }

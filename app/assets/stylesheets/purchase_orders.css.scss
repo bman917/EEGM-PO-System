@@ -56,23 +56,23 @@ div.middle_section {
 	
 }
 
-.add_fields {
+.add_fields, .button_link  {
 	margin-top: .5em;
 	margin-left: .5em;
-	padding: .35em;
+	padding: .25em;
 	padding-left: .75em;
 	padding-right: .75em;
-	background-color: green;
+	background-color: #F5F5F5 ;
 	width: 20em;
 	font-size: .7em;
-	color: white;
+	color: #003300;
 	border-radius: .5em;
+	border: 1px solid #003300;
+	text-decoration: none;
 
 	a:visited {
 		color: white;
 	}
-
-
 }
 
 .remove_fields {
@@ -141,6 +141,10 @@ div.actions {
 	color: blue;
 
 
+}
+
+.indented {
+	margin-left: 1em;
 }
 
 

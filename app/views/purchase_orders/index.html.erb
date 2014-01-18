@@ -10,16 +10,17 @@ $(document).ready(function(){
 });
 <% end %>
 
-<h1>Purchase Orders</h1>
+<div class="section">
+<h1 class="emphasize med_text indented">Purchase Orders</h1>
 
 <table id="po_table">
   <thead>
     <tr>
+      <th></th>
       <th class="small_column">Order Date</th>
       <th>Supplier</th>
       <th>Total</th>
       <th>Description</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -28,20 +29,21 @@ $(document).ready(function(){
   <tbody>
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
+        <td class="smaller_column"><%= link_to 'View', purchase_order %></td>
         <td><%= purchase_order.po_date %></td>
         <td><%= purchase_order.supplier %></td>
         <td class="small_column"><%= purchase_order.grand_total_formatted %></td>
         <td class="description_column"><%= truncate purchase_order.items_description, length: 70 %></td>
-        
-        <td class="smaller_column"><%= link_to 'Show', purchase_order %></td>
-        <td class="smaller_column"><%= link_to 'Edit', edit_purchase_order_path(purchase_order) %></td>
-        <td class="smaller_column"><%= link_to 'Delete', purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: 'Delete PO for #{purchase_order.supplier_name}?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+</div>
+
+<div class="section indented">
 
 <%= form_for(@new_purchase_order) do |f| %>
 
@@ -57,11 +59,12 @@ $(document).ready(function(){
     </div>
   <% end %>
 
-<h2>New Purchase Order</h2>
-  <div>
+<h2 class="emphasize med_text">New Purchase Order</h2>
+  <div  class="sub_section">
     <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
     <%= f.hidden_field :po_date, tabindex: 2%>
     <%= f.submit "Create"%>
   </div>
 
 <% end %>
+</div>
