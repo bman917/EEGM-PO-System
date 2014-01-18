@@ -13,7 +13,10 @@ function init_purchase_order_show_purchase_items_section() {
 	//Listener for calculating total price
 	$('#purchase_item_quantity, #purchase_item_price').on('focusout', set_new_purchase_item_total);
 
-	
+	//Listener for adding a temporary 'Adding new purchase item row'
+	$('#new_purchase_item').on('submit',addingNewPurchaseItem);
+
+	$('a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
 }
 
 function toggle_new_purchase_item_row_form() {
@@ -28,4 +31,11 @@ function set_new_purchase_item_total() {
 	price = $('#purchase_item_price').val();
 	$('#purchase_item_total').val((qty*price));
 	$('#purchase_item_total').number(true, 2);
+}
+
+function addingNewPurchaseItem() {
+  var item_summary = $('#purchase_item_item_name').val();
+  item_summary += " x " + $('#purchase_item_quantity').val();
+  item_summary += " " + $('#purchase_item_unit').val();
+  $('#new_purchase_item_row').before("<tr class='adding_purchase_item'><td colspan='7'>Saving Purchase Item: " + item_summary +"...</td>");
 }

@@ -6,12 +6,14 @@ class PurchaseItemsController < ApplicationController
   end
 
   def create
+    sleep 3
     @purchase_item = PurchaseItem.new(purchase_items_params)
     @purchase_item.save
     @purchase_item.purchase_order.reload
   end
 
   def destroy
+    sleep 5
     @purchase_item = PurchaseItem.find(params[:id])
     @purchase_item.destroy
     @purchase_order = @purchase_item.purchase_order

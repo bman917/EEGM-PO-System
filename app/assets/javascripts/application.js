@@ -32,3 +32,16 @@ function removeField(event) {
 	$(this).closest('fieldset').hide();
 	event.preventDefault();
 }
+
+function addDeletingListener(selector_for_link) {
+  $('.delete_delivery_item_link').on('click', function(){
+    $(this).closest('tr').addClass('pending_deletion');
+  });
+}
+
+jQuery.fn.add_pending_deletion_class_to_closes_tr_on_click = function() {
+    this.on('click', function() {
+        $(this).closest('tr').addClass('pending_deletion');
+    });
+    return this;
+}

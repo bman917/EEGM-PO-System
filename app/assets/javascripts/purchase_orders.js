@@ -141,15 +141,3 @@ function initItemDeliveryDate() {
   $('#item_delivery_date_recieved').datepicker( "setDate", new Date() );
 }
 
-function addingNewItemDelivery() {
-  var item_summary = $('#item_delivery_item_name').val();
-  item_summary += " x " + $('#item_delivery_quantity').val();
-  item_summary += " " + $('#item_delivery_unit').val();
-  $('#new_item_delivery_row').after("<tr class='adding_item_delivery'><td colspan='5'>Saving Item Delivery: " + item_summary +"...</td>");
-}
-
-function addDeletingListener() {
-  $('.delete_delivery_item_link').on('click', function(){
-    $(this).closest('tr').addClass('pending_deletion');
-  });
-}

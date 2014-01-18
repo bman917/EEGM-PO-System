@@ -34,7 +34,7 @@ $(document).ready(function(){
         <td><%= purchase_order.supplier %></td>
         <td class="small_column"><%= purchase_order.grand_total_formatted %></td>
         <td class="description_column"><%= truncate purchase_order.items_description, length: 70 %></td>
-        <td><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: 'Delete PO for #{purchase_order.supplier_name}?' } %>
+        <td><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: "Delete PO for '#{purchase_order.supplier_name}'?" } %>
         </td>
       </tr>
     <% end %>
