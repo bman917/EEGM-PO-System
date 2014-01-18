@@ -3,5 +3,5 @@
   <td class="item_quantity_column"><%=number_with_delimiter item_delivery.quantity%></td>
   <td><%=item_delivery.unit%></td>
   <td><%=item_delivery.date_recieved%></td>
-  <td><%= link_to 'Delete', item_delivery, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_delivery_item_link" %></td>
+  <td><%= link_to 'X', item_delivery, method: :delete, data: { confirm: "Delete Delivery '#{item_delivery.item_name} x #{number_with_delimiter item_delivery.quantity} #{item_delivery.unit}'?" }, remote: true, class: "remove_fields" %></td>
 </tr>

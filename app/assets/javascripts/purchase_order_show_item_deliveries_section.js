@@ -11,17 +11,20 @@ function init_purchase_order_show_item_delivery_section() {
 	initItemDeliveryDate();
 
 	$('#new_item_delivery').on('submit', addingNewItemDelivery);
-	addDeletingListener();
+	$('.delete_delivery_item_link').add_pending_deletion_class_to_closes_tr_on_click();
 
 
 	$('#add_delivery_link').on('click',toggleDeliverySection);
 	$('#hide_delivery_section_link').on('click', toggleDeliverySection);
+
+
 
 }
 
 function toggleDeliverySection() {
 	$('#add_delivery_link').toggle();
 	$('.deliveries_section').toggle();
+	$('#item_delivery_item_name').focus();
 	event.preventDefault();
 
 }
@@ -32,10 +35,3 @@ function addingNewItemDelivery() {
   item_summary += " " + $('#item_delivery_unit').val();
   $('#new_item_delivery_row').after("<tr class='adding_item_delivery'><td colspan='5'>Saving Item Delivery: " + item_summary +"...</td>");
 }
-
-function addDeletingListener() {
-  $('.delete_delivery_item_link').on('click', function(){
-    $(this).closest('tr').addClass('pending_deletion');
-  });
-}
-

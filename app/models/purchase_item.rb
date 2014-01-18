@@ -8,7 +8,7 @@ class PurchaseItem < ActiveRecord::Base
    after_destroy :update_grand_total
 
   def to_s
-  	"#{item.name} - #{price}Php x #{quantity} #{note}" if item
+  	"#{item.name} - #{price}Php x #{quantity} #{unit}" if item
   end
 
   def item_name

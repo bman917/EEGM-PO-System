@@ -7,3 +7,4 @@ initItemDeliveryDate();
 $('#new_item_delivery_row').after("<%= j render @item_delivery%>");
 $('.adding_item_delivery:first').remove();
 addDeletingListener();
+$('#item_delivery_<%=@item_delivery.id%> a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
