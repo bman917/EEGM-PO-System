@@ -16,7 +16,7 @@ function init_purchase_order_show_purchase_items_section() {
 	//Listener for adding a temporary 'Adding new purchase item row'
 	$('#new_purchase_item').on('submit',addingNewPurchaseItem);
 
-	$('a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
+	$('#purchase_item_table a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
 }
 
 function toggle_new_purchase_item_row_form() {

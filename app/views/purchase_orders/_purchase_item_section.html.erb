@@ -1,4 +1,5 @@
 <div class="items_section">
+  <%= form_for(@new_purchase_item, remote: true) do |f| %>
       <table id="purchase_item_table">
       <tr>
         <th>Product Code</th>
@@ -21,7 +22,7 @@
             <%=link_to 'Add', '', id: 'show_new_purchase_item_link', class: 'add_fields no-print'%>
           </td>
         </tr>
-        <%= form_for(@new_purchase_item, remote: true) do |f| %>
+
 
             <tr id="new_purchase_item_row">
               <td class="item_name"><%= f.text_field :item_name, data: {autocomplete_source: item_names_path}%></td>
@@ -40,7 +41,7 @@
               </td>
             </tr>
 
-        <% end %>
+        
       </div>
       <tr>
         <td colspan="7" class="grand_total">
@@ -48,5 +49,5 @@
         </td>
       </tr>
     </table>
-
+  <% end %>
 </div>
