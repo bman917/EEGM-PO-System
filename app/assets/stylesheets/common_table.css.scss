@@ -1,17 +1,15 @@
-table#po_table
+table
 {
 	margin: 1.5em;
 	width: 800px;
-	text-align: center;
+	//text-align: center;
 	border-collapse: collapse;
 	border-top: 7px solid #435F8F;
 	border-bottom: 7px solid #435F8F;
 
 	//background: #e8edff; 
-	background: #e8edff; 
-
-	tr:hover { background: #C4CFF6; }
-.e     { background: #CFD8F8; }
+	//tr:hover { background: #C4CFF6; }
+	//.e     { background: #CFD8F8; }
 }
 
 th
@@ -30,11 +28,11 @@ th
 }
  td
 {
-	padding: 8px;
+	//padding: 8px;
 	
-	border-right: 1px solid white;
-	border-left: 1px solid white;
-	color: #669;
+	//border-right: 1px solid white;
+	//border-left: 1px solid white;
+	//color: #669;
 }
 
 
@@ -43,9 +41,3 @@ th
 	background: yellow;
 }
 
-table.big_table {
-
-	width: 975px;
-	margin-left: -2em;
-
-}

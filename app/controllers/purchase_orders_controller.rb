@@ -1,4 +1,5 @@
 class PurchaseOrdersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
 
   # GET /purchase_orders
@@ -42,6 +43,23 @@ class PurchaseOrdersController < ApplicationController
   # POST /purchase_orders.json
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
+
+    #Copy Contact Details from last purchase order
+    unless purchase_order_params[:purchase_order_contact]
+      supplier = Supplier.find_by(name: purchase_order_params[:supplier_name])
+      if supplier
+        similar_pos = PurchaseOrder.where(supplier: supplier).last
+
+        if similar_pos
+          similar_pos.purchase_order_contacts.each do | c |
+            @purchase_order.purchase_order_contacts.build name: c.name
+          end
+          similar_pos.phones.each do | p |
+            @purchase_order.phones.build number: p.number
+          end
+        end
+      end
+    end
 
     respond_to do |format|
       if @purchase_order.save

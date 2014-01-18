@@ -6,24 +6,7 @@ $(document).ready(function(){
 
 <% end %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="purcahse_order_show">
-
-  <div class="header">
-
-    <%=image_tag "EEGM.png", class: "logo"%> 
-    <%=image_tag "ESS.png", class: "logo"%> 
-
-      <div class="float_right">
-      #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
-      <span class="highlight">ENGSHOESUPPLY@GMAIL.COM</span>
-      <span class="highlight">WWW.ENGSHOESUPPLY.COM</span>
-      <span class="phone">Tel: 6453017</span>
-      <span class="phone">Fax: 6452210</span>
-      </div>
-  </div>
-
   <div class="sub_section">
     <div class="float_right">
       <%= @purchase_order.po_date %>

@@ -1,4 +1,5 @@
 EEGM::Application.routes.draw do
+  devise_for :users
   get "purchase_items/index"
   get "purchase_items/new"
   get "purchase_items/create"

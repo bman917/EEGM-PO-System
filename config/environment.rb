@@ -5,3 +5,5 @@ require File.expand_path('../application', __FILE__)
 EEGM::Application.initialize!
 
 Time::DATE_FORMATS[:time] = "%B %d, %I:%M %p"
+Time::DATE_FORMATS[:med] = "%e %b %Y"
+

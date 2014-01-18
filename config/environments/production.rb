@@ -79,4 +79,6 @@ EEGM::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.assets.precompile = ['*.js', '*.css', '*.css.erb']
+
+  config.action_mailer.default_url_options = { :host => 'ec2-54-254-182-10.ap-southeast-1.compute.amazonaws.com:3000' }
 end

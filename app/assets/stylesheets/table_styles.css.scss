@@ -10,17 +10,20 @@ table#items_input_table {
 	padding: 0;
 	border: 1px solid;
 	margin-bottom: .5em;
-
 }
 
 
 
 #po_table {
-	margin: 1.5em;
-	width: 95%;
-	th, tr, td {
-		padding: .25em;
-		
+	width: 700px;
+	background: #e8edff;
+	td {
+		font-size: .95em;
+	}
+
+	.description_column {
+		font-size: .75em;
+		text-align: left;
 	}
 }
 
@@ -31,8 +34,4 @@ table#items_input_table {
 .smaller_column {
 	width: 3em;
 	font-size: .9em;
-}
-.description_column {
-	font-size: .75em;
-	text-align: left;
 }
