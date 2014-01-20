@@ -17,6 +17,10 @@ class PurchaseOrder < ActiveRecord::Base
 
   validates :supplier, presence: true
 
+  def po_date_long_format
+    po_date.to_time.to_s(:long)
+  end
+
   def grand_total_formatted
     number_with_delimiter number_with_precision(self.grand_total, precision: 2)
   end

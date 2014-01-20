@@ -30,7 +30,7 @@ $(document).ready(function(){
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
         <td class="smaller_column"><%= link_to 'View', purchase_order %></td>
-        <td><%= purchase_order.po_date.to_time.to_s(:med) %></td>
+        <td><%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %></td>
         <td><%= purchase_order.supplier %></td>
         <td class="small_column"><%= purchase_order.grand_total_formatted %></td>
         <td class="description_column"><%= truncate purchase_order.items_description, length: 70 %></td>
