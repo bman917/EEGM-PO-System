@@ -52,3 +52,29 @@ ul.ui-autocomplete {
   }
 }
 
+.header {
+  margin-top: 1em;
+  font: .25em;
+  margin-left: -1em;
+  height: 5.75em;
+  margin-bottom: .25em;
+  border-bottom: 2px solid black;
+}
+.logo {
+  height: 4em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.header_store_contact_details {
+  width: 30em;
+  margin-right: 1em;
+  float: right;
+  text-align: right;
+  span {
+    display: block; 
+  }
+}
+
+
+
+

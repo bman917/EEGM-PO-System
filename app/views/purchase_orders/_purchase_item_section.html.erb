@@ -8,7 +8,7 @@
         <th>Price</th>
         <th>Total</th>
         <th>Notes</th>
-        <th class="no-print"></th>
+        <th id="items_blank_th" class="no-print"></th>
 
       </tr>
 
@@ -30,8 +30,7 @@
               <td class="med_number"><%= f.text_field :unit%></td>
               <td class="item_price_column med_number"><%= f.text_field :price%></td>
               <td class="med_number"><%= f.text_field :total, class: "total_field"%></td>
-              <td>
-
+              <td class="notes_column">
                 <%= f.text_field :note%>
                 <%= f.hidden_field :purchase_order_id %>
               </td>

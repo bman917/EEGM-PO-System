@@ -9,7 +9,7 @@ $(document).ready(function(){
 <div class="purcahse_order_show">
   <div class="sub_section">
     <div class="float_right">
-      <%= @purchase_order.po_date %>
+      <%= @purchase_order.po_date.to_time.to_s(:long) %>
     </div>
     <div>Purchase Order: E.Estanislao General Merchandize</div>
   </div>

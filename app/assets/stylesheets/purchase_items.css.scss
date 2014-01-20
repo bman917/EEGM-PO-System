@@ -1,5 +1,5 @@
 #purchase_item_table{
-	width: 100%;
+	width: 97%;
 	tr td {
 		padding: .25em;
 		border: 1px solid black;
@@ -22,6 +22,7 @@
 
 .notes_column {
 	width: 7em;
+	border-right: 1px solid black;
 }
 
 
@@ -29,4 +30,8 @@
 	border-bottom: 0px;
 	border-left: 0;
 	border-right: 0;
+}
+
+#items_blank_th {
+	border-right: 1px solid black;
 }
