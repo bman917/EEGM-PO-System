@@ -32,26 +32,32 @@ $(document).ready(function(){
 
     <%=render 'purchase_item_section'%>
 
-    <div class="section">
-        <p>
-          <strong>Notes:</strong>
-          <span class="smaller no-print">(click below to edit)</span>
-          </br>
-          <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
-        </p>
+      <table id="purchase_order_show_footer">
+        <tr>
+          <td id="purchase_order_show_notes">
+                <strong>Notes:</strong>
+                <span class="smaller no-print">(click below to edit)</span>
+                </br>
+                <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
+          </td>
+          <td id="created_by">
+              Created by: <%=@purchase_order.username || "Not Recorded" %>
+          </td>
+
+        </tr>
+      </table>
+ 
+
+    <div id="purchase_order_show_deliveries_section" class="no-print">
+
+          <hr/>
+          <%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
+          <div class="deliveries_section">
+             <%= render 'deliveries_form' %>
+             <%= link_to 'Hide', '', id: "hide_delivery_section_link", class: "button_link" %>
+          </div>
     </div>
-
-
-  <div class="no-print">
-    <hr/>
-    <%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
-    <div class="deliveries_section">
-       <%= render 'deliveries_form' %>
-       <%= link_to 'Hide', '', id: "hide_delivery_section_link", class: "button_link" %>
-    </div>
-  </div>
-
-  </div>
+</div>
   
     <div class="no-print actions">
     <%= link_to 'Back To Purchase Orders List', purchase_orders_path%>
