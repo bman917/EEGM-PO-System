@@ -32,19 +32,19 @@ $(document).ready(function(){
 
     <%=render 'purchase_item_section'%>
 
-    <% if  @purchase_order.notes != nil%>
-      <div class="section">
+    <div class="section">
         <p>
           <strong>Notes:</strong>
-          <%= @purchase_order.notes %>
+          <span class="smaller no-print">(click below to edit)</span>
+          </br>
+          <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
         </p>
-      </div>
-      <% end %>
+    </div>
 
 
   <div class="no-print">
     <hr/>
-    <%= link_to 'Deliveries', '', id: "add_delivery_link", class: "button_link" %>
+    <%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
     <div class="deliveries_section">
        <%= render 'deliveries_form' %>
        <%= link_to 'Hide', '', id: "hide_delivery_section_link", class: "button_link" %>
