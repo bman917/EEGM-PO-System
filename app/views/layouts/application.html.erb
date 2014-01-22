@@ -10,7 +10,7 @@
 
 <div id="user_nav" class="no-print">
     <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
+      Logged in as <strong><%= current_user.username %></strong>.
       <%= link_to 'Edit profile', edit_user_registration_path %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
@@ -19,9 +19,6 @@
     <% end %>
  </div>
 
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
  <div class="header">
 
@@ -36,6 +33,11 @@
         <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
       </div>
 </div>
+
+<p id="notice"><%= notice %></p>
+
+<% if alert %><p id="alert"><%= alert %></p><% end %>
+
 
 <%= yield %>
 
