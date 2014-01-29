@@ -59,6 +59,8 @@ gem 'devise'
 
 gem 'best_in_place', github: 'bernat/best_in_place'
 
+gem 'jquery-datatables-rails'
+
 group :development do
 	gem 'capistrano'
 	gem 'capistrano-rails'

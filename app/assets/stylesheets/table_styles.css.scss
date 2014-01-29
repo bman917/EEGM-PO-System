@@ -15,16 +15,19 @@ table#items_input_table {
 
 
 #po_table {
-	width: 700px;
-	background: #e8edff;
+	width: 720px;
 	td {
 		font-size: .95em;
 	}
-
 	.description_column {
 		font-size: .75em;
 		text-align: left;
+		width: 25em;
 	}
+}
+
+.fg-toolbar {
+	width: 708px;
 }
 
 .small_column {
@@ -34,4 +37,12 @@ table#items_input_table {
 .smaller_column {
 	width: 3em;
 	font-size: .9em;
+}
+
+#po_index_title {
+	padding-bottom: 1em;
+	display: block;
+	font-weight: bold;
+	font-size: 1.5em;
+	width: 10em;
 }

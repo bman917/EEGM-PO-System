@@ -30,6 +30,8 @@ function setup() {
 
   $(document).off('keyup'); // This prevents multiple bindings on keyup
   $(document).keyup(keyListeners);
+
+
 }
 
 function keyListeners() {
