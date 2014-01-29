@@ -4,6 +4,8 @@ class PurchaseItem < ActiveRecord::Base
 
    validates :item, presence: true
 
+   before_update :recalculate_total
+
    after_save :update_grand_total
    after_destroy :update_grand_total
 
@@ -17,6 +19,10 @@ class PurchaseItem < ActiveRecord::Base
 
   def item_name=(name)
   	self.item = Item.find_or_create_by(name: name) if name.present?
+  end
+
+  def recalculate_total
+    self.total = price * quantity if price && quantity
   end
 
   def update_grand_total

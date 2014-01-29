@@ -1,10 +1,18 @@
 <tr id="purchase_item_<%=purchase_item.id%>">
   <td class="item_name"><%=purchase_item.item.name%></td>
-  <td class="item_quantity_column"><%=number_with_delimiter purchase_item.quantity%></td>
-  <td><%=purchase_item.unit%></td>
-  <td><%=number_with_delimiter purchase_item.price%></td>
+  
+  <td class="item_quantity_column">
+  	<%= best_in_place purchase_item, 
+  			:quantity, display_with: :number_with_delimiter%>
+  </td>
+  
+  <td><%= best_in_place purchase_item, :unit%></td>
+  
+  <td>
+  	<%= best_in_place purchase_item, :price, display_with: :number_with_delimiter%>
+  </td>
   <td><%=number_with_delimiter purchase_item.total%></td>
-  <td class="notes_column"><%=purchase_item.note%></td>
+  <td class="notes_column"><%= best_in_place purchase_item, :note%></td>
   <td class="no-print">
 	<%=link_to 'X', purchase_item, remote: true, method: :delete, class: "remove_fields no-print", data: {confirm: "Delete '#{purchase_item.to_s}'?"} %>
 </td>
