@@ -5,7 +5,7 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index
-    @purchase_orders = PurchaseOrder.all
+    @purchase_orders = PurchaseOrder.all.order(po_date: :desc)
 
     @new_purchase_order = PurchaseOrder.new
     @new_purchase_order.po_date = Date.today
