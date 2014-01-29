@@ -64,4 +64,5 @@ gem 'jquery-datatables-rails'
 group :development do
 	gem 'capistrano'
 	gem 'capistrano-rails'
+	gem 'capistrano-rvm'
 end
