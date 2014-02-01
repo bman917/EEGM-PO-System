@@ -7,13 +7,15 @@ class PurchaseOrderContactsController < ApplicationController
 
   def create
     @purchase_order_contact = PurchaseOrderContact.new(purchase_order_contact_params)
-    unless @purchase_order_contact.save
+    if @purchase_order_contact.save
+      @purchase_order_contact.record_activity(:create, current_user, "Added PO Contact")
 
     end
   end
 
   def destroy
     @purchase_order_contact = PurchaseOrderContact.find(params[:id])
+     @purchase_order_contact.record_activity(:delete, current_user, "Deleted PO Contact")
     @purchase_order_contact_id = @purchase_order_contact.id
     @purchase_order_contact.destroy
   end

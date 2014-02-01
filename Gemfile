@@ -61,6 +61,9 @@ gem 'best_in_place', github: 'bernat/best_in_place'
 
 gem 'jquery-datatables-rails'
 
+gem 'public_activity'
+gem 'will_paginate'
+
 group :development do
 	gem 'capistrano'
 	gem 'capistrano-rails'

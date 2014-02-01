@@ -1,0 +1,22 @@
+// Place all the styles related to the activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#activity_table {
+	width: 800px;
+	td {
+		font-size: .9em;
+		padding: 2px;
+	}
+
+	tr.create {
+		background: #4FF78D;
+	}
+
+	tr.delete {
+		background: #E68080;
+	}
+
+	tr.update {
+		background: #F08244;
+	}
+}

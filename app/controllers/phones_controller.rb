@@ -33,6 +33,7 @@ class PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
+        @phone.record_activity(:create, current_user, "Created PO Phone")
         format.html { redirect_to @phone, notice: 'Phone was successfully created.' }
         format.json { render action: 'show', status: :created, location: @phone }
         format.js
@@ -61,6 +62,7 @@ class PhonesController < ApplicationController
   # DELETE /phones/1
   # DELETE /phones/1.json
   def destroy
+    @phone.record_activity(:delete, current_user, "Deleted PO Phone")
     @phone.destroy
     respond_to do |format|
       format.html { redirect_to phones_url }

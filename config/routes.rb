@@ -1,4 +1,6 @@
 EEGM::Application.routes.draw do
+  resources :activities
+  
   #devise_for :users
 
   #This will disallow creating and deleting new users

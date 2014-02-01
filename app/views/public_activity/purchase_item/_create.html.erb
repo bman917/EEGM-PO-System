@@ -1,0 +1,9 @@
+<%=activity.owner.username%>
+added a Purchase Item
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.to_s, activity.trackable %> to Purchase Order
+  <%= activity.parameters[:detail] %>
+<% else %>
+  which has since been removed
+<% end %>

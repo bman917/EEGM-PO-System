@@ -7,12 +7,17 @@ class PurchaseItemsController < ApplicationController
 
   def create
     @purchase_item = PurchaseItem.new(purchase_items_params)
-    @purchase_item.save
+
+    if @purchase_item.save
+      @purchase_item.record_activity(:create, current_user, 'Added PO Item')
+    end
+
     @purchase_item.purchase_order.reload
   end
 
   def destroy
     @purchase_item = set_purchase_item
+    @purchase_item.record_activity(:delete, current_user, "Deleted PO Item")
     @purchase_item.destroy
     @purchase_order = @purchase_item.purchase_order
     @purchase_order.reload
@@ -22,6 +27,7 @@ class PurchaseItemsController < ApplicationController
     @purchase_item = set_purchase_item
     respond_to do |format|
       if @purchase_item.update(purchase_items_params)
+        @purchase_item.record_activity(:update, current_user, "Updated PO Item")
         format.html { redirect_to @purchase_order, notice: 'Purchase Item was successfully updated.' }
         format.json { head :no_content }
       else

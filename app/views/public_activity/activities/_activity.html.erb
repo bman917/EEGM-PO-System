@@ -1,0 +1,11 @@
+<tr class="<%=activity.key.split('.').last%>">
+	<td><%=activity.created_at.to_formatted_s(:short)%></td>
+	<td><%=activity.owner.username%></td>
+	<td><%= activity.parameters[:description]%></td>
+	<td>
+		<%=activity.parameters[:details]%>
+	    <% if activity.recipient %>
+	    	<%=link_to "(View)", activity.recipient %>
+	    <% end %>
+	</td>
+</tr>

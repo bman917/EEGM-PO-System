@@ -1,6 +1,8 @@
 include ActionView::Helpers::NumberHelper
 
 class PurchaseOrder < ActiveRecord::Base
+  include PublicActivity::Common
+
   belongs_to :supplier
   has_many :phones, as: :contact_detail, :dependent => :delete_all
   has_many :purchase_order_contacts, :dependent => :delete_all
@@ -16,6 +18,14 @@ class PurchaseOrder < ActiveRecord::Base
   after_save :copy_contact unless :purchase_order_contacts.empty?
 
   validates :supplier, presence: true
+
+  def po_id
+    sprintf('%07d', id)
+  end
+
+  def details
+    "PO##{po_id} #{po_date.to_time.to_s(:med)} #{supplier.name}"
+  end
 
   def po_date_long_format
     po_date.to_time.to_s(:long)
@@ -58,6 +68,25 @@ class PurchaseOrder < ActiveRecord::Base
     end
 
     desc
+  end
+
+  def record_activity(action, current_user, description)
+    create_activity action, 
+        owner: current_user, 
+        recipient: self,
+        parameters: {
+        description: description,
+        details: self.details}
+  end
+
+  def record_update(current_user, params)
+    create_activity :update, 
+        owner: current_user, 
+        recipient: self,
+        parameters: {
+        description: "Updated PO",
+        details: "#{self.details} #{params}"
+      }
   end
 
 end

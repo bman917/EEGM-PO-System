@@ -1,0 +1,24 @@
+
+
+<h1>User Activities</h1>
+
+<%= will_paginate @activities %>
+
+<table id="activity_table" class="big_table">
+  	 <thead>
+  	  <tr>
+  	  	<th>Date/Time</th>
+  		<th>User</th>
+  		<th>Action</th>
+  		<th>Details</th>
+  	  </tr>
+  	 </thead>
+	<tbody>
+		<% @activities.each do |activity| %>
+			<%=render activity%>
+		<% end %>
+	</tbody>
+
+</table>
+
+<%= will_paginate @activities %>

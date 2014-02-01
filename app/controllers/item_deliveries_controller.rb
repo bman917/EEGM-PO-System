@@ -28,6 +28,7 @@ class ItemDeliveriesController < ApplicationController
 
     respond_to do |format|
       if @item_delivery.save
+        @item_delivery.record_activity(:create, current_user, "Add PO Delivery")
         format.html { redirect_to @item_delivery.purchase_order, notice: 'Item delivery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @item_delivery }
         format.js
@@ -43,6 +44,7 @@ class ItemDeliveriesController < ApplicationController
   def update
     respond_to do |format|
       if @item_delivery.update(item_delivery_params)
+        @item_delivery.record_activity(:update, current_user, "Updated PO Delivery")
         format.html { redirect_to @item_delivery, notice: 'Item delivery was successfully updated.' }
         format.json { head :no_content }
       else
@@ -55,6 +57,7 @@ class ItemDeliveriesController < ApplicationController
   # DELETE /item_deliveries/1
   # DELETE /item_deliveries/1.json
   def destroy
+    @item_delivery.record_activity(:delete, current_user, "Deleted PO Delivery")
     po = @item_delivery.purchase_order
     @item_delivery_id = @item_delivery.id
     @item_delivery.destroy
