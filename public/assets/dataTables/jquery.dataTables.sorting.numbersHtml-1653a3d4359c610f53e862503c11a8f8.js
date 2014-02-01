@@ -1,0 +1,1 @@
+jQuery.fn.dataTableExt.oSort["num-html-asc"]=function(a,e){var r=a.replace(/<.*?>/g,""),t=e.replace(/<.*?>/g,"");return r=parseFloat(r),t=parseFloat(t),t>r?-1:r>t?1:0},jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,e){var r=a.replace(/<.*?>/g,""),t=e.replace(/<.*?>/g,"");return r=parseFloat(r),t=parseFloat(t),t>r?1:r>t?-1:0};
