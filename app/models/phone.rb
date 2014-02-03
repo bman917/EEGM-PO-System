@@ -3,7 +3,7 @@ class Phone < ActiveRecord::Base
   belongs_to :contact_detail, :polymorphic => true
 
   def details
-    "#{contact_detail.details} - #{number}"
+    "#{contact_detail.try :details} - #{number}"
   end
 
   def record_activity(action, current_user, description)

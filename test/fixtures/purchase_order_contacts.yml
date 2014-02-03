@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  purchase_order_id: 
-  name: MyString
+  purchase_order_id: 1
+  name: Contact One
 
 two:
-  purchase_order_id: 
-  name: MyString
+  purchase_order_id: 2
+  name: Contact Two

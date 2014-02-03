@@ -24,7 +24,7 @@ class PurchaseOrder < ActiveRecord::Base
   end
 
   def details
-    "PO##{po_id} #{po_date.to_time.to_s(:med)} #{supplier.name}"
+    "PO##{po_id} #{po_date.to_time.to_s(:med) if po_date} #{supplier.try :name}"
   end
 
   def po_date_long_format

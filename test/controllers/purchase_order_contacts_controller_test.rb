@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class PurchaseOrderContactsControllerTest < ActionController::TestCase
+
+  setup do
+    @purchase_order_contact = purchase_order_contacts(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -11,13 +16,19 @@ class PurchaseOrderContactsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
+  test "should create purchase_order_contact" do
+    get :create, purchase_order_contact: { 
+      purchase_order_id: @purchase_order_contact.purchase_order.id,
+      name: @purchase_order_contact.name
+    }
     assert_response :success
   end
 
   test "should get destroy" do
-    get :destroy
+    assert_difference('PurchaseOrderContact.count', -1) do
+      delete :destroy, id: @purchase_order_contact
+    end
+
     assert_response :success
   end
 

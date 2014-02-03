@@ -21,7 +21,7 @@ class ItemDeliveriesControllerTest < ActionController::TestCase
       post :create, item_delivery: { date_recieved: @item_delivery.date_recieved, item_id: @item_delivery.item_id, purchase_order_id: @item_delivery.purchase_order_id, quantity: @item_delivery.quantity, unit: @item_delivery.unit }
     end
 
-    assert_redirected_to item_delivery_path(assigns(:item_delivery))
+    assert_redirected_to purchase_order_path(assigns(:item_delivery).purchase_order)
   end
 
   test "should show item_delivery" do
@@ -44,6 +44,6 @@ class ItemDeliveriesControllerTest < ActionController::TestCase
       delete :destroy, id: @item_delivery
     end
 
-    assert_redirected_to item_deliveries_path
+    assert_redirected_to purchase_order_path(assigns(:item_delivery).purchase_order)
   end
 end

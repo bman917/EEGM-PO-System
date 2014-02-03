@@ -28,7 +28,7 @@ class PurchaseItemsController < ApplicationController
     respond_to do |format|
       if @purchase_item.update(purchase_items_params)
         @purchase_item.record_activity(:update, current_user, "Updated PO Item")
-        format.html { redirect_to @purchase_order, notice: 'Purchase Item was successfully updated.' }
+        format.html { redirect_to  @purchase_item.purchase_order, notice: 'Purchase Item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
