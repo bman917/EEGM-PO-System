@@ -31,5 +31,5 @@ staging:
   database: eegm_staging
   pool: 5
   username: eegm_staging
-  password: password
+  password: <%=ENV['MYSQL_PASSWORD']%>
   host: localhost
