@@ -11,6 +11,16 @@ class PurchaseItem < ActiveRecord::Base
    after_save :update_grand_total
    after_destroy :update_grand_total
 
+  def price=(new_price)
+    write_attribute :price, new_price
+    recalculate_total
+  end
+
+  def quantity=(new_quantity)
+    write_attribute :quantity, new_quantity
+    recalculate_total
+  end
+
   def details
     "#{purchase_order.details} Item ##{id}[#{to_s}]"
   end

@@ -1,8 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  phone_type: MyString
-  number: MyString
+  phone_type: Land Line
+  number: 1234567
+  contact_detail_id: 1
+  contact_detail_type: PurchaseOrder
 
 two:
   phone_type: MyString
