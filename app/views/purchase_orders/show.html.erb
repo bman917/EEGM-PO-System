@@ -7,6 +7,12 @@ $(document).ready(function(){
 <% end %>
 
 <div class="purcahse_order_show">
+  <div class="sub_section po_status_section no-print">
+    Status: <span class="<%=@purchase_order.status%>"><%=best_in_place @purchase_order, :status, type: :select,
+                collection: po_statuses %></span>
+    <%=render 'po_status_help' %>
+  </div>
+
   <div class="sub_section">
     <div class="float_right">
       <%= best_in_place @purchase_order, :po_date, :type => :date, 
@@ -58,7 +64,7 @@ $(document).ready(function(){
           </div>
     </div>
 </div>
-  
+
     <div class="no-print actions">
     <%= link_to 'Back To Purchase Orders List', purchase_orders_path%>
     </div>

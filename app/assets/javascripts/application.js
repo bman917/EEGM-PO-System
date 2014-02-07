@@ -48,3 +48,12 @@ jQuery.fn.add_pending_deletion_class_to_closes_tr_on_click = function() {
     });
     return this;
 }
+
+jQuery.fn.hide_toggler = function() {
+
+  this.on('click', function() {
+    $(this).closest('.toggler').slideToggle('fast');
+    event.preventDefault();
+  });
+  return this;
+}

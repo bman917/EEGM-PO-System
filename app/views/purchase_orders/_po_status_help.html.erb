@@ -1,0 +1,21 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+
+  $('.toggler_link').hide_toggler();
+
+  $('.show_help_link').on('click', function(){
+      $('#help').slideToggle('fast');
+      event.preventDefault();
+  });
+
+});
+<% end %>
+  <%=link_to 'Help', '', class: 'help show_help_link'%>
+  <div id="help" class="toggler hidden">
+  PO Status Guide <%=link_to 'Hide', '', class: 'toggler_link'%>
+  <li>PENDING = Order for PO has not yet been placed (Hindi pa na-order).</li>
+  <li>CONFIRMED = Order for PO has been placed (Na-order na).</li>
+  <li>DELIVERED = Order has been delivered (Na-deliver na lahat).</li>
+  <li>CANELLED = PO has been cancelled.</li>
+  </div>

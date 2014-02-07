@@ -3,9 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #activity_table {
 	width: 800px;
+
+	th,tr,td {
+		border: 1px solid #4D6795;
+	}
+
 	td {
 		font-size: .9em;
-		padding: 2px;
+		padding: 5px;
+
 	}
 
 	tr.create {

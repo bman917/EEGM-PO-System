@@ -85,4 +85,27 @@ ul.ui-autocomplete {
 }
 
 
+#help {
+  width: 700px;
+  font-size: .9em;
+  font-style: italic;
+  border-top: 1px dashed grey;
+  border-bottom: 1px dashed grey;
+  padding: 15px;
+  
+  background: #FFFFE9;
 
+  margin-left: -13px;
+  margin-right: -1em;
+  
+  margin-bottom: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+.help {
+  padding-left: 1em;
+  font-size: .80em;
+}

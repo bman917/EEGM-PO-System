@@ -33,9 +33,17 @@
         <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
       </div>
 </div>
-<div id="user_nav" class="no-print">
-<%= link_to 'Purchase Orders List', purchase_orders_path%>
-<%= link_to 'User Activities', activities_path%>
+
+<div id="navigation">
+  <ul id="menu">
+    <li>
+      <%= link_to 'Purchase Orders List', purchase_orders_path, class: 'slow_link'%></a>
+    </li>
+    <li>
+      <%= link_to 'User Activities', activities_path, class: 'slow_link'%>
+    </li>
+  </ul>
+
 </div>
 
 <p id="notice"><%= notice %></p>

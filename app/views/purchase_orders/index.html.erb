@@ -8,7 +8,14 @@ $(document).ready(function(){
   });
 
   $('#po_table').dataTable({
-      bJQueryUI: true
+      bJQueryUI: true,
+      iDisplayLength: 25
+
+  });
+
+  $('#po_status').on('change', function(){
+      
+      window.location.replace('<%=purchase_orders_path%>/status/' + $(this).val());
   });
 
 });
@@ -18,6 +25,9 @@ $(document).ready(function(){
 
 <h1 id="po_index_title" class="emphasize med_text indented">Purchase Orders</h1>
 
+Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'], @po_status)) %> 
+
+<%=render 'po_status_help' %>
 
 <table id="po_table" class="display">
   <thead>
@@ -69,7 +79,8 @@ $(document).ready(function(){
 <h2 class="emphasize med_text">New Purchase Order</h2>
   <div  class="sub_section">
     <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
-    <%= f.hidden_field :po_date, tabindex: 2%>
+    <%= f.hidden_field :po_date%>
+    <%= f.hidden_field :status%>
     <%= f.submit "Create"%>
   </div>
 

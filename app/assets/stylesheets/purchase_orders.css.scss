@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#po_status {
+	margin-bottom: 1em;
+}
 
 form.new_purchase_order, form.edit_purchase_order {
 	width: 700px;
@@ -41,6 +44,10 @@ div.section {
 		padding: 0em;
 		margin: 0em;
 	}
+}
+
+.purcahse_order_show {
+	margin-top: 1em;
 }
 
 div.contact_person_section {
@@ -182,9 +189,41 @@ div.actions {
 
 #purchase_order_show_deliveries_section {
 	margin-top: 3em;
+	margin-bottom: 2em;
 	clear: both;
 }
 
 #purchase_order_show_notes {
 	width: 70%;
+}
+
+.po_status_section {
+	width: 680px;
+  border-top: 1px dashed grey;
+  border-bottom: 1px dashed grey;
+  padding: 15px;
+    margin-left: -13px;
+  margin-right: -1em;
+  
+  margin-bottom: 1em;
+	span {
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	.PENDING {
+		color: #FFAC01;
+	}
+
+	.CONFIRMED {
+		color: #1786FB;
+	}
+
+	.DELIVERED {
+		color: #007F09;
+	}
+
+	.CANCELLED {
+		color: #FF2525;
+	}
 }

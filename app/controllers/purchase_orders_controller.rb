@@ -5,10 +5,20 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index
-    @purchase_orders = PurchaseOrder.all.order(po_date: :desc)
+    @po_status = params[:status] || 'ALL'
+
+    if @po_status == 'ALL'
+      @purchase_orders = PurchaseOrder.all
+    else
+      @purchase_orders = PurchaseOrder.where(status: params[:status])
+    end
+
+    @purchase_orders.order(po_date: :desc)
+
 
     @new_purchase_order = PurchaseOrder.new
     @new_purchase_order.po_date = Date.today
+    @new_purchase_order.status = 'PENDING'
 
   end
 
@@ -111,7 +121,7 @@ class PurchaseOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:username, :po_date, :supplier_id, :notes, :supplier_name, :grand_total_formatted,
+      params.require(:purchase_order).permit(:status, :username, :po_date, :supplier_id, :notes, :supplier_name, :grand_total_formatted,
         phones_attributes: [:id, :number, :_destroy], 
         purchase_order_contacts_attributes: [:id, :name, :_destroy],
         purchase_items_attributes: 

@@ -31,7 +31,9 @@ EEGM::Application.routes.draw do
   get "purchase_order_contacts/update"
   resources :item_deliveries
 
-  resources :purchase_orders
+  resources :purchase_orders do
+    get 'status/:status' => "purchase_orders#index", on: :collection, as: 'status'
+  end
 
   resources :supplier_items
 
