@@ -5,16 +5,13 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index
-    @po_status = params[:status] || 'ALL'
+    @po_status = params[:status] || 'PENDING'
 
     if @po_status == 'ALL'
-      @purchase_orders = PurchaseOrder.all
+      @purchase_orders = PurchaseOrder.all.order(po_date: :desc)
     else
-      @purchase_orders = PurchaseOrder.where(status: params[:status])
+      @purchase_orders = PurchaseOrder.where(status: @po_status).order(po_date: :desc)
     end
-
-    @purchase_orders.order(po_date: :desc)
-
 
     @new_purchase_order = PurchaseOrder.new
     @new_purchase_order.po_date = Date.today

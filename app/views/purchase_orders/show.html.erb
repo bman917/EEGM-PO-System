@@ -9,7 +9,8 @@ $(document).ready(function(){
 <div class="purcahse_order_show">
   <div class="sub_section po_status_section no-print">
     Status: <span class="<%=@purchase_order.status%>"><%=best_in_place @purchase_order, :status, type: :select,
-                collection: po_statuses %></span>
+                collection: po_statuses,
+                :ok_button => 'Save', :cancel_button => 'Cancel' %></span>
     <%=render 'po_status_help' %>
   </div>
 

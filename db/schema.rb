@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "item_deliveries", ["item_id"], name: "index_item_deliveries_on_item_id"
-  add_index "item_deliveries", ["purchase_order_id"], name: "index_item_deliveries_on_purchase_order_id"
+  add_index "item_deliveries", ["item_id"], name: "index_item_deliveries_on_item_id", using: :btree
+  add_index "item_deliveries", ["purchase_order_id"], name: "index_item_deliveries_on_purchase_order_id", using: :btree
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.string   "unit"
   end
 
-  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id"
-  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id"
+  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id", using: :btree
+  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id", using: :btree
 
   create_table "purchase_order_contacts", force: true do |t|
     t.integer  "purchase_order_id"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id"
+  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id", using: :btree
 
   create_table "purchase_orders", force: true do |t|
     t.integer  "supplier_id"
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.string   "status"
+    t.string   "status",      default: "PENDING"
   end
 
-  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
+  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id", using: :btree
 
   create_table "supplier_items", force: true do |t|
     t.integer  "supplier_id"
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id"
-  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id"
+  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id", using: :btree
+  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id", using: :btree
 
   create_table "suppliers", force: true do |t|
     t.string   "name"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
