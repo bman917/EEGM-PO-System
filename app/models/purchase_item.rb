@@ -7,9 +7,15 @@ class PurchaseItem < ActiveRecord::Base
    validates :item, presence: true
 
    before_update :recalculate_total
+   before_save :recalculate_total
 
    after_save :update_grand_total
    after_destroy :update_grand_total
+
+  def total=(new_price)
+    x = price * quantity if price && quantity
+    write_attribute :total, x
+  end
 
   def price=(new_price)
     write_attribute :price, new_price

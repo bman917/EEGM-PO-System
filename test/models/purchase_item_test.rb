@@ -43,6 +43,22 @@ class PurchaseItemTest < ActiveSupport::TestCase
     assert po.grand_total == 2000, "When Purchase Item is updated, PO grand total should also be updated"
   end
 
+  test "Setting Wrong Total is not followed" do
+
+    po = purchase_orders(:one)
+
+    po_item = po.purchase_items.first
+    po_item.quantity = 20
+    po_item.price = 100
+    po_item.total = 0
+
+    assert po_item.total == 2000, "Purchase Item Price has incorrect total"
+    po_item.save!
+
+    po.reload
+    assert po.grand_total == 2000, "When Purchase Item is updated, PO grand total should also be updated"
+  end
+
   test "Deleting Purchase Item Recalculates PO grand total" do
     po = purchase_orders(:one)
     po_item = po.purchase_items.first
