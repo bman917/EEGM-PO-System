@@ -5,7 +5,7 @@
 	<td>
 		<%=activity.parameters[:details]%>
 	    <% if activity.recipient %>
-	    	<%=link_to "(View)", activity.recipient %>
+	    	<%=link_to "(View)", activity.recipient, class: 'slow_link' %>
 	    <% end %>
 	</td>
 </tr>

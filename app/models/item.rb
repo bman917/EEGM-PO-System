@@ -6,4 +6,16 @@ class Item < ActiveRecord::Base
   	def label
   		self.name
   	end
+
+  	def last_pi
+  		@pi ||= PurchaseItem.last_item(self.id)
+  	end
+
+  	def last_po
+  		if last_pi.class == PurchaseItem
+  			last_pi.purchase_order
+  		else
+  			nil
+  		end
+  	end
 end

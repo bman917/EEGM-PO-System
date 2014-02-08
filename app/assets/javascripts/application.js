@@ -20,6 +20,17 @@
 //= require_tree .
 //= require jquery.number
 
+function application_init() {
+  $('.best_in_place').best_in_place();
+
+  $('a.slow_link').on('click',  function() {
+    $('#content').append("<div class='overlay'></div>");
+    $('#wait_message').toggle();
+    $('#wait_message').addClass('modal');
+  });
+}
+
+
 function addField() {
    time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');

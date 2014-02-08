@@ -50,8 +50,9 @@ EEGM::Application.routes.draw do
   resources :purchase_items do
   end
 
-  get 'purchase_items/last', to: 'purchase_items#last', as: 'partial_last_purchase_item'
-  get 'purchase_items/last/:item_id', to: 'purchase_items#last', as: 'last_purchase_item'
+  get 'latest/price/name', to: 'purchase_items#index', as: 'last_price_purchase_item_name'
+  get 'purchase_item/last', to: 'purchase_items#last', as: 'partial_last_purchase_item'
+  get 'purchase_item/last/:item_id', to: 'purchase_items#last', as: 'last_purchase_item'
 
   get 'supplier/names', to: 'suppliers#names'
   get 'contact/names', to: 'contacts#names'

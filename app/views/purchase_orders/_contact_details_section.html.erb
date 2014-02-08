@@ -2,7 +2,7 @@
   <tr>
 
     <td id="contact_numbers" class="padd_bottom contact_numbers">
-      <h1>Contact Numbers</h1>
+      <strong>Contact Numbers</strong>
       <ul>
         <% @purchase_order.phones.each do | phone | %>
           <%= render phone %>
@@ -21,7 +21,7 @@
     </td>
 
     <td id="contact_persons" class="contact_persons">
-      <h1>Contact Persons</h1>
+      <strong>Contact Persons</strong>
       <ul>
         <% @purchase_order.purchase_order_contacts.each do | purchase_order_contact | %>
             <%= render purchase_order_contact %>

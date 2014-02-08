@@ -6,6 +6,11 @@ class PurchaseItemsController < ApplicationController
   end
 
   def index
+    if params[:name]
+      @purchase_item = PurchaseItem.last_by_item_name(params[:name])
+    end
+
+    @items = Item.all
   end
 
   def new

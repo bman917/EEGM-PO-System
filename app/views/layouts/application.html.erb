@@ -5,8 +5,20 @@
   <%= stylesheet_link_tag    "application", media: "all"%>
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
+
+
+
+
 </head>
 <body id="application_body">
+
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    application_init();
+});
+
+<% end %>
 
 <div class="no-print">
     <% if user_signed_in? %>
@@ -40,6 +52,9 @@
       <%= link_to 'Purchase Orders List', purchase_orders_path, class: 'slow_link'%></a>
     </li>
     <li>
+      <%= link_to 'Price List', purchase_items_path, class: 'slow_link'%>
+    </li>
+    <li>
       <%= link_to 'User Activities', activities_path, class: 'slow_link'%>
     </li>
   </ul>
@@ -51,7 +66,16 @@
 <% if alert %><p id="alert"><%= alert %></p><% end %>
 
 
+<div id="content">
+
+<div id="wait_message" class="hidden">
+  <span>Loading</span>
+  <%=image_tag 'loading.gif', size: "50x50"%>
+</div>
+
 <%= yield %>
+
+</div>
 
 </body>
 </html>

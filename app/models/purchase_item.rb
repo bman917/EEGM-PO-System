@@ -29,6 +29,10 @@ class PurchaseItem < ActiveRecord::Base
     recalculate_total
   end
 
+  def details_item_price
+    "#{price}Php x #{quantity} #{unit}" if item
+  end
+
   def details
     "#{purchase_order.details} Item ##{id}[#{to_s}]"
   end
@@ -71,6 +75,13 @@ class PurchaseItem < ActiveRecord::Base
         description: "Updated PO Item",
         details: "#{purchase_order.details} - Item ##{id}[#{params}]"
       }
+  end
+
+  def self.last_by_item_name(item_name)
+    item = Item.find_by(name: item_name)
+    if item
+      @purchase_item = PurchaseItem.last_item(item.id)
+    end
   end
 
 

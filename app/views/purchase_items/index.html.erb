@@ -1,2 +1,51 @@
-<h1>PurchaseItems#index</h1>
-<p>Find me in app/views/purchase_items/index.html.erb</p>
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    purchase_item_index_init();
+});
+
+<% end %>
+
+<div id="item_search">
+	<strong>Search</strong>
+
+	<%= form_tag last_price_purchase_item_name_path, method: :get do %>
+	<%=text_field_tag :name, nil, placeholder: 'Item Name',
+		data: {autocomplete_source: item_names_path}%><%=submit_tag 'Search'%>
+	<% end %>
+
+	<div id="item_search_results">
+	<% if @purchase_item %>
+		<%=@purchase_item.to_s%>
+		<%=@purchase_item.purchase_order.details%>
+		<%=link_to 'View PO', purchase_order_path(@purchase_item.purchase_order)%>
+	<% end %>
+	</div>
+</div>
+
+<h1 id="po_index_title" class="emphasize med_text indented">Items Price List</h1>
+
+
+<table id="purchase_item_index" class="display">
+  <thead>
+    <tr>
+      <th class="item_name_column">Item Name</th>
+      <th>Price</th>
+      <th>Last PO</th>
+      <th>Quantity</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%=best_in_place(item, :name)%></td>
+        <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%></td>
+        <td><%= item.last_po.details if item.last_po%></td>
+        <td><%= number_with_delimiter(item.last_pi.try(:quantity))%> <%= item.last_pi.try :unit%></td>
+        <td><%= link_to('View PO', purchase_order_path(item.last_po)) if item.last_po %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

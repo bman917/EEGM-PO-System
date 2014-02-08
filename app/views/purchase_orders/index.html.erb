@@ -18,10 +18,15 @@ $(document).ready(function(){
       window.location.replace('<%=purchase_orders_path%>/status/' + $(this).val());
   });
 
+  $('#new_purchase_order').on('submit', function() {
+    $('#new_purchase_order_button').attr("disabled","disabled");
+    $('#new_purchase_order_button').val("Creating PO...");
+    $('#content').append("<div class='overlay'></div>");
+    $('#wait_message').toggle();
+    $('#wait_message').addClass('modal');
+  });
 });
 <% end %>
-
-<div class="section">
 
 <h1 id="po_index_title" class="emphasize med_text indented">Purchase Orders</h1>
 
@@ -44,7 +49,7 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
   <tbody>
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
-        <td class="smaller_column"><%= link_to 'View', purchase_order %></td>
+        <td class="smaller_column"><%= link_to 'View', purchase_order, class: 'slow_link' %></td>
         <td>
           <%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %>
         </td>
@@ -81,8 +86,7 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
     <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
     <%= f.hidden_field :po_date%>
     <%= f.hidden_field :status%>
-    <%= f.submit "Create"%>
+    <%= f.submit "Create", id: 'new_purchase_order_button'%>
   </div>
 
 <% end %>
-</div>
