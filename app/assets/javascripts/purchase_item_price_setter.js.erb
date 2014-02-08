@@ -1,0 +1,16 @@
+<% url = EEGM::Application.routes.url_helpers %>
+
+function set_price(event, ui) {
+	var id = ui.item.id;
+
+	$.ajax({
+		url: '<%=url.partial_last_purchase_item_path%>' + '/' + id,
+		success: assign_price
+	});
+}
+
+function assign_price(result) {
+	$("#purchase_item_quantity").val(result.quantity);
+	$("#purchase_item_unit").val(result.unit);
+	$("#purchase_item_price").val(result.price);
+}

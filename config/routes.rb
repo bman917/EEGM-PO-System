@@ -47,7 +47,11 @@ EEGM::Application.routes.draw do
 
   resources :purchase_order_contacts
 
-  resources :purchase_items
+  resources :purchase_items do
+  end
+
+  get 'purchase_items/last', to: 'purchase_items#last', as: 'partial_last_purchase_item'
+  get 'purchase_items/last/:item_id', to: 'purchase_items#last', as: 'last_purchase_item'
 
   get 'supplier/names', to: 'suppliers#names'
   get 'contact/names', to: 'contacts#names'

@@ -12,6 +12,8 @@ class PurchaseItem < ActiveRecord::Base
    after_save :update_grand_total
    after_destroy :update_grand_total
 
+   scope :last_item, ->(item_id) {where("item_id = ? and price > 0", item_id).last}
+
   def total=(new_price)
     x = price * quantity if price && quantity
     write_attribute :total, x

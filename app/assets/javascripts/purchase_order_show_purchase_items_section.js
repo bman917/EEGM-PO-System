@@ -3,7 +3,8 @@ function init_purchase_order_show_purchase_items_section() {
 	//Auto-Complete for Items
 	$('#purchase_item_item_name').autocomplete({
 	source: $('#purchase_item_item_name').data('autocomplete-source'),
-	minLength: 2
+	minLength: 2,
+	select: set_price
 	});
 
 	//For toggling the Add Purchase Item Form
@@ -18,6 +19,8 @@ function init_purchase_order_show_purchase_items_section() {
 
 	$('#purchase_item_table a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
 }
+
+
 
 function toggle_new_purchase_item_row_form() {
 	$('#show_new_purchase_item_link_row').toggle();

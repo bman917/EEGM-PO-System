@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
   def names
     @items = Item.order(:name).where("name like ?", "%#{params[:term]}%")
-    render json: @items.map(&:name)
+    render json: @items.to_json(methods: :label)
   end
 
   # GET /items/1

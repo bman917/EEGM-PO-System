@@ -1,4 +1,10 @@
 class PurchaseItemsController < ApplicationController
+
+  def last
+    @purchase_item = PurchaseItem.last_item(params[:item_id])
+    render json: @purchase_item.to_json(only: [:price,:unit,:quantity])
+  end
+
   def index
   end
 

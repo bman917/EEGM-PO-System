@@ -1,0 +1,1 @@
+function set_price(i,e){var t=e.item.id;alert("setting price for "+t),$.ajax({url:"/purchase_items/last/"+t,success:assign_price})}function assign_price(i){$("#purchase_item_quantity").val(i.quantity),$("#purchase_item_unit").val(i.unit),$("#purchase_item_price").val(i.price)}
