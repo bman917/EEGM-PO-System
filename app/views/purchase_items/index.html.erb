@@ -18,7 +18,7 @@ $(document).ready(function(){
 	<% if @purchase_item %>
 		<%=@purchase_item.to_s%>
 		<%=@purchase_item.purchase_order.details%>
-		<%=link_to 'View PO', purchase_order_path(@purchase_item.purchase_order)%>
+		<%=link_to 'View PO', purchase_order_path(@purchase_item.purchase_order), class: 'slow_link'%>
 	<% end %>
 	</div>
 </div>
@@ -44,7 +44,10 @@ $(document).ready(function(){
         <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%></td>
         <td><%= item.last_po.details if item.last_po%></td>
         <td><%= number_with_delimiter(item.last_pi.try(:quantity))%> <%= item.last_pi.try :unit%></td>
-        <td><%= link_to('View PO', purchase_order_path(item.last_po)) if item.last_po %></td>
+        <td>
+          <%= link_to('View PO', 
+              purchase_order_path(item.last_po), class: 'slow_link') if item.last_po %>
+        </td>
       </tr>
     <% end %>
   </tbody>
