@@ -69,13 +69,12 @@ $(document).ready(function(){
 <div id="content">
 
 <div id="wait_message" class="hidden">
-  <span>Loading</span>
-  <%=image_tag 'loading.gif', size: "50x50"%>
+  <%=image_tag 'loading.gif', size: "15x15"%>
+  <span>Loading...</span>
 </div>
 
 <%= yield %>
 
 </div>
-
 </body>
 </html>
