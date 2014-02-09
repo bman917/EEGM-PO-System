@@ -15,7 +15,9 @@
   	 </thead>
 	<tbody>
 		<% @activities.each do |activity| %>
+      <% cache(activity) do %>
 			<%=render activity%>
+      <% end %>
 		<% end %>
 	</tbody>
 

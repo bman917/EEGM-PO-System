@@ -1,3 +1,5 @@
+<% cache("#{cache_key_for_purchase_order}-#{@po_status}") do %>
+
 <%=javascript_tag do %>
 
 $(document).ready(function(){
@@ -47,6 +49,7 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
   </thead>
 
   <tbody>
+  
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
         <td class="smaller_column"><%= link_to 'View', purchase_order, class: 'slow_link' %></td>
@@ -60,6 +63,7 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
         </td>
       </tr>
     <% end %>
+  
   </tbody>
 </table>
 
@@ -89,4 +93,5 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
     <%= f.submit "Create", id: 'new_purchase_order_button'%>
   </div>
 
+<% end %>
 <% end %>

@@ -1,3 +1,5 @@
+<% cache(cache_key_for_purchase_item) do %>
+
 <%=javascript_tag do %>
 
 $(document).ready(function(){
@@ -38,6 +40,7 @@ $(document).ready(function(){
   </thead>
 
   <tbody>
+
     <% @items.each do |item| %>
       <tr>
         <td><%=best_in_place(item, :name)%></td>
@@ -50,5 +53,7 @@ $(document).ready(function(){
         </td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
+<% end %>
