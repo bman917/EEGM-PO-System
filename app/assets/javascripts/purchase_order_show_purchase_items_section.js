@@ -22,7 +22,7 @@ function init_purchase_order_show_purchase_items_section() {
 
 
 
-function toggle_new_purchase_item_row_form() {
+function toggle_new_purchase_item_row_form(event) {
 	$('#show_new_purchase_item_link_row').toggle();
 	$('#new_purchase_item_row').toggle();
 	$('#purchase_item_item_name').focus();

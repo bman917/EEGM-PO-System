@@ -34,7 +34,7 @@ function setup() {
 
 }
 
-function keyListeners() {
+function keyListeners(event) {
   var n = 78;
   var p = 80;
   var i = 73

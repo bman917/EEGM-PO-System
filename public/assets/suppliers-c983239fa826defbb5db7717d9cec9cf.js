@@ -1,0 +1,1 @@
+function init(){$("#supplier_name").focus()}function addPhone(e){time=(new Date).getTime(),regexp=new RegExp($(this).data("id"),"g"),$(this).before($(this).data("fields").replace(regexp,time)),e.preventDefault()}function removePhone(e){$(this).prev("input[type=hidden]").val("1"),$(this).closest("fieldset").hide(),e.preventDefault()}

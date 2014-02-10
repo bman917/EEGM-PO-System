@@ -2,7 +2,7 @@ function init() {
 	$('#supplier_name').focus();
 }
 
-function addPhone() {
+function addPhone(event) {
    time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');
     $(this).before($(this).data('fields').replace(regexp, time));

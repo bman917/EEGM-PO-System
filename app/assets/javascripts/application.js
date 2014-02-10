@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.number
+//= require hide_toggler
 
 function application_init() {
   $('.best_in_place').best_in_place();
@@ -31,7 +32,7 @@ function application_init() {
 }
 
 
-function addField() {
+function addField(event) {
    time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');
     $(this).before($(this).data('fields').replace(regexp, time));
@@ -58,13 +59,4 @@ jQuery.fn.add_pending_deletion_class_to_closes_tr_on_click = function() {
         $(this).closest('tr').addClass('pending_deletion');
     });
     return this;
-}
-
-jQuery.fn.hide_toggler = function() {
-
-  this.on('click', function() {
-    $(this).closest('.toggler').slideToggle('fast');
-    event.preventDefault();
-  });
-  return this;
 }

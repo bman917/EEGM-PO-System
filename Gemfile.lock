@@ -7,6 +7,14 @@ GIT
       rails (>= 3.1)
 
 GIT
+  remote: git://github.com/bman917/hide_toggler.git
+  revision: 0b93c0bc004fc52345f92e171021a2f2ea1970da
+  ref: 0b93c0bc004fc52345f92e171021a2f2ea1970da
+  specs:
+    hide_toggler (0.0.1)
+      rails (>= 3.1)
+
+GIT
   remote: git://github.com/jetthoughts/yaml_db.git
   revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
   ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
@@ -189,6 +197,7 @@ DEPENDENCIES
   capistrano-rvm
   coffee-rails (~> 4.0.0)
   devise
+  hide_toggler!
   jbuilder (~> 1.2)
   jquery-datatables-rails
   jquery-rails

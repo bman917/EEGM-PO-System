@@ -21,7 +21,7 @@ function init_purchase_order_show_item_delivery_section() {
 
 }
 
-function toggleDeliverySection() {
+function toggleDeliverySection(event) {
 	$('#add_delivery_link').toggle();
 	$('.deliveries_section').toggle();
 	$('#item_delivery_item_name').focus();
