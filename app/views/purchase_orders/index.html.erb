@@ -16,7 +16,7 @@ $(document).ready(function(){
   });
 
   $('#po_status').on('change', function(){
-      Turbolinks.visit('<%=purchase_orders_path%>/status/' + $(this).val());
+      window.location.href = '<%=purchase_orders_path%>/status/' + $(this).val();
   });
 
   $('#new_purchase_order').on('submit', function() {
