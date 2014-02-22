@@ -1,0 +1,1 @@
+jQuery.fn.auto_complete_item=function(){$(this).autocomplete({source:"/item/names",minLength:2})};

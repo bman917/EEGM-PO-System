@@ -17,7 +17,7 @@
  *= require_tree .
  */
 html {
-  background: #E9E4E4;
+  background: #E9E9E9;
   height: 100%;
 }
  body#application_body {
@@ -120,4 +120,8 @@ ul.ui-autocomplete {
 
 .toggler_parent {
   display: inline;
+}
+
+.session_info {
+  margin-left: 1em;
 }
