@@ -18,6 +18,12 @@ function init_purchase_order_show_purchase_items_section() {
 	$('#new_purchase_item').on('submit',addingNewPurchaseItem);
 
 	$('#purchase_item_table a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
+
+	$('.items_section .best_in_place').bind("ajax:success", recalculate_total);
+}
+
+function recalculate_total() {
+	
 }
 
 

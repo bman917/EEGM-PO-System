@@ -17,8 +17,8 @@ EEGM::Application.routes.draw do
   end
 
 
-
-
+  get "purchase_orders/update_purchase_items" => 'purchase_orders#update_purchase_items', as: 'partial_update_purchase_items'
+  get "purchase_orders/update_purchase_items/:item_delivery_id" => 'purchase_orders#update_purchase_items', as: 'update_purchase_items'
   get "purchase_items/index"
   get "purchase_items/new"
   get "purchase_items/create"

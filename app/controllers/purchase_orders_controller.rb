@@ -2,6 +2,17 @@ class PurchaseOrdersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_purchase_order, only: [:print, :show, :edit, :update, :destroy]
 
+  def update_purchase_items
+    item_delivery_id = params[:item_delivery_id]
+    if item_delivery_id
+      @item_delivery = ItemDelivery.find(item_delivery_id)
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index

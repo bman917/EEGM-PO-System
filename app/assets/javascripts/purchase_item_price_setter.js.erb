@@ -27,3 +27,14 @@ function set_delivery_details(event, ui) {
 		}
 	});
 }
+
+function update_item() {
+	var str = $(this).closest('tr').attr('id');
+	var id = parseInt(str.match(/\d+/),10)
+
+	$.ajax({
+		dataType: 'script',
+		url: '<%=url.partial_update_purchase_items_path%>' + '/' + id
+	});
+
+}

@@ -46,7 +46,7 @@ class ItemDeliveriesController < ApplicationController
       if @item_delivery.update(item_delivery_params)
         @item_delivery.record_activity(:update, current_user, "Updated PO Delivery")
         format.html { redirect_to @item_delivery, notice: 'Item delivery was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip @item_delivery }
       else
         format.html { render action: 'edit' }
         format.json { render json: @item_delivery.errors, status: :unprocessable_entity }

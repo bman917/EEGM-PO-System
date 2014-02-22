@@ -13,6 +13,10 @@ class PurchaseItemsController < ApplicationController
     @items = Item.all
   end
 
+  def show
+    @purchase_item = PurchaseItem.find(params[:id])
+  end
+
   def new
   end
 
