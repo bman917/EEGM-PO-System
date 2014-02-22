@@ -17,17 +17,22 @@
  *= require_tree .
  */
 html {
-  background: #E9E9E9;
+  background: white;
   height: 100%;
+  
+
 }
  body#application_body {
   margin: auto;
   max-width: 1400px;
-height: 100%;
+  height: 100%;
+
+
  }
 
  #content {
   margin: 1.5em 1.5em auto;
+  background: white;
 
  }
 
