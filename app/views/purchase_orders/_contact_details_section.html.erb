@@ -1,14 +1,14 @@
 <table class="contact_details">
   <tr>
 
-    <td id="contact_numbers" class="padd_bottom contact_numbers">
+    <td id="contact_numbers" class="padd_bottom contact_numbers wip">
       <strong>Contact Numbers</strong>
-      <ul>
+      <ul class='wic'>
         <% @purchase_order.phones.each do | phone | %>
           <%= render phone %>
         <% end %>
       </ul>
-      <div class="no-print">
+      <div class="no-print toggler">
         <%=link_to 'Add', '', id: 'contact_detail_section_add_phone_link', class: 'add_fields no-print'%>
         <%= form_for(@new_phone, remote: true) do |f| %>
               <%= f.text_field :number, class: "contact_numbers" ,data: {autocomplete_source: phone_numbers_path} %>
@@ -20,14 +20,14 @@
       </div>
     </td>
 
-    <td id="contact_persons" class="contact_persons">
+    <td id="contact_persons" class="contact_persons wip">
       <strong>Contact Persons</strong>
-      <ul>
+      <ul class="wic">
         <% @purchase_order.purchase_order_contacts.each do | purchase_order_contact | %>
             <%= render purchase_order_contact %>
         <% end %>
       </ul>
-        <div class="no-print">
+        <div class="no-print toggler">
           <%=link_to 'Add', '', id: 'add_contact_person_link', class: 'add_fields no-print'%>
           <%= form_for(@new_purchase_order_contact, remote: true) do |f| %>
                 <%= f.text_field :name, class: "contact_persons" ,data: {autocomplete_source: contact_names_path} %>
