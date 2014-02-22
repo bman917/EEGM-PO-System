@@ -1,0 +1,9 @@
+<% url = EEGM::Application.routes.url_helpers %>
+
+jQuery.fn.auto_complete_item = function () {
+
+    $(this).autocomplete({
+      source: '<%=url.item_names_path%>',
+      minLength: 2
+    });
+}

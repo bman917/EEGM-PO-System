@@ -1,4 +1,4 @@
-<% cache("#{cache_key_for_purchase_order}-#{@po_status}") do %>
+<% cache("#{cache_key_for_purchase_order}-#{@po_status}-#{@item_name}") do %>
 
 <%=javascript_tag do %>
 
@@ -16,8 +16,7 @@ $(document).ready(function(){
   });
 
   $('#po_status').on('change', function(){
-      
-      window.location.replace('<%=purchase_orders_path%>/status/' + $(this).val());
+      Turbolinks.visit('<%=purchase_orders_path%>/status/' + $(this).val());
   });
 
   $('#new_purchase_order').on('submit', function() {
@@ -27,15 +26,32 @@ $(document).ready(function(){
     $('#wait_message').toggle();
     $('#wait_message').addClass('modal');
   });
+
+  $('#item_name').auto_complete_item();
+
 });
 <% end %>
 
 <h1 id="po_index_title" class="emphasize med_text indented">Purchase Orders</h1>
 
-Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'], @po_status)) %> 
+<div id='controls'>
+<strong>Filters:</strong>
+<%=label_tag 'Status'%>
+<% po_statuses.each do |status| %>
+<%=link_to status[0], status_purchase_orders_path(status[0]), id: "#{status[0]}", class: 'hidden' %>
+<% end %>
 
-<%=render 'po_status_help' %>
+<%=form_tag(purchase_orders_path, method: 'get', id:'item_filter') do %>
 
+ <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'], @po_status)) %> 
+
+  <%=label_tag 'Item'%>
+  <%=text_field_tag :item_name, @item_name %>
+  <%= submit_tag "Go", :id => "submit", :name => "submit", :class => "form_submit", :disabled => false, :disable_with => "Please wait..." %>
+<% end %>
+  <%= link_to 'Show All', status_purchase_orders_path('ALL'), id: 'ALL' %>
+
+</div>
 <table id="po_table" class="display">
   <thead>
     <tr>

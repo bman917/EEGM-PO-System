@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#controls {
+	margin: 1em;
+	label {
+		margin-left: 1em;
+	}
+	form, a {
+		display: inline;
+	}
+	a {
+		margin-left: .5em;
+		
+	}
+
+	a.hidden {
+		display: none;
+	}
+}
 
 #po_status {
 	margin-bottom: 1em;
