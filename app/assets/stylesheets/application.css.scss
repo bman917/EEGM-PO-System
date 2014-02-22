@@ -18,11 +18,12 @@
  */
 html {
   background: #E9E4E4;
+  height: 100%;
 }
  body#application_body {
   margin: auto;
-  
   max-width: 1400px;
+height: 100%;
  }
 
  #content {
@@ -78,7 +79,6 @@ ul.ui-autocomplete {
 }
 .header_store_contact_details {
   width: 30em;
-  margin-right: 1em;
   float: right;
   text-align: right;
   span {
