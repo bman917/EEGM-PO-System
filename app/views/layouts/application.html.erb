@@ -50,13 +50,13 @@ $(document).ready(function(){
 <div id="navigation" class="no-print">
   <ul id="menu">
     <li>
-      <%= link_to 'Purchase Orders List', purchase_orders_path, class: 'slow_link'%></a>
+      <%= link_to 'Purchase Orders List', purchase_orders_path%></a>
     </li>
     <li>
-      <%= link_to 'Price List', purchase_items_path, class: 'slow_link'%>
+      <%= link_to 'Price List', purchase_items_path%>
     </li>
     <li>
-      <%= link_to 'User Activities', activities_path, class: 'slow_link'%>
+      <%= link_to 'User Activities', activities_path%>
     </li>
   </ul>
 
@@ -70,8 +70,8 @@ $(document).ready(function(){
 <div id="content">
 
 <div id="wait_message" class="hidden">
-  <%=image_tag 'loading.gif', size: "15x15"%>
-  <span>Loading...</span>
+  
+  <%=image_tag 'loading_bar.gif', size: "125x20"%>
 </div>
 
 <%= yield %>

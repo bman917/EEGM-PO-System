@@ -15,7 +15,7 @@
   </td>
   <td><%=number_with_delimiter purchase_item.total%></td>
   <td class="notes_column"><%= best_in_place purchase_item, :note%></td>
-  <td>
+  <td id="<%=purchase_item.item.css_id%>" class="no-print">
     <%=purchase_item.count_delivery_item()%>
   </td>
   <td class="no-print">

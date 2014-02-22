@@ -16,7 +16,9 @@ $(document).ready(function(){
   });
 
   $('#po_status').on('change', function(){
-      window.location.href = '<%=purchase_orders_path%>/status/' + $(this).val();
+      var p = '<%=purchase_orders_path%>/status/' + $(this).val();
+      <!-- window.location.href = '<%=purchase_orders_path%>/status/' + $(this).val(); -->
+      Turbolinks.visit(p);
   });
 
   $('#new_purchase_order').on('submit', function() {
@@ -68,7 +70,7 @@ $(document).ready(function(){
   
     <% @purchase_orders.each do |purchase_order| %>
       <tr>
-        <td class="smaller_column"><%= link_to 'View', purchase_order, class: 'slow_link' %></td>
+        <td class="smaller_column"><%= link_to 'View', purchase_order%></td>
         <td>
           <%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %>
         </td>

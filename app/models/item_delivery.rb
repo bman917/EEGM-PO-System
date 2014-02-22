@@ -4,6 +4,14 @@ include PublicActivity::Common
   belongs_to :item
   belongs_to :purchase_order
 
+  def delivery_complete?
+    purchase_order.completed?(item)
+  end
+
+  def delivery_count
+    purchase_order.count_delivery_item(item) if purchase_order
+  end
+
   def date_received_long
   	date_recieved.to_time.to_s(:long)
   end

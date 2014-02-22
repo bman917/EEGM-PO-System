@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html id="print">
+<head>
+  <title>EEGM</title>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "application"%>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+ <div class="header">
+
+    <%=image_tag "EEGM.png", class: "logo"%> 
+    <%=image_tag "ESS.png", class: "logo"%> 
+
+      <div class="float_right">
+        #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
+        <span class="highlight">ENGSHOESUPPLY@GMAIL.COM</span>
+      <div class="header_store_contact_details">
+        <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
+      </div>
+
+      </div>
+</div>
+
+<%= render 'show'%>
+
+</body>
+</html>

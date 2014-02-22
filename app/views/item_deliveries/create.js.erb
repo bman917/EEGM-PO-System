@@ -5,3 +5,4 @@ initItemDeliveryDate();
 $('#new_item_delivery_row').after("<%= j render @item_delivery%>");
 $('.adding_item_delivery:first').remove();
 $('#item_delivery_<%=@item_delivery.id%> a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
+<%=render 'item_delivery_count', item_delivery: @item_delivery%>

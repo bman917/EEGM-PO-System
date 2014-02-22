@@ -1,0 +1,6 @@
+$('#<%=item_delivery.item.css_id%>').html('<%=item_delivery.delivery_count%>').closest('tr').effect("highlight");
+<% if item_delivery.delivery_complete? %>
+	$('#<%=item_delivery.item.css_id%>').html('<%=item_delivery.delivery_count%>').closest('tr').addClass("completed");
+<% else %>
+	$('#<%=item_delivery.item.css_id%>').html('<%=item_delivery.delivery_count%>').closest('tr').removeClass("completed");
+<% end %>

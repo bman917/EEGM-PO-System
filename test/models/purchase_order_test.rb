@@ -28,6 +28,30 @@ class PurchaseOrderTest < ActiveSupport::TestCase
     assert Item.exists?(item.id) == true
   end
 
+  test "Testing checking if delivery is complete" do
+    po = PurchaseOrder.new(supplier_name: 'Jolibee')
+    po.save!
+
+    yum = po.purchase_items.create(item_name: 'Yum', price: '100', quantity: '10')
+
+    assert po.completed?(yum) == false, 'Delivery is not yet complete'
+
+    d1 = po.item_deliveries.create(item_name: 'Yum', quantity: 10)
+
+    assert po.completed?(yum) == true, 'Delivery should be complete'    
+
+  end
+
+  test "Couting of ordered items" do
+    po = PurchaseOrder.new(supplier_name: 'Jolibee')
+    po.save!
+
+    yum = po.purchase_items.create(item_name: 'Yum', price: '100', quantity: '10')
+
+    assert po.count_item_order(yum) == 10, 'Ordered Yum items should be 10'
+
+  end
+
   test "Couting of delivery items" do
     po = PurchaseOrder.new(supplier_name: 'Jolibee')
     po.save!

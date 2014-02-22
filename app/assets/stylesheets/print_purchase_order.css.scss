@@ -1,0 +1,28 @@
+#print {
+
+	width: 700px;
+	margin: 1em 1em auto;
+
+	body {
+
+	}
+
+	.add_fields, .remove_fields , .purcahse_order_show .po_status_section {
+		display: none;
+	}
+
+	#purchase_item_table .completed {
+		background-color: white;
+	}
+
+	#purchase_order_show_notes span {
+		display: none;
+	}
+
+	.no-print {
+		display: none;
+	}
+
+
+
+}

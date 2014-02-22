@@ -2,7 +2,8 @@ function init_purchase_order_show_item_delivery_section() {
 
 	$('#item_delivery_item_name').autocomplete({
 	source: $('#item_delivery_item_name').data('autocomplete-source'),
-	minLength: 2
+	minLength: 2,
+	select: set_delivery_details
 	});
 
 	$('#item_delivery_date_recieved').datepicker();

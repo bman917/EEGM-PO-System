@@ -33,6 +33,7 @@ EEGM::Application.routes.draw do
 
   resources :purchase_orders do
     get 'status/:po_status' => "purchase_orders#index", on: :collection, as: 'status'
+    get 'print' => 'purchase_orders#print', on: :member
   end
 
   resources :supplier_items

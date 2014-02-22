@@ -1,3 +1,4 @@
+<%=render 'item_delivery_count', item_delivery: @item_delivery%>
 $('#item_delivery_<%=@item_delivery_id%>').fadeOut('slow', function(){
         $(this).remove();
 });

@@ -1,0 +1,55 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    purchaseOrderShowInit();
+});
+
+<% end %>
+
+<div class="purcahse_order_show">
+  <div class="sub_section po_status_section no-print">
+    Status: <span class="<%=@purchase_order.status%>"><%=best_in_place @purchase_order, :status, type: :select,
+                collection: po_statuses,
+                :ok_button => 'Save', :cancel_button => 'Cancel' %></span>
+    <%=render 'po_status_help' %>
+  </div>
+
+  <div class="sub_section">
+    <div class="float_right">
+      <%= best_in_place @purchase_order, :po_date, :type => :date, 
+          :display_as => :po_date_long_format%>
+    </div>
+    <div>Purchase Order: E.Estanislao General Merchandize</div>
+  </div>
+
+  <div class="sub_section">
+
+    <div class="float_right">
+      <strong> Purchase Order </strong>
+      <h2 class="emphasize med_text">#<%= sprintf '%07d', @purchase_order.id %></h2>
+    </div>
+
+    <div>
+      <strong>Order To:</strong>
+      <h2 class="emphasize med_text"><%= @purchase_order.supplier %></h2>
+    </div>
+  </div>
+
+    <%=render 'contact_details_section'%>
+
+    <%=render 'purchase_item_section'%>
+
+      <table id="purchase_order_show_footer">
+        <tr>
+          <td id="purchase_order_show_notes">
+                <strong>Notes:</strong>
+                <span class="smaller no-print">(click below to edit)</span>
+                </br>
+                <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
+          </td>
+          <td id="created_by">
+              Created by: <%=@purchase_order.username || "Not Recorded" %>
+          </td>
+
+        </tr>
+      </table>

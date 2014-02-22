@@ -1,6 +1,6 @@
 class PurchaseOrdersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_purchase_order, only: [:print, :show, :edit, :update, :destroy]
 
   # GET /purchase_orders
   # GET /purchase_orders.json
@@ -37,9 +37,14 @@ class PurchaseOrdersController < ApplicationController
     @new_phone = Phone.new(contact_detail_type: @purchase_order.class, contact_detail_id: @purchase_order.id)
 
     @new_purchase_item = PurchaseItem.new(purchase_order: @purchase_order)
-
-
   end
+
+  def print
+    show
+
+    render layout: false
+  end
+
 
   # GET /purchase_orders/new
   def new

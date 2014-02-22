@@ -19,8 +19,24 @@ class PurchaseOrder < ActiveRecord::Base
 
   validates :supplier, presence: true
 
+  def completed?(item)
+    count_delivery_item(item) >= count_item_order(item)
+  end
+
+  def count_item_order(item)
+    if purchase_items
+      purchase_items.where(item: item).sum(:quantity)
+    else
+      0
+    end
+  end
+
   def count_delivery_item(item)
-    item_deliveries.where(item: item).sum(:quantity)
+    if item_deliveries
+      item_deliveries.where(item: item).sum(:quantity)
+    else
+      0
+    end
   end
 
   def po_id

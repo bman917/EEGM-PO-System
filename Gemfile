@@ -70,5 +70,5 @@ group :development do
 	gem 'capistrano-rvm'
 end
 
-#gem 'hide_toggler', :path => '/home/jchan/work/hide_toggler'
+# gem 'hide_toggler', :path => '/home/jchan/work/hide_toggler'
 gem 'hide_toggler', github: 'bman917/hide_toggler'
