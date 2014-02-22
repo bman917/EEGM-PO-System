@@ -13,3 +13,10 @@ two:
   quantity: 1
   unit: MyString
   date_recieved: 2014-01-15 00:26:27
+
+three:
+  item_id: 2
+  purchase_order_id: 2
+  quantity: 1
+  unit: MyString
+  date_recieved: 2014-01-15 00:26:27

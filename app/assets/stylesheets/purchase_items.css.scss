@@ -41,6 +41,10 @@
 	text-align: right;
 	border: 0;
 	}
+
+	tr.completed {
+		background: #6EFF6E;
+	}
 }
 
 .item_name_column {

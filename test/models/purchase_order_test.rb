@@ -27,4 +27,18 @@ class PurchaseOrderTest < ActiveSupport::TestCase
 
     assert Item.exists?(item.id) == true
   end
+
+  test "Couting of delivery items" do
+    po = PurchaseOrder.new(supplier_name: 'Jolibee')
+    po.save!
+
+    yum = po.purchase_items.create(item_name: 'Yum', price: '100', quantity: '10')
+
+    puts "#{yum.to_s} - #{yum.total}"
+
+    d1 = po.item_deliveries.create(item_name: 'Yum', quantity: 10)
+    d2 = po.item_deliveries.create(item_name: 'Yum', quantity: 10)
+
+    assert po.count_delivery_item(yum) == 20, "There should be 20 yum deliveries."
+  end
 end

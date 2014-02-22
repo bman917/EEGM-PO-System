@@ -4,6 +4,8 @@ class PurchaseItem < ActiveRecord::Base
   belongs_to :item
   belongs_to :purchase_order
 
+  has_many :item_deliveries, through: :purchase_order
+
    validates :item, presence: true
 
    before_update :recalculate_total
@@ -13,6 +15,16 @@ class PurchaseItem < ActiveRecord::Base
    after_destroy :update_grand_total
 
    scope :last_item, ->(item_id) {where("item_id = ? and price > 0", item_id).last}
+
+  def delivery_complete
+    if quantity && count_delivery_item
+      count_delivery_item >= quantity
+    end
+  end
+
+  def count_delivery_item
+    purchase_order.count_delivery_item(item) || 0
+  end
 
   def total=(new_price)
     x = price * quantity if price && quantity

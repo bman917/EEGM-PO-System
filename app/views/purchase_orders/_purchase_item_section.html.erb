@@ -8,6 +8,7 @@
         <th>Price</th>
         <th>Total</th>
         <th>Notes</th>
+        <th class="smaller">Delivered</th>
         <th id="items_blank_th" class="no-print"></th>
 
       </tr>
@@ -34,6 +35,7 @@
                 <%= f.text_field :note%>
                 <%= f.hidden_field :purchase_order_id %>
               </td>
+              <td></td>
               <td>
                 <%= f.submit "Add", id: 'add_contact_number_submit' %>
                 <%= link_to 'Hide', '', id: "hide_new_purchase_item_link", class:"button_link" %>

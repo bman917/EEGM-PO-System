@@ -1,4 +1,6 @@
-<tr id="purchase_item_<%=purchase_item.id%>">
+<tr id="purchase_item_<%=purchase_item.id%>" <%="class=completed" if purchase_item.delivery_complete %>
+>
+
   <td class="item_name"><%=purchase_item.item.name%></td>
   
   <td class="item_quantity_column">
@@ -13,6 +15,9 @@
   </td>
   <td><%=number_with_delimiter purchase_item.total%></td>
   <td class="notes_column"><%= best_in_place purchase_item, :note%></td>
+  <td>
+    <%=purchase_item.count_delivery_item()%>
+  </td>
   <td class="no-print">
 	<%=link_to 'X', purchase_item, remote: true, method: :delete, class: "remove_fields no-print", data: {confirm: "Delete '#{purchase_item.to_s}'?"} %>
 </td>

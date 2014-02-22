@@ -19,6 +19,10 @@ class PurchaseOrder < ActiveRecord::Base
 
   validates :supplier, presence: true
 
+  def count_delivery_item(item)
+    item_deliveries.where(item: item).sum(:quantity)
+  end
+
   def po_id
     sprintf('%07d', id)
   end
