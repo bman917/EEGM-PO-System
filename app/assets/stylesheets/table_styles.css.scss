@@ -15,14 +15,17 @@ table#items_input_table {
 
 
 #po_table {
-	width: 700px;
+	// width: 700px;
 	td {
 		font-size: .95em;
 	}
-	.description_column {
+	.desc {
 		font-size: .75em;
 		text-align: left;
-		width: 25em;
+		
+	}
+	.name {
+		width: 25%;
 	}
 }
 
@@ -34,6 +37,10 @@ table#items_input_table {
 .smaller_column {
 	width: 3em;
 	font-size: .9em;
+}
+
+.x {
+	width: 1em;
 }
 
 #po_index_title {

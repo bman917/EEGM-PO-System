@@ -16,11 +16,18 @@
  *= require_self
  *= require_tree .
  */
-
+html {
+  background: #E9E4E4;
+}
  body#application_body {
-  margin: 1.5em;
-  margin-top: .25em;
-  width: 700px;
+  margin: auto;
+  
+  max-width: 1400px;
+ }
+
+ #content {
+  margin: 1.5em 1.5em auto;
+
  }
 
 .ui-helper-hidden-accessible { 
@@ -59,7 +66,7 @@ ul.ui-autocomplete {
 .header {
   margin-top: 1em;
   font: .25em;
-  margin-left: -1em;
+  // margin-left: -1em;
   height: 5.75em;
   margin-bottom: .25em;
   border-bottom: 2px solid black;
@@ -96,8 +103,8 @@ ul.ui-autocomplete {
   
   background: #FFFFE9;
 
-  margin-left: -13px;
-  margin-right: -1em;
+  // margin-left: -13px;
+  // margin-right: -1em;
   
   margin-bottom: 1em;
 }

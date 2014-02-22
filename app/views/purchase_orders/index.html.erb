@@ -39,12 +39,12 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
 <table id="po_table" class="display">
   <thead>
     <tr>
-      <th>&nbsp;</th>
+      <th class="smaller_column">&nbsp;</th>
       <th class="small_column">Order Date</th>
-      <th>Supplier</th>
-      <th>Total</th>
-      <th>Description</th>
-      <th>&nbsp;</th>
+      <th class="name">Supplier</th>
+      <th class="small_column">Total</th>
+      <th class="desc">Description</th>
+      <th class="x">&nbsp;</th>
     </tr>
   </thead>
 
@@ -57,9 +57,9 @@ Filter: <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRM
           <%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %>
         </td>
         <td><%= purchase_order.supplier %></td>
-        <td class="small_column"><%= purchase_order.grand_total_formatted %></td>
-        <td class="description_column"><%= truncate purchase_order.items_description, length: 70 %></td>
-        <td><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: "Delete PO for '#{purchase_order.supplier_name}'?" } %>
+        <td><%= purchase_order.grand_total_formatted %></td>
+        <td class="desc"><%= truncate purchase_order.items_description, length: 70 %></td>
+        <td class='x'><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: "Delete PO for '#{purchase_order.supplier_name}'?" } %>
         </td>
       </tr>
     <% end %>
