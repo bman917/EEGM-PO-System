@@ -6,7 +6,7 @@ item in auto complete dropdown
 */
 function set_price(event, ui) {
 	var id = ui.item.id;
-	alert('x');
+
 	$.ajax({
 		url: '<%=url.partial_last_purchase_item_path%>' + '/' + id,
 		success: assign_price
