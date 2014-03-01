@@ -16,6 +16,10 @@ class PurchaseItem < ActiveRecord::Base
 
    scope :last_item, ->(item_id) {where("item_id = ? and price > 0", item_id).last}
 
+   def total_css_id
+     "purchase_item_#{id}_total"
+   end
+
   def delivery_complete
     if quantity && count_delivery_item
       count_delivery_item >= quantity

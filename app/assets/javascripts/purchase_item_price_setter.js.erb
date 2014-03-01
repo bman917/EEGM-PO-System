@@ -1,8 +1,12 @@
 <% url = EEGM::Application.routes.url_helpers %>
 
+/*
+Used by autocomplete. Assigns price based on the selected 
+item in auto complete dropdown
+*/
 function set_price(event, ui) {
 	var id = ui.item.id;
-
+	alert('x');
 	$.ajax({
 		url: '<%=url.partial_last_purchase_item_path%>' + '/' + id,
 		success: assign_price
@@ -15,6 +19,10 @@ function assign_price(result) {
 	$("#purchase_item_price").val(result.price);
 }
 
+/*
+Used by autocomplete. Assigns unit and quantity based on the selected 
+item in auto complete dropdown
+*/
 function set_delivery_details(event, ui) {
 
 	var id = ui.item.id;
@@ -28,6 +36,10 @@ function set_delivery_details(event, ui) {
 	});
 }
 
+/*
+This is binded to .best_in_place ajax:success. Updates the
+purchase item delivery quantity
+*/
 function update_item() {
 	var str = $(this).closest('tr').attr('id');
 	var id = parseInt(str.match(/\d+/),10)
@@ -37,4 +49,14 @@ function update_item() {
 		url: '<%=url.partial_update_purchase_items_path%>' + '/' + id
 	});
 
+}
+
+function reload_item() {
+	var str = $(this).closest('tr').attr('id');
+	var id = parseInt(str.match(/\d+/),10)
+
+	$.ajax({
+		dataType: 'script',
+		url: '<%=url.partial_reload_purchase_item_path%>' + '/' + id
+	});	
 }

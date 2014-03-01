@@ -72,3 +72,4 @@ end
 
 # gem 'hide_toggler', :path => '/home/jchan/work/hide_toggler'
 gem 'hide_toggler', github: 'bman917/hide_toggler'
+gem 'common_assets', github: 'bman917/common_assets'

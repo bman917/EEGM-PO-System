@@ -16,6 +16,8 @@ EEGM::Application.routes.draw do
       end
   end
 
+  get "purchase_orders/reload_purchase_item/:purchase_item_id" => 'purchase_orders#reload_purchase_item', as: 'reload_purchase_item'
+  get "purchase_orders/reload_purchase_item" => 'purchase_orders#reload_purchase_item', as: 'partial_reload_purchase_item'
 
   get "purchase_orders/update_purchase_items" => 'purchase_orders#update_purchase_items', as: 'partial_update_purchase_items'
   get "purchase_orders/update_purchase_items/:item_delivery_id" => 'purchase_orders#update_purchase_items', as: 'update_purchase_items'

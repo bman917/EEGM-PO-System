@@ -23,6 +23,17 @@
 		display: none;
 	}
 
+	.best_in_place {
+		cursor: default;
+		padding-right: 0;
+	}
+
+	.best_in_place:hover {
+  		padding-right: 0;
+  		background: white;
+  		background-color: white;
+	}
+
 
 
 }

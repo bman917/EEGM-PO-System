@@ -1,0 +1,7 @@
+$('#<%=@purchase_item.total_css_id%>').html('<%=number_with_delimiter @purchase_item.total%>').closest('tr').effect("highlight");
+<% if @purchase_item.delivery_complete %>
+	$('#<%=@purchase_item.item.css_id%>').html('<%=@purchase_item.count_delivery_item%>').closest('tr').addClass("completed");
+<% else %>
+	$('#<%=@purchase_item.item.css_id%>').html('<%=@purchase_item.count_delivery_item%>').closest('tr').removeClass("completed");
+<% end %>
+$('#grand_total').html('<%=number_with_delimiter @purchase_item.purchase_order.grand_total%>').effect("highlight");

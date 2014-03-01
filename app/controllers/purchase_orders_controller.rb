@@ -2,6 +2,18 @@ class PurchaseOrdersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_purchase_order, only: [:print, :show, :edit, :update, :destroy]
 
+  def reload_purchase_item
+    purchase_item_id = params[:purchase_item_id]
+    if purchase_item_id
+      @purchase_item = PurchaseItem.find(purchase_item_id)
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   def update_purchase_items
     item_delivery_id = params[:item_delivery_id]
     if item_delivery_id

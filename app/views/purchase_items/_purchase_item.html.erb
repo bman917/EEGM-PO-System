@@ -13,7 +13,7 @@
   <td>
   	<%= best_in_place purchase_item, :price, display_with: :number_with_delimiter%>
   </td>
-  <td><%=number_with_delimiter purchase_item.total%></td>
+  <td id="<%=purchase_item.total_css_id%>"><%=number_with_delimiter purchase_item.total%></td>
   <td class="notes_column"><%= best_in_place purchase_item, :note%></td>
   <td id="<%=purchase_item.item.css_id%>" class="no-print">
     <%=purchase_item.count_delivery_item()%>

@@ -7,6 +7,13 @@ GIT
       rails (>= 3.1)
 
 GIT
+  remote: git://github.com/bman917/common_assets.git
+  revision: b0e767cd8491b635d48fee88401c12667ee41feb
+  specs:
+    common_assets (0.0.2)
+      rails (>= 3.1)
+
+GIT
   remote: git://github.com/bman917/hide_toggler.git
   revision: f01ebaf06a7c3de00fefa6e2e761baa7f3261824
   specs:
@@ -195,6 +202,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   coffee-rails (~> 4.0.0)
+  common_assets!
   devise
   hide_toggler!
   jbuilder (~> 1.2)
