@@ -11,6 +11,14 @@ function purchaseOrderShowInit() {
 	   update_item function which dos an ajax call to get the latest 
 	   delivery item count */
 	$('.deliveries_section .best_in_place').bind("ajax:success", update_item);
+
+	$(document).keyup(escListener);
 }
 
-
+function escListener(event) {
+  var esc = 27;
+  if (event.keyCode == esc) {
+    // $('#hide_new_purchase_item_link').click();
+    toggle_new_purchase_item_row_form(event);
+  }
+}
