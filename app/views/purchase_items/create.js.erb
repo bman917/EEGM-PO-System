@@ -5,4 +5,5 @@ $('#purchase_item_item_name').focus();
 $('#grand_total').text('<%=@purchase_item.purchase_order.grand_total%>');
 $('#grand_total').number(true, 2);
 $('.adding_purchase_item:first').remove();
-$('#purchase_item_<%=@purchase_item.id%> a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
+$('#<%=@purchase_item.css_id%> a.remove_fields').add_pending_deletion_class_to_closes_tr_on_click();
+$('#<%=@purchase_item.css_id%> .best_in_place').bind("ajax:success", reload_item);

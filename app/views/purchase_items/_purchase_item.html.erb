@@ -1,4 +1,4 @@
-<tr id="purchase_item_<%=purchase_item.id%>" <%="class=completed" if purchase_item.delivery_complete %>
+<tr id="<%=purchase_item.css_id%>" <%="class=completed" if purchase_item.delivery_complete %>
 >
 
   <td class="item_name"><%=purchase_item.item.name%></td>
