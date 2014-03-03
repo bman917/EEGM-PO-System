@@ -6,7 +6,7 @@ class PurchaseItem < ActiveRecord::Base
 
   has_many :item_deliveries, through: :purchase_order
 
-   validates :item, presence: true
+   validates :item, presence: {message: "name is blank"}
 
    before_update :recalculate_total
    before_save :recalculate_total

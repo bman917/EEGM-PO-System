@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class PurchaseItemTest < ActiveSupport::TestCase
+
+  test "Do note save Purchase Items with blank names" do
+    pi = PurchaseItem.new
+    assert !pi.save, "Do note save Purchase Items with blank names"
+  end
+
   test "Adding Purchase Item to Purchase Order" do
      goma1 = items(:one)
 
@@ -72,4 +78,5 @@ class PurchaseItemTest < ActiveSupport::TestCase
     assert po.grand_total == 0, "When Purchase Item is delete, PO grand total should also be updated"    
 
   end
+
 end

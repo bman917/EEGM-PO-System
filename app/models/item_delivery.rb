@@ -4,6 +4,8 @@ include PublicActivity::Common
   belongs_to :item
   belongs_to :purchase_order
 
+  validates :item, presence: {message: "does not exist."}
+
   def delivery_complete?
     purchase_order.completed?(item)
   end
@@ -33,7 +35,11 @@ include PublicActivity::Common
   end
 
   def item_name=(name)
-  	self.item = Item.find_by(name: name) if name
+  	# self.item = Item.find_by(name: name) if name
+    self.item = Item.where("lower(name) = ?", name.downcase).first if name
+    # if name
+    #   self.item Item.find(:name, :conditions => ["lower(name) = ?", name.downcase])
+    # end
   end
 
   def record_activity(action, current_user, description)

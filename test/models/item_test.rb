@@ -23,4 +23,12 @@ class ItemTest < ActiveSupport::TestCase
 
      assert true
    end
+
+   test "Item name should be unique" do
+      item1 = Item.new(name: 'Coke')
+      item1.save!
+
+      item2 = Item.new(name: 'Coke')
+      assert !item2.save, "Duplicate Item should not be saved."
+   end
 end

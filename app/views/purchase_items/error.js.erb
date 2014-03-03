@@ -1,0 +1,14 @@
+$('.adding_purchase_item:first').remove();
+
+var errors = "";
+<% @purchase_item.errors.full_messages.each do | error | %>
+	errors += '<li><%="Save failed. #{error}"%></li>';
+<% end %>
+
+$('#new_purchase_item_row').before("<tr class='error_explanation'><td colspan='8'>" + errors + "</td>");
+
+setTimeout(function() {
+	$('.error_explanation').fadeOut('slow', function() {
+		$('.error_explanation').remove();
+	});
+},20000);

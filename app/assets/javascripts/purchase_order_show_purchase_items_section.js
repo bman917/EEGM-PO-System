@@ -41,5 +41,5 @@ function addingNewPurchaseItem() {
   var item_summary = $('#purchase_item_item_name').val();
   item_summary += " x " + $('#purchase_item_quantity').val();
   item_summary += " " + $('#purchase_item_unit').val();
-  $('#new_purchase_item_row').before("<tr class='adding_purchase_item'><td colspan='7'>Saving Purchase Item: " + item_summary +"...</td>");
+  $('#new_purchase_item_row').before("<tr class='adding_purchase_item'><td colspan='8'>Saving Purchase Item: " + item_summary +"...</td>");
 }

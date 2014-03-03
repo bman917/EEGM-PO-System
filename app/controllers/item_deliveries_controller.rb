@@ -25,6 +25,9 @@ class ItemDeliveriesController < ApplicationController
   # POST /item_deliveries.json
   def create
     @item_delivery = ItemDelivery.new(item_delivery_params)
+    @item_name = item_delivery_params[:item_name]
+    
+    puts "Item name [#{@item_delivery.item_name}], Item: #{@item_delivery.item}"
 
     respond_to do |format|
       if @item_delivery.save
@@ -35,6 +38,7 @@ class ItemDeliveriesController < ApplicationController
       else
         format.html { render action: 'new' }
         format.json { render json: @item_delivery.errors, status: :unprocessable_entity }
+        format.js { render 'error' }
       end
     end
   end

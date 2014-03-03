@@ -1,0 +1,13 @@
+$('.adding_item_delivery:first td').html('');
+$('.adding_item_delivery:first').addClass('error_explanation');
+
+<% @item_delivery.errors.full_messages.each do | error | %>
+$('.adding_item_delivery:first td').append('<li><%="Unable to save '#{@item_name}'. #{error}"%></li>');
+<% end %>
+
+
+setTimeout(function() {
+	$('.adding_item_delivery:first').fadeOut('slow', function() {
+		$('.adding_item_delivery:first').remove();
+	});
+},20000);

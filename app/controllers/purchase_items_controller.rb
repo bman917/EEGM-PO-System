@@ -22,12 +22,17 @@ class PurchaseItemsController < ApplicationController
 
   def create
     @purchase_item = PurchaseItem.new(purchase_items_params)
-
-    if @purchase_item.save
-      @purchase_item.record_activity(:create, current_user, 'Added PO Item')
+    respond_to do |format|
+      if @purchase_item.save
+        @purchase_item.record_activity(:create, current_user, 'Added PO Item')
+        @purchase_item.purchase_order.reload
+        format.js
+      else
+        format.js {render 'error'}
+      end
     end
 
-    @purchase_item.purchase_order.reload
+    
   end
 
   def destroy
