@@ -16,6 +16,7 @@ EEGM::Application.routes.draw do
       end
   end
 
+  post "versions/:id/revert" => "versions#revert", :as => "versions_revert"
   get "purchase_orders/reload_purchase_item/:purchase_item_id" => 'purchase_orders#reload_purchase_item', as: 'reload_purchase_item'
   get "purchase_orders/reload_purchase_item" => 'purchase_orders#reload_purchase_item', as: 'partial_reload_purchase_item'
 

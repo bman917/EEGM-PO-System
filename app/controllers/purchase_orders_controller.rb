@@ -106,7 +106,7 @@ class PurchaseOrdersController < ApplicationController
 
     respond_to do |format|
       if @purchase_order.save
-        @purchase_order.record_activity(:create, current_user, "Created PO")
+        # @purchase_order.record_activity(:create, current_user, "Created PO")
         format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @purchase_order }
       else
@@ -122,7 +122,7 @@ class PurchaseOrdersController < ApplicationController
     respond_to do |format|
       if @purchase_order.update(purchase_order_params)
 
-        @purchase_order.record_update(current_user, purchase_order_params)
+        # @purchase_order.record_update(current_user, purchase_order_params)
         
         format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully updated.' }
         format.json { head :no_content }
@@ -136,7 +136,7 @@ class PurchaseOrdersController < ApplicationController
   # DELETE /purchase_orders/1
   # DELETE /purchase_orders/1.json
   def destroy
-    @purchase_order.record_activity(:delete, current_user, "Deleted PO")
+    # @purchase_order.record_activity(:delete, current_user, "Deleted PO")
     @purchase_order.destroy
     respond_to do |format|
 

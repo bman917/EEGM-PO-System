@@ -1,8 +1,8 @@
 include ActionView::Helpers::NumberHelper
 
 class PurchaseOrder < ActiveRecord::Base
-  include PublicActivity::Common
-
+  # include PublicActivity::Common
+has_paper_trail
   belongs_to :supplier
   has_many :phones, as: :contact_detail, :dependent => :delete_all
   has_many :purchase_order_contacts, :dependent => :delete_all
@@ -90,23 +90,23 @@ class PurchaseOrder < ActiveRecord::Base
     desc
   end
 
-  def record_activity(action, current_user, description)
-    create_activity action, 
-        owner: current_user, 
-        recipient: self,
-        parameters: {
-        description: description,
-        details: self.details}
-  end
+  # def record_activity(action, current_user, description)
+  #   create_activity action, 
+  #       owner: current_user, 
+  #       recipient: self,
+  #       parameters: {
+  #       description: description,
+  #       details: self.details}
+  # end
 
-  def record_update(current_user, params)
-    create_activity :update, 
-        owner: current_user, 
-        recipient: self,
-        parameters: {
-        description: "Updated PO",
-        details: "#{self.details} #{params}"
-      }
-  end
+  # def record_update(current_user, params)
+  #   create_activity :update, 
+  #       owner: current_user, 
+  #       recipient: self,
+  #       parameters: {
+  #       description: "Updated PO",
+  #       details: "#{self.details} #{params}"
+  #     }
+  # end
 
 end

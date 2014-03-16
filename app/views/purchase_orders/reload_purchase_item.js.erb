@@ -5,3 +5,11 @@ $('#<%=@purchase_item.total_css_id%>').html('<%=number_with_delimiter @purchase_
 	$('#<%=@purchase_item.item.css_id%>').html('<%=@purchase_item.count_delivery_item%>').closest('tr').removeClass("completed");
 <% end %>
 $('#grand_total').html('<%=number_with_delimiter @purchase_item.purchase_order.grand_total%>').effect("highlight");
+
+
+$('#notice').append("Updated Item <%=@purchase_item%> - <%=j link_to("Undo", versions_revert_path(@purchase_item.versions.last), method: :post)%>");
+
+<% @purchase_item.versions.each do | version | %>
+
+// $('#notice').append("<li><%=j link_to("Revert to Version #{version.index}", versions_revert_path(version), method: :post)%></li>");
+<% end %>

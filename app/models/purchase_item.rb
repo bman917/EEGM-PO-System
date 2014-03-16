@@ -1,5 +1,7 @@
 class PurchaseItem < ActiveRecord::Base
-  include PublicActivity::Common
+  # include PublicActivity::Common
+
+  has_paper_trail
   
   belongs_to :item
   belongs_to :purchase_order
@@ -78,24 +80,24 @@ class PurchaseItem < ActiveRecord::Base
     purchase_order.save
   end
 
-  def record_activity(action, current_user, description)
-    create_activity action, 
-        owner: current_user, 
-        recipient: self.purchase_order,
-        parameters: {
-        description: description,
-        details: self.details}
-  end
+  # def record_activity(action, current_user, description)
+  #   create_activity action, 
+  #       owner: current_user, 
+  #       recipient: self.purchase_order,
+  #       parameters: {
+  #       description: description,
+  #       details: self.details}
+  # end
 
-  def record_update(current_user, params)
-    create_activity :update, 
-        owner: current_user, 
-        recipient: self.purchase_order,
-        parameters: {
-        description: "Updated PO Item",
-        details: "#{purchase_order.details} - Item ##{id}[#{params}]"
-      }
-  end
+  # def record_update(current_user, params)
+  #   create_activity :update, 
+  #       owner: current_user, 
+  #       recipient: self.purchase_order,
+  #       parameters: {
+  #       description: "Updated PO Item",
+  #       details: "#{purchase_order.details} - Item ##{id}[#{params}]"
+  #     }
+  # end
 
   def self.last_by_item_name(item_name)
     item = Item.find_by(name: item_name)
