@@ -1,5 +1,5 @@
 class SuppliersController < ApplicationController
-  before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :set_supplier, only: [:show, :edit, :update, :destroy, :summary]
 
 
   def names
@@ -10,12 +10,15 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
   def index
-    @suppliers = Supplier.all
+    @suppliers = Supplier.all.order(:name)
   end
 
   # GET /suppliers/1
   # GET /suppliers/1.json
   def show
+  end
+
+  def summary
   end
 
   # GET /suppliers/new

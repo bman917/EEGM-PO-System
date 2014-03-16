@@ -1,0 +1,16 @@
+
+
+<div id="supplier_summary">
+
+<h1 class="title emphasize med_text indented">Supplier Summary</h1>
+
+<h2><%= @supplier.name %></h2>
+
+<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.pending.includes(:purchase_items), status: 'PENDING'}%>
+
+<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.confirmed.includes(:purchase_items), status: 'CONFIRMED'}%>
+
+<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.delivered.includes(:purchase_items), status: 'DELIVERED'}%>
+
+
+</div>

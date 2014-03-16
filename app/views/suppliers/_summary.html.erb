@@ -1,0 +1,61 @@
+<% if purchase_orders.try(:size) > 0 %>
+
+<div class="status">
+  <%=status%>
+</div>
+
+<table id="purchase_item_table">
+  <tr>
+    <th>PO#</th>
+    <th>Date</th>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Note</th>
+    <th>Delivered</th>
+  </tr>
+
+  <% purchase_orders.each do | purchase_order | %>
+
+
+      <% purchase_order.purchase_items.each do | purchase_item | %>
+      <tr id="<%=purchase_item.css_id%>" class="<%=cycle('o','e')%> <%=status%><%=" completed" if purchase_item.delivery_complete%>"
+      >
+
+        <td><%=link_to purchase_order.po_id, purchase_order%></td>
+        <td><%=purchase_order.po_date.to_time.to_s(:med)%></td>
+
+        <td class="item_name"><%=purchase_item.item.name%></td>
+
+        
+        <td class="item_quantity_column">
+          <%= number_with_delimiter purchase_item.quantity%>
+        </td>
+        
+        <td><%= purchase_item.unit%></td>
+        
+        <td>
+          <%= number_with_delimiter purchase_item.price %>
+        </td>
+        <td id="<%=purchase_item.total_css_id%>"><%=number_with_delimiter purchase_item.total%></td>
+        <td class="notes_column"><%= best_in_place purchase_item, :note%></td>
+        <td id="<%=purchase_item.item.css_id%>" class="no-print">
+          <%=purchase_item.count_delivery_item()%>
+        </td>
+      </tr>
+
+      <% end %>
+
+      <% if purchase_order.purchase_items.size > 0 %>
+      <tr class="spacer">
+        <td colspan="10"> 
+        &nbsp;
+        </td>
+      </tr>
+      <% end %>
+
+  <% end  %>
+</table>
+<% end %>

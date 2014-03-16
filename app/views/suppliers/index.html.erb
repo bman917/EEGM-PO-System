@@ -1,12 +1,12 @@
-<h1>Listing suppliers</h1>
+<h1 class="title emphasize med_text indented">Suppliers</h1>
 
-<table>
+<table id="suppliers_table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Notes</th>
-      <th></th>
-      <th></th>
+      <th>PENDING PO</th>
+      <th>CONFIRMED PO</th>
+      <th>DELIVERED PO</th>
       <th></th>
     </tr>
   </thead>
@@ -15,15 +15,11 @@
     <% @suppliers.each do |supplier| %>
       <tr>
         <td><%= supplier.name %></td>
-        <td><%= supplier.notes %></td>
-        <td><%= link_to 'Show', supplier %></td>
-        <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
-        <td><%= link_to 'Destroy', supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= supplier.purchase_orders.try(:pending).try(:count)%></td>
+        <td><%= supplier.purchase_orders.try(:confirmed).try(:count)%></td>
+        <td><%= supplier.purchase_orders.try(:delivered).try(:count)%></td>
+        <td><%= link_to 'Summary', summary_supplier_path(supplier) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Supplier', new_supplier_path %>

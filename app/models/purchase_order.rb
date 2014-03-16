@@ -19,6 +19,10 @@ class PurchaseOrder < ActiveRecord::Base
 
   validates :supplier, presence: true
 
+  scope :pending, -> {where(status: 'PENDING').order(po_date: :desc)}
+  scope :confirmed, -> {where(status: 'CONFIRMED').order(po_date: :desc)}
+  scope :delivered, -> {where(status: 'DELIVERED').order(po_date: :desc)}
+
   def completed?(item)
     count_delivery_item(item) >= count_item_order(item)
   end

@@ -42,7 +42,9 @@ EEGM::Application.routes.draw do
 
   resources :items
 
-  resources :suppliers
+  resources :suppliers do
+    get 'summary', on: :member
+  end
 
   resources :contacts
 

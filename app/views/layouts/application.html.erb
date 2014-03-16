@@ -50,7 +50,13 @@ $(document).ready(function(){
 <div id="navigation" class="no-print">
   <ul id="menu">
     <li>
-      <%= link_to 'Purchase Orders List', purchase_orders_path%></a>
+      <%= link_to image_tag('back.png', size: '40x40'), :back, class: "back" %>
+    </li>
+    <li>
+      <%= link_to 'Purchase Orders', purchase_orders_path%></a>
+    </li>
+    <li>
+      <%= link_to 'Suppliers', suppliers_path%></a>
     </li>
     <li>
       <%= link_to 'Price List', purchase_items_path%>
