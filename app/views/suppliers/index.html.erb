@@ -13,7 +13,7 @@
 
   <tbody>
     <% @suppliers.each do |supplier| %>
-      <tr>
+      <tr class="<%=cycle('o','e')%>">
         <td><%= supplier.name %></td>
         <td><%= supplier.purchase_orders.try(:pending).try(:count)%></td>
         <td><%= supplier.purchase_orders.try(:confirmed).try(:count)%></td>

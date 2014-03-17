@@ -31,7 +31,9 @@ $(document).ready(function(){
 
     <div>
       <strong>Order To:</strong>
+      <%=link_to image_tag('summary-icon.png', size: '25x25'), summary_supplier_path(@purchase_order.supplier), id: 'supplier_summary_link', title: 'View Supplier Summary'%>
       <h2 class="emphasize med_text"><%= @purchase_order.supplier %></h2>
+
     </div>
   </div>
 

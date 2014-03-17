@@ -1,9 +1,23 @@
 // Place all the styles related to the Suppliers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a#supplier_summary_link {
+
+	display: block;
+	float: left;
+
+	img {
+		margin-top: 16px;
+		margin-right: 2px;
+	}
+}
 #suppliers_table {
 	max-width: 700px;
 	margin: 1em 1em auto;
+
+	.o { background: #E2E4FF; }
+	tr:hover { background: #C4CFF6; }
 }
 
 #supplier_summary {
