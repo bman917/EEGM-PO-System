@@ -1,9 +1,22 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    $('#suppliers_table').dataTable( {
+          bJQueryUI: true,
+        iDisplayLength: 50,
+        "sPaginationType": "full_numbers"
+    } );
+});
+
+<% end %>
+<div id="supplier_index">
+
 <h1 class="title emphasize med_text indented">Suppliers</h1>
 
 <table id="suppliers_table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th class="name_col">Name</th>
       <th>PENDING PO</th>
       <th>CONFIRMED PO</th>
       <th>DELIVERED PO</th>
@@ -23,3 +36,5 @@
     <% end %>
   </tbody>
 </table>
+
+</div>
