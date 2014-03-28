@@ -113,4 +113,19 @@ class PurchaseOrder < ActiveRecord::Base
       }
   end
 
+  def purchase_items_cache_key
+    "#{cache_key}-#{pi_key}-#{di_key}"
+  end
+
+  def item_deliveries_cache_key
+    "#{cache_key}-#{di_key}"
+  end
+
+  def di_key
+    "di/#{generic_cache_key(item_deliveries)}"
+  end
+
+  def pi_key
+    "pi/#{generic_cache_key(purchase_items)}"
+  end
 end

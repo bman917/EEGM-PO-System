@@ -23,7 +23,11 @@
       </div>
 </div>
 
-<%= render 'show'%>
-
+<div class="purcahse_order_show">
+  <%=render 'purchase_orders/show/po_details_header' %>
+  <%=render 'purchase_orders/show/contact_details_section'%>
+  <%=render 'purchase_orders/show/purchase_item_section'%>
+  <%=render 'purchase_orders/show/po_details_footer' %>
+</div>
 </body>
 </html>

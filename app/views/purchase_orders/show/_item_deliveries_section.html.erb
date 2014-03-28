@@ -1,3 +1,12 @@
+<% cache @purchase_order.item_deliveries_cache_key do %>
+
+<div id="purchase_order_show_deliveries_section" class="no-print">
+
+<hr/>
+<%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
+
+<div class="deliveries_section">
+         
  <h1>Deliveries</h1>
 
 <%= form_for(@item_delivery, remote: true) do |f| %>
@@ -31,3 +40,11 @@
 
 <% end %>
 
+
+
+
+  	 <%= link_to 'Hide', '', id: "hide_delivery_section_link", class: "button_link" %>
+    </div>
+</div>
+
+<% end %>

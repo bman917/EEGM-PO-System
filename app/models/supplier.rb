@@ -32,11 +32,4 @@ class Supplier < ActiveRecord::Base
   	di = ItemDelivery.where(purchase_order_id: purchase_orders)
   	"po/#{generic_cache_key(po)}-pi/#{generic_cache_key(pi)}-di/#{generic_cache_key(di)}"
   end
-
-  def generic_cache_key(association)
-    count = association.count
-	max_updated_at =  association.maximum(:updated_at).try(:utc).try(:to_s, :number)
-	"#{count}_#{max_updated_at}"
-  end
-  
 end

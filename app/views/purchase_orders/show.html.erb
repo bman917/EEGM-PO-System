@@ -1,23 +1,24 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    purchaseOrderShowInit();
+});
+
+<% end %>
+
+<div class="purcahse_order_show">
+
 <%=link_to image_tag('print.png'), print_purchase_order_path(@purchase_order), :target => "_blank", class: 'print_link'%>
 
-<%= render 'show'%>
- 
 
-    <div id="purchase_order_show_deliveries_section" class="no-print">
+<%=render 'purchase_orders/show/po_details_header' %>
+<%=render 'purchase_orders/show/contact_details_section'%>
+<%=render 'purchase_orders/show/purchase_item_section'%>
+<%=render 'purchase_orders/show/po_details_footer' %>
+<%=render 'purchase_orders/show/item_deliveries_section' %>
 
-          <hr/>
-          <%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
-          <div class="deliveries_section">
-             <%= render 'deliveries_form' %>
-             <%= link_to 'Hide', '', id: "hide_delivery_section_link", class: "button_link" %>
-          </div>
-    </div>
+<div class="no-print actions">
+  <%= link_to 'Back', :back %>
 </div>
 
-    <div class="no-print actions">
-      <%= link_to 'Back', :back %>
-    </div>
-
 </div>
-
-
