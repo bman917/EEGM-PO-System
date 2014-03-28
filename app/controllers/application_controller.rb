@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
 
+  before_filter :miniprofiler
+  
+  private
+  def miniprofiler
+    Rack::MiniProfiler.authorize_request if current_user && current_user.username == "jacky"
+  end
+
+
 end
