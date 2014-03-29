@@ -23,6 +23,13 @@
 
 function application_init() {
   $('.best_in_place').best_in_place();
+
+  $('.best_in_place').bind(
+      "ajax:success", 
+      function() {
+      var container = jQuery("<span class='flash-success'></span>").html("Update Successful");
+      container.purr({removeTimer: 1500});
+  });
 }
 
 

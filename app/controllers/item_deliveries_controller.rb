@@ -53,7 +53,7 @@ class ItemDeliveriesController < ApplicationController
         format.json { respond_with_bip @item_delivery }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @item_delivery.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip @item_delivery }
       end
     end
   end

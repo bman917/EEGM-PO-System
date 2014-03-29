@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
 	attr_reader :label
 	  has_many :supplier_items
   	has_many :suppliers, through: :supplier_items
+    validates :name, uniqueness: true
 
     def css_id
       "item_#{id}"

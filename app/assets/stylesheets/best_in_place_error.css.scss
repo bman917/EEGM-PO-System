@@ -1,0 +1,28 @@
+.flash-success, .flash-error {
+	border: 3px solid red;
+	
+	width: 300px;
+    position: fixed;
+    top: 0; 
+    left: 38%;
+    font-weight: bold;
+    z-index: 10;
+    text-align: center;
+
+}
+
+.flash-success {
+	border: 3px solid green;
+    background-color: green;
+    color: white;
+}
+
+.flash-error {
+    background-color: red;
+    color: white;
+}
+
+.flash-error:before {
+	content: "ERROR SAVING: ";
+}
+

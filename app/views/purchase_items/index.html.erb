@@ -4,10 +4,12 @@
 
 $(document).ready(function(){
     purchase_item_index_init();
+    
 });
 
 <% end %>
 
+<div id="purache_item_index">
 <div id="item_search">
 	<strong>Search</strong>
 
@@ -43,7 +45,7 @@ $(document).ready(function(){
 
     <% @items.each do |item| %>
       <tr>
-        <td><%=best_in_place(item, :name)%></td>
+        <td><%=best_in_place(item, :name, :data => {name: item.name})%></td>
         <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%></td>
         <td><%= item.last_po.details if item.last_po%></td>
         <td><%= number_with_delimiter(item.last_pi.try(:quantity))%> <%= item.last_pi.try :unit%></td>
@@ -57,3 +59,4 @@ $(document).ready(function(){
   </tbody>
 </table>
 <% end %>
+</div>

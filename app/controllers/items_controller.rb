@@ -48,10 +48,10 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip @item }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip @item }
       end
     end
   end

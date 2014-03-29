@@ -27,8 +27,10 @@ class PurchaseItemsController < ApplicationController
         @purchase_item.record_activity(:create, current_user, 'Added PO Item')
         @purchase_item.purchase_order.reload
         format.js
+        format.html
       else
         format.js {render 'error'}
+        format.html
       end
     end
 
