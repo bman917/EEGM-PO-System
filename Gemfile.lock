@@ -21,6 +21,12 @@ GIT
       rails (>= 3.1)
 
 GIT
+  remote: git://github.com/bman917/jchan-rails_ext.git
+  revision: 5e49ce3d565398287e4495e2dcb68c2a26ca2704
+  specs:
+    jchan-rails_ext (0.0.1)
+
+GIT
   remote: git://github.com/jetthoughts/yaml_db.git
   revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
   ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
@@ -208,6 +214,7 @@ DEPENDENCIES
   devise
   hide_toggler!
   jbuilder (~> 1.2)
+  jchan-rails_ext!
   jquery-datatables-rails
   jquery-rails
   jquery-ui-rails
