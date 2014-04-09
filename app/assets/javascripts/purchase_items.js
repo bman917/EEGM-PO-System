@@ -4,8 +4,8 @@ function purchase_item_index_init() {
 	    minLength: 2
 	  });
 
-	$('#purchase_item_index').dataTable({
-      bJQueryUI: true,
-      iDisplayLength: 25
-	});
+	// $('#purchase_item_index').dataTable({
+ //      bJQueryUI: true,
+ //      iDisplayLength: 25
+	// });
 }

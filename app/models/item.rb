@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   	end
 
   	def last_pi
-  		@pi ||= PurchaseItem.last_item(self.id)
+  		PurchaseItem.last_item(self.id)
   	end
 
   	def last_po

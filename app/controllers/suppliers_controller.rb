@@ -19,6 +19,7 @@ class SuppliersController < ApplicationController
   end
 
   def summary
+    @po_status = params[:po_status] || 'CONFIRMED'
   end
 
   # GET /suppliers/new

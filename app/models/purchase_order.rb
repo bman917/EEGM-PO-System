@@ -22,6 +22,7 @@ class PurchaseOrder < ActiveRecord::Base
   scope :pending, -> {where(status: 'PENDING').order(po_date: :desc)}
   scope :confirmed, -> {where(status: 'CONFIRMED').order(po_date: :desc)}
   scope :delivered, -> {where(status: 'DELIVERED').order(po_date: :desc)}
+  scope :cancelled, -> {where(status: 'CANCELLED').order(po_date: :desc)}
 
   def completed?(item)
     count_delivery_item(item) >= count_item_order(item)

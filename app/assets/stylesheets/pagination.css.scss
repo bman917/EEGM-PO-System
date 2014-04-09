@@ -1,0 +1,44 @@
+.pagination {
+  margin: 1em 0;
+  background: white;
+  cursor: default;
+  height: 22px;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    display: none;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #253C64;
+    color: white;
+    border: 1px solid #253C64;
+  }
+  a {
+    text-decoration: none;
+    color: #365C9F;
+    border: 1px solid #365C9F;
+    &:hover, &:focus {
+      color: #4B6BA2;
+      border-color: #4B6BA2;
+    }
+  }
+  .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #000033;
+      background: #2e6ab1 + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
+}

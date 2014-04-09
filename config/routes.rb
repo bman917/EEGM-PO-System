@@ -55,6 +55,8 @@ EEGM::Application.routes.draw do
   resources :purchase_items do
   end
 
+  get 'suppliers/:id/summary/:po_status' => "suppliers#summary", as: 'summary_by_status_supplier'
+
   get 'latest/price/name', to: 'purchase_items#index', as: 'last_price_purchase_item_name'
   get 'purchase_item/last', to: 'purchase_items#last', as: 'partial_last_purchase_item'
   get 'purchase_item/last/:item_id', to: 'purchase_items#last', as: 'last_purchase_item'

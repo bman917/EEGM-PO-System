@@ -10,7 +10,7 @@ class PurchaseItemsController < ApplicationController
       @purchase_item = PurchaseItem.last_by_item_name(params[:name])
     end
 
-    @items = Item.all
+    @items = Item.all.paginate(:page => params[:page]).order(name: :asc)
   end
 
   def show

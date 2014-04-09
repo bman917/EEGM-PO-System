@@ -1,5 +1,3 @@
-<% cache(cache_key_for_purchase_item) do %>
-
 <%=javascript_tag do %>
 
 $(document).ready(function(){
@@ -30,13 +28,13 @@ $(document).ready(function(){
 <h1 id="po_index_title" class="emphasize med_text indented">Items Price List</h1>
 
 
+<%= will_paginate @items %>
+
 <table id="purchase_item_index" class="display">
   <thead>
     <tr>
       <th class="item_name_column">Item Name</th>
       <th>Price</th>
-      <th>Last PO</th>
-      <th>Quantity</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -46,17 +44,22 @@ $(document).ready(function(){
     <% @items.each do |item| %>
       <tr>
         <td><%=best_in_place(item, :name, :data => {name: item.name})%></td>
-        <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%></td>
-        <td><%= item.last_po.details if item.last_po%></td>
-        <td><%= number_with_delimiter(item.last_pi.try(:quantity))%> <%= item.last_pi.try :unit%></td>
+        <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%>
+        </td>
+
         <td>
-          <%= link_to('View PO', 
-              purchase_order_path(item.last_po)) if item.last_po %>
+        <% if item.last_po %>
+          <%= link_to('View Last PO', purchase_order_path(item.last_po))  %>
+        <% else %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }%> 
+        <% end %>
+
         </td>
       </tr>
     <% end %>
 
   </tbody>
 </table>
-<% end %>
+
+<%= will_paginate @items %>
 </div>

@@ -14,7 +14,13 @@ class PurchaseItem < ActiveRecord::Base
    after_save :update_grand_total
    after_destroy :update_grand_total
 
-   scope :last_item, ->(item_id) {where("item_id = ? and price > 0", item_id).last}
+   def self.has?(item)
+    PurchaseItem.where(item: item).count > 0
+   end
+
+   def self.last_item(item_id)
+    PurchaseItem.where(item_id: item_id).last
+   end
 
    def css_id
     "purchase_item_#{id}"

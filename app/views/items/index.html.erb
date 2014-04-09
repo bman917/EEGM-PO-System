@@ -1,11 +1,13 @@
-<h1>Listing items</h1>
+<h1>Items List</h1>
 
-<table>
+<%= will_paginate @items %>
+
+<table id="item_list">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
-      <th></th>
+      <th>Last PO Price</th>
+      
       <th></th>
       <th></th>
     </tr>
@@ -13,16 +15,26 @@
 
   <tbody>
     <% @items.each do |item| %>
-      <tr>
+      <tr class="<%=cycle('o', 'e')%>">
         <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= link_to 'Show', item %></td>
+        <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%>
+        </td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <% if item.last_po %>
+            <%= link_to('View Last PO', purchase_order_path(item.last_po))  %>
+          <% else %>
+            <%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }%> 
+          <% end %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @items %>
 
 <br>
 

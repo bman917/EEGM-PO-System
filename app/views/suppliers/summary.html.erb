@@ -1,20 +1,41 @@
+<%=javascript_tag do %>
 
+$(document).ready(function(){
+  $('#po_status').on('change', function(){
+      var p = '<%=summary_supplier_path(@supplier)%>/' + $(this).val();
+      Turbolinks.visit(p);
+  });
+});
+
+<% end %>
 
 <div id="supplier_summary">
 
-<h1 class="title emphasize med_text indented">Supplier Summary</h1>
+<h1 class="title emphasize med_text indented">
+Supplier Summary for <%= @supplier.name %>
+</h1>
 
-<h2><%= @supplier.name %></h2>
+<div id='controls'>
+<strong>PO Status:</strong>
+ <%= select_tag(:po_status, options_for_select(['PENDING','CONFIRMED','DELIVERED','CANCELLED'], @po_status)) %> 
+</div>
+
+
+
 <% cache(@supplier.pending_po_cache_key) do %>
   <%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.pending.includes(:purchase_items), status: 'PENDING'}%>
-<% end %>
+<% end if @po_status == 'PENDING' %>
 
 <% cache(@supplier.confirmed_po_cache_key) do %>
 <%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.confirmed.includes(:purchase_items), status: 'CONFIRMED'}%>
-<% end %>
+<% end if @po_status == 'CONFIRMED'%>
 
 <% cache(@supplier.delivered_po_cache_key) do %>
 <%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.delivered.includes(:purchase_items), status: 'DELIVERED'}%>
+<% end if @po_status == 'DELIVERED' %>
+
+<%  if @po_status == 'CANCELLED' %>
+<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.cancelled.includes(:purchase_items), status: 'CANCELLED'}%>
 <% end %>
 
 </div>

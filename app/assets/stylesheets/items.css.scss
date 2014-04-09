@@ -1,3 +1,14 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table#item_list {
+	margin: 1em 1em;
+	width: 500px;
+	a {
+		font-size: .9em;
+	}
+
+	tr.o {
+		background: #E2DFDF;
+	}
+}

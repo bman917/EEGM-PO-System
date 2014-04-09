@@ -2,6 +2,33 @@ require 'test_helper'
 
 class PurchaseItemTest < ActiveSupport::TestCase
 
+  test "Case where PurchaseItem.last_item returns someting" do
+    PurchaseItem.destroy_all
+    Item.destroy_all
+    
+    po = PurchaseOrder.new(supplier_name: 'Jolibee')
+    po.save!
+
+    pi = PurchaseItem.new(item_name: 'Burger', price: 100, quantity: 1, purchase_order: po)
+    pi.save!
+
+    item = Item.find_by(name: 'Burger')
+
+    assert_not_nil PurchaseItem.last_item(item)
+    assert PurchaseItem.has?(item), "PurchaseItem should have #{item.name}"
+  end
+
+  test "Case where PurchaseItem.last_item returns nil" do
+    PurchaseItem.destroy_all
+    Item.destroy_all
+
+    item = Item.new(name: 'Burger')
+    item.save!
+
+    assert_nil PurchaseItem.last_item(item)
+    assert_nil item.last_pi
+  end
+
   test "Do note save Purchase Items with blank names" do
     pi = PurchaseItem.new
     assert !pi.save, "Do note save Purchase Items with blank names"

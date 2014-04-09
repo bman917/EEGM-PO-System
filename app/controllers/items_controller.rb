@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.paginate(:page => params[:page]).order(name: :asc)
   end
 
   def names
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to items_url, notice: 'Item was successfully updated.' }
         format.json { respond_with_bip @item }
       else
         format.html { render action: 'edit' }
