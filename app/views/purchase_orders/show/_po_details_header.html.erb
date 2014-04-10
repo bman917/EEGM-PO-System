@@ -1,29 +1,31 @@
-  <div class="sub_section po_status_section no-print">
-    Status: <span class="<%=@purchase_order.status%>"><%=best_in_place @purchase_order, :status, type: :select,
-                collection: po_statuses,
-                :ok_button => 'Save', :cancel_button => 'Cancel' %></span>
-    <%=render 'po_status_help' %>
+<div id="po_details_header" class="span-22 prepend-1">
+
+  <div class="span-8">
+      <label> Purchase Order #<%=@purchase_order.po_id %> </label>
   </div>
 
-  <div class="sub_section">
-    <div class="float_right">
-      <%= best_in_place @purchase_order, :po_date, :type => :date, 
-          :display_as => :po_date_long_format%>
-    </div>
-    <div>Purchase Order: E.Estanislao General Merchandize</div>
+  <div class="span-9">
+      Status: <label class="<%=@purchase_order.status%>">
+      <%=best_in_place @purchase_order, :status, type: :select, 
+        collection: po_statuses, :ok_button => 'Save', :cancel_button => 'Cancel'%>
+      </label>
   </div>
 
-  <div class="sub_section">
-
-    <div class="float_right">
-      <strong> Purchase Order </strong>
-      <h2 class="emphasize med_text">#<%= sprintf '%07d', @purchase_order.id %></h2>
-    </div>
-
-    <div>
-      <strong>Order To:</strong>
-      <%=link_to image_tag('summary-icon.png', size: '25x25'), summary_supplier_path(@purchase_order.supplier), id: 'supplier_summary_link', title: 'View Supplier Summary'%>
-      <h2 class="emphasize med_text"><%= @purchase_order.supplier %></h2>
-
-    </div>
+  <div class="span-5 last">
+      <label><%= best_in_place @purchase_order, :po_date, :type => :date, 
+          :display_as => :po_date_long_format%> </label>
   </div>
+
+
+  <hr/>
+
+  <div class="span-11 border">
+    <label>Order To: <%= link_to @purchase_order.supplier, 
+      summary_supplier_path(@purchase_order.supplier) %> </label>
+
+  </div>
+
+  <div class="span-11 last">
+    <label>Order For: E.Estanislao General Merchandize </label>
+  </div>
+</div>

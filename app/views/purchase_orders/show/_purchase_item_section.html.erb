@@ -1,6 +1,6 @@
 <% cache @purchase_order.purchase_items_cache_key do %>
 
-<div class="items_section">
+<div class="items_section span-22 prepend-1" >
   <%= form_for(@new_purchase_item, remote: true) do |f| %>
       <table id="purchase_item_table">
       <tr>

@@ -1,93 +1,68 @@
+<div id="purchase_order_index">
+
 <% cache("#{cache_key_for_purchase_order}-#{@po_status}-#{@item_name}") do %>
 
 <%=javascript_tag do %>
-
-$(document).ready(function(){
-
-   $('#purchase_order_supplier_name').autocomplete({
-    source: $('#purchase_order_supplier_name').data('autocomplete-source'),
-    minLength: 2
-  });
-
-  $('#po_table').dataTable({
-      bJQueryUI: true,
-      iDisplayLength: 25
-
-  });
-
-  $('#po_status').on('change', function(){
-      var p = '<%=purchase_orders_path%>/status/' + $(this).val();
-      <!-- window.location.href = '<%=purchase_orders_path%>/status/' + $(this).val(); -->
-      Turbolinks.visit(p);
-  });
-
-  $('#new_purchase_order').on('submit', function() {
-    $('#new_purchase_order_button').attr("disabled","disabled");
-    $('#new_purchase_order_button').val("Creating PO...");
-    $('#content').append("<div class='overlay'></div>");
-    $('#wait_message').toggle();
-    $('#wait_message').addClass('modal');
-  });
-
-  $('#item_name').auto_complete_item();
-
-});
+  purchase_orders_index_setup();
 <% end %>
 
-<h1 class="title emphasize med_text indented">Purchase Orders</h1>
-
-<div id='controls'>
-<strong>Filters:</strong>
-<%=label_tag 'Status'%>
-<% po_statuses.each do |status| %>
-<%=link_to status[0], status_purchase_orders_path(status[0]), id: "#{status[0]}", class: 'hidden' %>
-<% end %>
-
-<%=form_tag(purchase_orders_path, method: 'get', id:'item_filter') do %>
-
- <%= select_tag(:po_status, options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'], @po_status)) %> 
-
-  <%=label_tag 'Item'%>
-  <%=text_field_tag :item_name, @item_name %>
-  <%= submit_tag "Go", :id => "submit", :name => "submit", :class => "form_submit", :disabled => false, :disable_with => "Please wait..." %>
-<% end %>
-  <%= link_to 'Show All', status_purchase_orders_path('ALL'), id: 'ALL' %>
-
+<div class="span-24">
+  <h2 class="titleize">Purchase Orders</h2>
 </div>
-<table id="po_table" class="display">
-  <thead>
-    <tr>
-      <th class="smaller_column">&nbsp;</th>
-      <th class="small_column">Order Date</th>
-      <th class="name">Supplier</th>
-      <th class="small_column">Total</th>
-      <th class="desc">Description</th>
-      <th class="x">&nbsp;</th>
-    </tr>
-  </thead>
 
-  <tbody>
-  
-    <% @purchase_orders.each do |purchase_order| %>
+<div class="span-22 prepend-1">
+
+<!-- PO Status Filter and Item Search Form -->
+<div class="span-22">
+  <%=form_tag(purchase_orders_path, method: 'get', id:'item_filter', class: 'inline span-12') do %>
+    <%=label_tag 'PO Status:'%>
+    <%= select_tag(:po_status, 
+      options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'],
+      @po_status)) %>
+
+    <%=label_tag 'Item'%>
+    <%=text_field_tag :item_name, @item_name %>
+    <%= submit_tag "Go", :id => "submit", :name => "submit", :class => "form_submit", 
+      :disabled => false, :disable_with => "..." %>
+  <% end %>
+</div>
+<!-- END PO Status Filter and Item Search Form -->
+
+
+<div class="span-22">
+  <table id="po_table" class="display">
+    <thead>
       <tr>
-        <td class="smaller_column"><%= link_to 'View', purchase_order%></td>
-        <td>
-          <%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %>
-        </td>
-        <td><%= purchase_order.supplier %></td>
-        <td><%= purchase_order.grand_total_formatted %></td>
-        <td class="desc"><%= truncate purchase_order.items_description, length: 70 %></td>
-        <td class='x'><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: "Delete PO for '#{purchase_order.supplier_name}'?" } %>
-        </td>
+        <th class="smaller_column">PO #</th>
+        <th class="small_column">Order Date</th>
+        <th class="name">Supplier</th>
+        <th class="small_column">Total</th>
+        <th class="desc">Description</th>
+        <th class="x">&nbsp;</th>
       </tr>
-    <% end %>
-  
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @purchase_orders.each do |purchase_order| %>
+        <tr>
+          <td class="smaller_column"><%= link_to purchase_order.po_id, purchase_order%></td>
+          <td>
+            <%= purchase_order.po_date.to_time.to_s(:med) if purchase_order.po_date %>
+          </td>
+          <td><%= purchase_order.supplier %></td>
+          <td><%= purchase_order.grand_total_formatted %></td>
+          <td class="desc"><%= truncate purchase_order.items_description, length: 70 %></td>
+          <td class='x'><%= link_to 'X', purchase_order, class: 'remove_fields', method: :delete, data: { confirm: "Delete PO for '#{purchase_order.supplier_name}'?" } %>
+          </td>
+        </tr>
+      <% end %>
+    
+    </tbody>
+  </table>
 </div>
 
-<div class="section indented">
+<div class="span-22">
+
+<span class="loud large titleize">New Purchase Order</span>
 
 <%= form_for(@new_purchase_order) do |f| %>
 
@@ -103,13 +78,15 @@ $(document).ready(function(){
     </div>
   <% end %>
 
-<h2 class="emphasize med_text">New Purchase Order</h2>
-  <div  class="sub_section">
-    <%= f.label "Order To:" %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
+    <%= f.label "Supplier Name: " %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
     <%= f.hidden_field :po_date%>
     <%= f.hidden_field :status%>
     <%= f.submit "Create", id: 'new_purchase_order_button'%>
-  </div>
+  
 
 <% end %>
 <% end %>
+
+</div>
+
+</div>

@@ -71,7 +71,9 @@ group :development do
 end
 
 # gem 'hide_toggler', :path => '/home/jchan/work/hide_toggler'
+gem 'common_assets', :path => '/home/jchan/work/common_assets'
 gem 'jchan-rails_ext', github: 'bman917/jchan-rails_ext'
 gem 'hide_toggler', github: 'bman917/hide_toggler'
-gem 'common_assets', github: 'bman917/common_assets'
+# gem 'common_assets', github: 'bman917/common_assets'
 gem 'rack-mini-profiler'
+gem 'blueprint-rails'

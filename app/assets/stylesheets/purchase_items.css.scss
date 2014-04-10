@@ -40,9 +40,10 @@
 	margin-left: 400px;
 	text-align: right;
 	border: 0;
+	background: none;
 	}
 
-	tr.completed {
+	tr.completed, tr.completed td {
 		background: #D8FFD0;
 		color: #007004;
 		font-style:italic;
@@ -67,6 +68,7 @@
 	border-bottom: 0px;
 	border-left: 0;
 	border-right: 0;
+	background: none;
 }
 
 #items_blank_th {

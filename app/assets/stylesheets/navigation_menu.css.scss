@@ -1,25 +1,22 @@
 #navigation {
-   overflow: hidden;
-   // border-top: 1px solid white;
-   // border-bottom: 2px solid white;
-   // background-color: #5E5C59;
-   //height: 1.5em;
-   margin-left: -1em;
-   margin-right: -1em;
+   
+   // border-top: 1px solid #375219;
+   // border-bottom: 1px solid #375219;
+   background-color: #46629E;
+   height: 30px;
+   // margin-left: -1em;
+   // margin-right: -1em;
    display: block;
    font-weight: bold;
 
    a, a:visited {
-   	 color: blue;
-
+   	color: white;
    }
 
    ul#menu {
-   	height: 1em;
-   	margin-bottom: 1em;
-   	// padding-top: .3em;
-   	padding-left: 1em;
-   	padding-right: 1em;
+   	// height: 1em;
+   	// padding-top: 3px;
+
    }
 
     ul {
@@ -35,19 +32,18 @@
 	li ul { display: none; }
 	ul li a {
 	  display: block;
-	  //text-decoration: none;
+	  text-decoration: none;
 	  //color: #ffffff;
 	  padding: 5px 15px 5px 15px;
-	  // background: #5E5C59;
+	  // background: #D4E6BF;
 	  margin-left: 1px;
 	  white-space: nowrap;
 	}
 
 	//Highlight main menus
 	ul li a:hover { 
-	// background: #5E5C59; 
 	
-	// color: white;	
+	color: #E4EDFF;	
 
 	} 
 
@@ -62,12 +58,12 @@
 	  //opacity: 095;
 	}
 	li:hover a { 
-		// background: #5E5C59; 
+		// background: #D4E6BF; 
 	}
 	li:hover li a:hover { 
-		// background: #42403B; 
-		border-top: 2px solid white;
-		border-bottom: 2px solid white;
+		background: #91B666; 
+		border-top: 1px solid #375219;
+		border-bottom: 1px solid #375219;
 		color: white;
 
 	}

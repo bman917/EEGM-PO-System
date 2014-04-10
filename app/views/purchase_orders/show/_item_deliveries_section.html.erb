@@ -1,13 +1,14 @@
 <% cache @purchase_order.item_deliveries_cache_key do %>
 
-<div id="purchase_order_show_deliveries_section" class="no-print">
-
 <hr/>
+
+<div id="purchase_order_show_deliveries_section" class="no-print span-22 prepend-1">
+
 <%= link_to 'Show Deliveries', '', id: "add_delivery_link", class: "button_link" %>
 
 <div class="deliveries_section">
          
- <h1>Deliveries</h1>
+ <h3 class="titleize">Deliveries</h3>
 
 <%= form_for(@item_delivery, remote: true) do |f| %>
 

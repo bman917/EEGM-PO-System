@@ -2,15 +2,11 @@
 <html>
 <head>
   <title>EEGM</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-
-
-
-
 </head>
-<body id="application_body">
+<body id="application_body" class="container">
 
 <%=javascript_tag do %>
 
@@ -20,7 +16,7 @@ $(document).ready(function(){
 
 <% end %>
 
-<div class="no-print session_info">
+  <div class="no-print session_info span-24">
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.username %></strong>.
       
@@ -29,31 +25,22 @@ $(document).ready(function(){
       <!--%= link_to "Sign up", new_user_registration_path %-->
       <%= link_to "Login", new_user_session_path %>
     <% end %>
- </div>
+  </div>
 
+ <div id="header" class="span-24">
+    <div class="span-17">
+      <%=image_tag "EEGM.png", class: "logo"%> 
+      <%=image_tag "ESS.png", class: "logo"%> 
+    </div>
+  </div>
 
- <div class="header">
-
-    <%=image_tag "EEGM.png", class: "logo"%> 
-    <%=image_tag "ESS.png", class: "logo"%> 
-
-      <div class="float_right">
-        #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
-        <span class="highlight">ENGSHOESUPPLY@GMAIL.COM</span>
-      <div class="header_store_contact_details">
-        <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
-      </div>
-
-      </div>
-</div>
-
-<div id="navigation" class="no-print">
+<div id="navigation" class="no-print span-24">
   <ul id="menu">
     <li>
-      <%= link_to 'Purchase Orders', purchase_orders_path%></a>
+      <%= link_to 'Purchase Orders', purchase_orders_path%>
     </li>
     <li>
-      <%= link_to 'Suppliers', suppliers_path%></a>
+      <%= link_to 'Suppliers', suppliers_path%>
     </li>
     <li>
       <%= link_to 'Manage Items', items_path%>
@@ -62,23 +49,20 @@ $(document).ready(function(){
       <%= link_to 'User Activities', activities_path%>
     </li>
   </ul>
-
 </div>
 
-<p id="notice"><%= notice %></p>
-
-<% if alert %><p id="alert"><%= alert %></p><% end %>
-
-
-<div id="content">
-
-<div id="wait_message" class="hidden">
-  
-  <%=image_tag 'loading_bar.gif', size: "125x20"%>
+<div class="span-24">
+  <p id="notice"><%= notice %></p>
+  <% if alert %><p id="alert"><%= alert %></p><% end %>
 </div>
 
-<%= yield %>
-
+<div class="span-24">
+    <div id="wait_message" class="hidden">
+      <%=image_tag 'loading_bar.gif', size: "125x20"%>
+    </div>
+    <%= yield %>
 </div>
+
+
 </body>
 </html>

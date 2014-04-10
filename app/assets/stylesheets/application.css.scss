@@ -8,30 +8,24 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require blueprint/reset
+ *= require blueprint/grid.css
+ *= require blueprint/typography.css
+ *= require blueprint/forms.css
+ *= require blueprint/fancy-type
+ *= require blueprint/buttons
+
  *= require jquery.ui.core
  *= require jquery.ui.theme
  *= require dataTables/src/demo_table_jui
  *= require jquery.ui.datepicker
- *= require reset
  *= require best_in_place
  *= require common
  *= require hide_toggler.overlay
  *= require_self
  *= require_tree .
  */
-html {
-  background: white;
-  height: 100%;
-  
 
-}
- body#application_body {
-  margin: auto;
-  max-width: 1400px;
-  height: 100%;
-
-
- }
 
  #content {
   margin: 1.5em 1.5em auto;
@@ -72,27 +66,7 @@ ul.ui-autocomplete {
   }
 }
 
-.header {
-  margin-top: 1em;
-  font: .25em;
-  // margin-left: -1em;
-  height: 5.75em;
-  margin-bottom: .25em;
-  border-bottom: 2px solid black;
-}
-.logo {
-  height: 4em;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.header_store_contact_details {
-  width: 30em;
-  float: right;
-  text-align: right;
-  span {
-    display: block; 
-  }
-}
+
 
 #user_nav {
   a {
@@ -110,10 +84,6 @@ ul.ui-autocomplete {
   padding: 15px;
   
   background: #FFFFE9;
-
-  // margin-left: -13px;
-  // margin-right: -1em;
-  
   margin-bottom: 1em;
 }
 
@@ -128,10 +98,6 @@ ul.ui-autocomplete {
 
 .toggler_parent {
   display: inline;
-}
-
-.session_info {
-  margin-left: 1em;
 }
 
 #title {
