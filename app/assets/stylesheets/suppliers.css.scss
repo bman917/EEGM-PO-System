@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#supplier_index {
-	.dataTables_wrapper {
-		max-width: 700px;
-		margin: 1em 1em auto;
-	}
-
-	.name_col {
-		width: 40%;
-	}
-}
-
 a#supplier_summary_link {
 
 	display: block;
@@ -23,19 +12,12 @@ a#supplier_summary_link {
 		margin-right: 2px;
 	}
 }
-#zsuppliers_table {
-	max-width: 700px;
-	margin: 1em 1em auto;
+#suppliers_table {
 
-	.o { background: #E2E4FF; }
-	tr:hover { background: #C4CFF6; }
 }
 
 #supplier_summary {
-	h2 {
-		margin: 1em 1.5em;
 
-	}
 
 	table#purchase_item_table {
 		margin-bottom: 1.5em;

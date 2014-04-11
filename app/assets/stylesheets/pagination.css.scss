@@ -15,17 +15,17 @@
   .current {
     font-style: normal;
     font-weight: bold;
-    background: #253C64;
+    background: #CCCCCC;
     color: white;
-    border: 1px solid #253C64;
+    border: 1px solid #CCCCCC;
   }
   a {
     text-decoration: none;
-    color: #365C9F;
-    border: 1px solid #365C9F;
+    color: #AEACAC;
+    border: 1px solid #CCCCCC;
     &:hover, &:focus {
-      color: #4B6BA2;
-      border-color: #4B6BA2;
+      color: #CCCCCC;
+      border-color: #CCCCCC;
     }
   }
   .page_info {

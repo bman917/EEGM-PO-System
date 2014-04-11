@@ -30,17 +30,18 @@
 
 
 #purchase_item_table{
-	width: 97%;
-	th, tr td {
-		padding: .25em;
-		border: 1px solid black;
+
+	border-collapse: collapse;
+	
+	th, td {
+	  border: 1px black solid;
+	  padding: .25em;
 	}
 
-	td.grand_total {
-	margin-left: 400px;
-	text-align: right;
-	border: 0;
-	background: none;
+	th, tr, td {
+	 .no_border {
+	    border: 0;
+	  }
 	}
 
 	tr.completed, tr.completed td {
@@ -60,7 +61,7 @@
 
 .notes_column {
 	width: 7em;
-	border-right: 1px solid black;
+	// border-right: 1px solid black;
 }
 
 
@@ -72,5 +73,5 @@
 }
 
 #items_blank_th {
-	border-right: 1px solid black;
+	//border-right: 1px solid black;
 }

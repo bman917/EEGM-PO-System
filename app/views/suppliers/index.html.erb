@@ -4,14 +4,16 @@ $(document).ready(function(){
     $('#suppliers_table').dataTable( {
           bJQueryUI: true,
         iDisplayLength: 50,
-        "sPaginationType": "full_numbers"
+        "sPaginationType": "full_numbers",
+        "bAutoWidth": false,
+
     } );
 });
 
 <% end %>
 <div id="supplier_index">
 
-<h1 class="title emphasize med_text indented">Suppliers</h1>
+<h2 class="titleize">Suppliers</h2>
 
 <table id="suppliers_table">
   <thead>

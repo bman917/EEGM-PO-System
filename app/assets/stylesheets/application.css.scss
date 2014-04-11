@@ -15,9 +15,6 @@
  *= require blueprint/fancy-type
  *= require blueprint/buttons
 
- *= require jquery.ui.core
- *= require jquery.ui.theme
- *= require dataTables/src/demo_table_jui
  *= require jquery.ui.datepicker
  *= require best_in_place
  *= require common
@@ -25,6 +22,14 @@
  *= require_self
  *= require_tree .
  */
+html {
+  background: #618FC7;
+  height: 100%;
+}
+
+html, body {
+  min-height: 100%;
+}
 
 
  #content {

@@ -1,4 +1,16 @@
-<h1>Items List</h1>
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    $('#item_list').dataTable( {
+          bJQueryUI: true,
+        iDisplayLength: 100,
+        "sPaginationType": "full_numbers",
+    } );
+});
+
+<% end %>
+
+<h2 class="titleize">Items List</h1>
 
 <%= will_paginate @items %>
 
@@ -15,7 +27,7 @@
 
   <tbody>
     <% @items.each do |item| %>
-      <tr class="<%=cycle('o', 'e')%>">
+      <tr>
         <td><%= item.name %></td>
         <td><%= number_with_delimiter number_with_precision(item.last_pi.try(:price), precision: 2)%>
         </td>

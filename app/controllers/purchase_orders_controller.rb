@@ -125,7 +125,7 @@ class PurchaseOrdersController < ApplicationController
         @purchase_order.record_update(current_user, purchase_order_params)
         
         format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip @purchase_order }
       else
         format.html { render action: 'edit' }
         format.json { render json: @purchase_order.errors, status: :unprocessable_entity }

@@ -1,16 +1,11 @@
-<div id="po_details_footer" class="span-22 prepend-1" >
-  <table id="purchase_order_show_footer">
-    <tr>
-      <td id="purchase_order_show_notes">
-            <strong>Notes:</strong>
-            <span class="smaller no-print">(click below to edit)</span>
-            </br>
-            <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
-      </td>
-      <td id="created_by">
-          Created by: <%=@purchase_order.username || "Not Recorded" %>
-      </td>
-
-    </tr>
-  </table>
+<div id="po_details_footer">
+  <div class="span-10">
+    <strong>Notes:</strong>
+    <span class="small no-print">(click below to edit)</span>
+    </br>
+    <%= best_in_place @purchase_order, :notes, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
+  </div>
+  <div class="span-12 last txt-right">
+    Created by: <%=@purchase_order.username || "Not Recorded" %>
+  </div>
 </div>

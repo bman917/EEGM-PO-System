@@ -1,6 +1,6 @@
 <% cache @purchase_order.purchase_items_cache_key do %>
 
-<div class="items_section span-22 prepend-1" >
+<div class="items_section">
   <%= form_for(@new_purchase_item, remote: true) do |f| %>
       <table id="purchase_item_table">
       <tr>
@@ -43,10 +43,12 @@
               <td>                <%= link_to 'Hide', '', id: "hide_new_purchase_item_link", class:"button_link" %></td>
             </tr>
       
-      <tr>
-        <td colspan="7" class="grand_total">
-              Grand Total: <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span>
+      <tr class="no_bg">
+        <td colspan="4" class="no_bg no_border txt-right loud">Grand Total: </td>
+        <td class="no_bg grand_total txt-left no_border loud">
+              <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span>
         </td>
+        <td colspan="3" class="no_border no_bg"></td>
       </tr>
     </table>
   <% end %>

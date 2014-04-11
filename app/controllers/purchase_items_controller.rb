@@ -51,7 +51,7 @@ class PurchaseItemsController < ApplicationController
       if @purchase_item.update(purchase_items_params)
         @purchase_item.record_activity(:update, current_user, "Updated PO Item")
         format.html { redirect_to  @purchase_item.purchase_order, notice: 'Purchase Item was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip @purchase_item }
       else
         format.html { render action: 'edit' }
         format.json { render json: @purchase_item.errors, status: :unprocessable_entity }

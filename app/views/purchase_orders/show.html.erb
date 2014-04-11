@@ -8,17 +8,14 @@ $(document).ready(function(){
 
 <div class="purcahse_order_show">
 
+<div class="span-22">
 <%=link_to image_tag('print.png'), print_purchase_order_path(@purchase_order), :target => "_blank", class: 'print_link'%>
-
+</div>
 
 <%=render 'purchase_orders/show/po_details_header' %>
 <%=render 'purchase_orders/show/contact_details_section'%>
 <%=render 'purchase_orders/show/purchase_item_section'%>
 <%=render 'purchase_orders/show/po_details_footer' %>
 <%=render 'purchase_orders/show/item_deliveries_section' %>
-
-<div class="no-print actions">
-  <%= link_to 'Back', :back %>
-</div>
 
 </div>

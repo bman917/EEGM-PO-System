@@ -1,4 +1,4 @@
-<div id="po_details_header" class="span-22 prepend-1">
+<div id="po_details_header">
 
   <div class="span-8">
       <label> Purchase Order #<%=@purchase_order.po_id %> </label>
@@ -22,10 +22,10 @@
   <div class="span-11 border">
     <label>Order To: <%= link_to @purchase_order.supplier, 
       summary_supplier_path(@purchase_order.supplier) %> </label>
-
   </div>
 
   <div class="span-11 last">
     <label>Order For: E.Estanislao General Merchandize </label>
   </div>
+
 </div>

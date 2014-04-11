@@ -5,17 +5,19 @@
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+
 </head>
+
 <body id="application_body" class="container">
 
-<%=javascript_tag do %>
+  <%=javascript_tag do %>
 
-$(document).ready(function(){
-    application_init();
-});
+  $(document).ready(function(){
+      application_init();
+  });
 
-<% end %>
-
+  <% end %>
   <div class="no-print session_info span-24">
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.username %></strong>.
@@ -28,9 +30,9 @@ $(document).ready(function(){
   </div>
 
  <div id="header" class="span-24">
-    <div class="span-17">
-      <%=image_tag "EEGM.png", class: "logo"%> 
-      <%=image_tag "ESS.png", class: "logo"%> 
+    <div class="span-17 logo">
+      <%=image_tag "EEGM.png"%> 
+      <%=image_tag "ESS.png"%> 
     </div>
   </div>
 
@@ -56,10 +58,11 @@ $(document).ready(function(){
   <% if alert %><p id="alert"><%= alert %></p><% end %>
 </div>
 
-<div class="span-24">
+<div class="span-22 prepend-1">
     <div id="wait_message" class="hidden">
       <%=image_tag 'loading_bar.gif', size: "125x20"%>
     </div>
+
     <%= yield %>
 </div>
 
