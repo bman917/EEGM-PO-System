@@ -11,8 +11,8 @@ function purchase_orders_index_setup() {
 
     $('#po_table').dataTable({
         bJQueryUI: true,
-        iDisplayLength: 25
-
+        iDisplayLength: 25,
+        aaSorting: [[0,"desc"]]
     });
 
     $('#po_status').on('change', function(){

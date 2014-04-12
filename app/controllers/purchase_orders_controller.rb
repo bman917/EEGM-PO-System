@@ -140,7 +140,7 @@ class PurchaseOrdersController < ApplicationController
     @purchase_order.destroy
     respond_to do |format|
 
-      format.html { redirect_to purchase_orders_url }
+      format.html { redirect_to purchase_orders_url, notice: "Purchase Order #{@purchase_order.po_id} has been deleted." }
       format.json { head :no_content }
     end
   end
