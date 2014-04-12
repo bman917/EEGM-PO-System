@@ -3,19 +3,26 @@
 <head>
   <title>EEGM</title>
   <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= stylesheet_link_tag    "blueprint/print", media: "all"%>
+  <%= stylesheet_link_tag    "print", media: "all"%>
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
+  
 </head>
-<body>
+<body class="container">
+<div class="span-22 prepend-top">
 
- <div class="header">
-
-    <%=image_tag "EEGM.png", class: "logo"%> 
-    <%=image_tag "ESS.png", class: "logo"%> 
+ <div id="header" class="span-11">
+    <div class="span-17 logo">
+      <%=image_tag "EEGM.png"%> 
+      <%=image_tag "ESS.png"%> 
+    </div>
+ </div>
+ <div class="span-11 last">
 
       <div class="float_right">
         #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
-        <span class="highlight">ENGSHOESUPPLY@GMAIL.COM</span>
+        <span class="loud">ENGSHOESUPPLY@GMAIL.COM</span>
       <div class="header_store_contact_details">
         <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
       </div>
@@ -23,11 +30,13 @@
       </div>
 </div>
 
-<div class="purcahse_order_show">
+<div class="span-22 prepend-top">
   <%=render 'purchase_orders/show/po_details_header' %>
   <%=render 'purchase_orders/show/contact_details_section'%>
   <%=render 'purchase_orders/show/purchase_item_section'%>
   <%=render 'purchase_orders/show/po_details_footer' %>
+</div>
+
 </div>
 </body>
 </html>

@@ -1,15 +1,14 @@
 #print {
 
-	width: 700px;
-	margin: 1em 1em auto;
+ background: white;
+ a, a:link:after, a:visited:after {
+  color: black;
+ }
 
-	.header {
-  margin-top: 1em;
-  font: .25em;
-  // margin-left: -1em;
-  height: 5.75em;
-  margin-bottom: .25em;
-  border-bottom: 2px solid black;
+ a:link:after, a:visited:after {
+  content: "";
+
+  font-size: 90%;
 }
 
 .header_store_contact_details {
@@ -21,36 +20,33 @@
   }
 }
 
-	body {
+  tr.grand_total_row td {
+    padding-top: 1em;
+  }
 
-	}
+  .add_fields, .remove_fields , .purcahse_order_show .po_status_section {
+    display: none;
+  }
 
-	.add_fields, .remove_fields , .purcahse_order_show .po_status_section {
-		display: none;
-	}
 
-	#purchase_item_table .completed {
-		background-color: white;
-	}
+  #purchase_order_show_notes span {
+    display: none;
+  }
 
-	#purchase_order_show_notes span {
-		display: none;
-	}
+  .no-print {
+    display: none;
+  }
 
-	.no-print {
-		display: none;
-	}
+  .best_in_place {
+    cursor: default;
+    padding-right: 0;
+  }
 
-	.best_in_place {
-		cursor: default;
-		padding-right: 0;
-	}
-
-	.best_in_place:hover {
-  		padding-right: 0;
-  		background: white;
-  		background-color: white;
-	}
+  .best_in_place:hover {
+      padding-right: 0;
+      background: white;
+      background-color: white;
+  }
 
 
 

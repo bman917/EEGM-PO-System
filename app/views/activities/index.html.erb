@@ -1,3 +1,14 @@
+<%=javascript_tag do %>
+
+$(document).ready(function(){
+    $('#activity_table').dataTable( {
+          bJQueryUI: true,
+        iDisplayLength: 100,
+        "sPaginationType": "full_numbers",
+    } );
+});
+
+<% end %>
 
 
 <h1 id="po_index_title" class="emphasize med_text indented">User Activities</h1>

@@ -43,7 +43,7 @@
               <td>                <%= link_to 'Hide', '', id: "hide_new_purchase_item_link", class:"button_link" %></td>
             </tr>
       
-      <tr class="no_bg">
+      <tr class="no_bg grand_total_row">
         <td colspan="4" class="no_bg no_border txt-right loud">Grand Total: </td>
         <td class="no_bg grand_total txt-left no_border loud">
               <span id="grand_total"><%=number_with_delimiter @purchase_order.grand_total%></span>
