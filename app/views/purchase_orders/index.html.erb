@@ -12,7 +12,8 @@
 
 <!-- PO Status Filter and Item Search Form -->
 <div class="span-22">
-  <%=form_tag(purchase_orders_path, method: 'get', id:'item_filter', class: 'inline span-12') do %>
+  <%=form_tag(purchase_orders_path, method: 'get', id:'item_filter', 
+    class: 'inline') do %>
     <%=label_tag 'PO Status:'%>
     <%= select_tag(:po_status, 
       options_for_select(['ALL', 'PENDING','CONFIRMED','DELIVERED','CANCELLED'],
@@ -76,7 +77,7 @@
     </div>
   <% end %>
 
-    <%= f.label "Supplier Name: " %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
+    <%= f.label "Order To: " %><%= f.text_field :supplier_name, tabindex: 1, data: {autocomplete_source: supplier_names_path} %>
     <%= f.hidden_field :po_date%>
     <%= f.hidden_field :status%>
     <%= f.submit "Create", id: 'new_purchase_order_button'%>

@@ -1,24 +1,27 @@
 #print {
 
  background: white;
- a, a:link:after, a:visited:after {
-  color: black;
+ font-size: 90%;
+
+ #header {
+  border-bottom: 2px solid grey;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
  }
 
- a:link:after, a:visited:after {
-  content: "";
+ th {
+    background: none;
+    color: black;
+ }
 
-  font-size: 90%;
-}
-
-.header_store_contact_details {
-  width: 30em;
-  float: right;
-  text-align: right;
-  span {
-    display: block; 
+  .header_store_contact_details {
+    width: 30em;
+    float: right;
+    text-align: right;
+    span {
+      display: block; 
+    }
   }
-}
 
   tr.grand_total_row td {
     padding-top: 1em;
@@ -47,7 +50,14 @@
       background: white;
       background-color: white;
   }
+}
 
-
-
+/** Override for bluerintcss print.css*/
+#print {
+   a, a:link:after, a:visited:after {
+    color: black;
+   }
+  a:link:after, a:visited:after {
+    content: "";
+  }
 }

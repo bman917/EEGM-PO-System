@@ -18,23 +18,26 @@
   });
 
   <% end %>
-  <div class="no-print session_info span-23">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.username %></strong>.
-      
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <!--%= link_to "Sign up", new_user_registration_path %-->
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  </div>
+  <div class="span-24">
+    <div class="session_info span-23 no-print">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.username %></strong>.
+        
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <!--%= link_to "Sign up", new_user_registration_path %-->
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
+    </div>
 
- <div id="header" class="span-24">
-    <div class="span-17 logo">
-      <%=image_tag "EEGM.png"%> 
-      <%=image_tag "ESS.png"%> 
+    <div id="header" class="span-24">
+      <div class="span-17 logo">
+        <%=image_tag "EEGM.png"%> 
+        <%=image_tag "ESS.png"%> 
+      </div>
     </div>
   </div>
+
 
 <div id="navigation" class="no-print span-24">
   <ul id="menu">

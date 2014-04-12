@@ -3,40 +3,38 @@
 <head>
   <title>EEGM</title>
   <%= stylesheet_link_tag    "application", media: "all"%>
-  <%= stylesheet_link_tag    "blueprint/print", media: "all"%>
-  <%= stylesheet_link_tag    "print", media: "all"%>
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
   
 </head>
 <body class="container">
-<div class="span-22 prepend-top">
-
- <div id="header" class="span-11">
-    <div class="span-17 logo">
-      <%=image_tag "EEGM.png"%> 
-      <%=image_tag "ESS.png"%> 
+  <div id="header" class="span-22 prepend-top last">
+    <div class="span-11">
+      <div class="span-17 logo">
+        <%=image_tag "EEGM.png"%> 
+        <%=image_tag "ESS.png"%> 
+      </div>
     </div>
- </div>
- <div class="span-11 last">
+    <div class="span-11 last">
 
       <div class="float_right">
-        #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
-        <span class="loud">ENGSHOESUPPLY@GMAIL.COM</span>
-      <div class="header_store_contact_details">
-        <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
-      </div>
+          #113 (old) J.P. Rizal St., Calumpang, Marikina City, Philippines 1801
+          <span class="loud">ENGSHOESUPPLY@GMAIL.COM</span>
+        <div class="header_store_contact_details">
+          <span>Mobile: 0999-197-2500, Tel: 6453017, Fax: 6452210</span>
+        </div>
 
       </div>
-</div>
+    </div>
+  </div>
 
-<div class="span-22 prepend-top">
-  <%=render 'purchase_orders/show/po_details_header' %>
-  <%=render 'purchase_orders/show/contact_details_section'%>
-  <%=render 'purchase_orders/show/purchase_item_section'%>
-  <%=render 'purchase_orders/show/po_details_footer' %>
-</div>
 
-</div>
+<div class="span-22 prepend-top"><%=render 'purchase_orders/show/po_details_header'      %></div>
+<div class="span-22"><%=render 'purchase_orders/show/contact_details_section'%></div>
+<div class="span-22"><%=render 'purchase_orders/show/purchase_item_section'  %></div>
+<div class="span-22"><%=render 'purchase_orders/show/po_details_footer'      %></div>
+<div class="span-22"><%=render 'purchase_orders/show/item_deliveries_section'%></div>
+
+
 </body>
 </html>
