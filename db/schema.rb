@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207125431) do
+ActiveRecord::Schema.define(version: 20140501163803) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "item_deliveries", ["item_id"], name: "index_item_deliveries_on_item_id", using: :btree
-  add_index "item_deliveries", ["purchase_order_id"], name: "index_item_deliveries_on_purchase_order_id", using: :btree
+  add_index "item_deliveries", ["item_id"], name: "index_item_deliveries_on_item_id"
+  add_index "item_deliveries", ["purchase_order_id"], name: "index_item_deliveries_on_purchase_order_id"
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.string   "unit"
   end
 
-  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id", using: :btree
-  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id", using: :btree
+  add_index "purchase_items", ["item_id"], name: "index_purchase_items_on_item_id"
+  add_index "purchase_items", ["purchase_order_id"], name: "index_purchase_items_on_purchase_order_id"
 
   create_table "purchase_order_contacts", force: true do |t|
     t.integer  "purchase_order_id"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id", using: :btree
+  add_index "purchase_order_contacts", ["purchase_order_id"], name: "index_purchase_order_contacts_on_purchase_order_id"
 
   create_table "purchase_orders", force: true do |t|
     t.integer  "supplier_id"
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.string   "status",      default: "PENDING"
+    t.string   "status"
   end
 
-  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id", using: :btree
+  add_index "purchase_orders", ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
 
   create_table "supplier_items", force: true do |t|
     t.integer  "supplier_id"
@@ -112,14 +112,22 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.datetime "updated_at"
   end
 
-  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id", using: :btree
-  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id", using: :btree
+  add_index "supplier_items", ["item_id"], name: "index_supplier_items_on_item_id"
+  add_index "supplier_items", ["supplier_id"], name: "index_supplier_items_on_supplier_id"
 
   create_table "suppliers", force: true do |t|
     t.string   "name"
     t.text     "notes"
     t.integer  "contact_detail_id"
     t.string   "contact_detail_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "system_configs", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -140,7 +148,18 @@ ActiveRecord::Schema.define(version: 20140207125431) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

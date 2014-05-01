@@ -65,6 +65,12 @@ class PurchaseOrdersController < ApplicationController
   def print
     show
 
+    @mobile = SystemConfig.find_by_name('store_mobile_number')
+    @landline = SystemConfig.find_by_name('store_landline_number')
+    @fax = SystemConfig.find_by_name('store_fax_number')
+    @email = SystemConfig.find_by_name('store_email')
+
+
     render layout: false
   end
 

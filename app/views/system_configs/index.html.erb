@@ -1,0 +1,25 @@
+<div class="span-22">
+  <h2 class="titleize">System Configuration</h2>
+</div>
+
+<div class="span-11">
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @system_configs.each do |system_config| %>
+      <tr>
+        <td><%= system_config.description %></td>
+        <td><%= system_config.value %></td>
+        <td><%= link_to edit_img, edit_system_config_path(system_config) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

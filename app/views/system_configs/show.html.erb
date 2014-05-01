@@ -1,0 +1,13 @@
+<p>
+  <strong>Description:</strong>
+  <%= @system_config.description %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%= @system_config.value %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_system_config_path(@system_config) %> |
+<%= link_to 'Back', system_configs_path %>

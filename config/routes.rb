@@ -1,4 +1,6 @@
 EEGM::Application.routes.draw do
+  resources :system_configs
+
   resources :activities
   
   #devise_for :users
