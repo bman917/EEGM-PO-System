@@ -36,7 +36,7 @@ class ItemsControllerTest < ActionController::TestCase
 
   test "should update item" do
     patch :update, id: @item, item: { description: @item.description, name: @item.name }
-    assert_redirected_to item_path(assigns(:item))
+    assert_redirected_to items_path
   end
 
   test "should destroy item" do

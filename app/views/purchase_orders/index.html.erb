@@ -22,7 +22,7 @@
     <%=label_tag 'Item'%>
     <%=text_field_tag :item_name, @item_name %>
     <%= submit_tag "Go", :id => "submit", :name => "submit", :class => "form_submit", 
-      :disabled => false, :disable_with => "..." %>
+      :disabled => false, data: {:disable_with => "..."} %>
   <% end %>
 </div>
 <!-- END PO Status Filter and Item Search Form -->

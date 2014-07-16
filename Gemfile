@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '4.2.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,7 +53,7 @@ group :produciton do
 	gem 'mysql2'
 end
 
-gem 'jquery-ui-rails'
+
 gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 
 gem 'devise'
@@ -64,10 +65,18 @@ gem 'jquery-datatables-rails'
 gem 'public_activity'
 gem 'will_paginate'
 
-group :development do
+group :development, :test do
 	gem 'capistrano'
 	gem 'capistrano-rails'
 	gem 'capistrano-rvm'
+
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-expectations'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 # gem 'hide_toggler', :path => '/home/jchan/work/hide_toggler'
