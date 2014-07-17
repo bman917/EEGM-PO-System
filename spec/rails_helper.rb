@@ -65,3 +65,24 @@ def sign_in
   fill_in 'user_password', :with => 'password'
   click_button 'Sign in'
 end
+
+#
+#Use this for testing jquery-ui autocomplete 
+#Do not use this inside a 'within' block because there is no guarantee where the
+#the auto-complete elements will be generated
+#
+def fill_autocomplete(field, options = {})
+  fill_in field, with: options[:with]
+
+  page.execute_script %Q{ $('##{field}').trigger('focus') }
+  page.execute_script %Q{ $('##{field}').trigger('keydown') }
+  selector = %Q{ul.ui-autocomplete li.ui-menu-item a:contains("#{options[:with]}")}
+
+  if options[:not_found]
+    sleep 1
+    page.assert_no_selector('ul.ui-autocomplete li.ui-menu-item a')
+  else
+    expect(page).to have_selector('ul.ui-autocomplete li.ui-menu-item a')
+    page.execute_script %Q{ $('#{selector}').trigger('mouseenter').click() }
+  end
+end
