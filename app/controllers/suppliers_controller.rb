@@ -20,6 +20,12 @@ class SuppliersController < ApplicationController
 
   def summary
     @po_status = params[:po_status] || 'CONFIRMED'
+
+    @purchase_orders = @supplier.purchase_orders
+                          .where(status: @po_status)
+                          .order(po_date: :desc)
+                          .includes(:purchase_items)
+                          .paginate(:page => params[:page], :per_page => 2)
   end
 
   # GET /suppliers/new

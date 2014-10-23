@@ -37,7 +37,9 @@
       </div>
     </div>
   </div>
-
+<div id="version">
+version: <%=current_version%>
+</div>
 
 <div id="navigation" class="no-print span-24">
   <ul id="menu">
@@ -56,6 +58,10 @@
     <li>
       <%= link_to 'System Settings', system_configs_path%>
     </li>
+    <li>
+      <%= link_to 'System Updates', system_updates_index_path%>
+    </li>
+
   </ul>
 </div>
 

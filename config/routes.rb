@@ -1,4 +1,5 @@
 EEGM::Application.routes.draw do
+  get "system_updates/index"
   resources :system_configs
 
   resources :activities

@@ -23,19 +23,7 @@ $(document).ready(function(){
 
 
 <% cache(@supplier.pending_po_cache_key) do %>
-  <%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.pending.includes(:purchase_items), status: 'PENDING'}%>
-<% end if @po_status == 'PENDING' %>
-
-<% cache(@supplier.confirmed_po_cache_key) do %>
-<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.confirmed.includes(:purchase_items), status: 'CONFIRMED'}%>
-<% end if @po_status == 'CONFIRMED'%>
-
-<% cache(@supplier.delivered_po_cache_key) do %>
-<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.delivered.includes(:purchase_items), status: 'DELIVERED'}%>
-<% end if @po_status == 'DELIVERED' %>
-
-<%  if @po_status == 'CANCELLED' %>
-<%= render partial: "summary", locals: {purchase_orders:@supplier.purchase_orders.cancelled.includes(:purchase_items), status: 'CANCELLED'}%>
+  <%= render partial: "summary", locals: {purchase_orders:@purchase_orders, status: @po_status}%>
 <% end %>
 
 </div>

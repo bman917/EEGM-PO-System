@@ -18,4 +18,8 @@ module ApplicationHelper
     end
     link_to(name, '#', id: "add_#{association}", class: "add_fields", tabindex: -1, data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def current_version
+    '1.1.0'
+  end
 end
