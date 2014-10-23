@@ -25,7 +25,7 @@ class SuppliersController < ApplicationController
                           .where(status: @po_status)
                           .order(po_date: :desc)
                           .includes(:purchase_items)
-                          .paginate(:page => params[:page], :per_page => 2)
+                          .paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /suppliers/new
