@@ -22,8 +22,6 @@ $(document).ready(function(){
 
 
 
-<% cache(@supplier.pending_po_cache_key) do %>
-  <%= render partial: "summary", locals: {purchase_orders:@purchase_orders, status: @po_status}%>
-<% end %>
+<%= render partial: "summary", locals: {purchase_orders:@purchase_orders, status: @po_status}%>
 
 </div>

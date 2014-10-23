@@ -14,7 +14,7 @@
 #server 'bman917.com', user: 'ubuntu', roles: %w{web app}, ssh_options: {
 #     keys: %w(/home/jchan/.ssh/eegm.pem)
 #}
-server '192.241.158.142', user: 'jchan', roles: %w{web app db}, my_property: :my_value
+server 'bman917.com', user: 'jchan', roles: %w{web app db}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
